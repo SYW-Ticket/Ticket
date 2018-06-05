@@ -35,7 +35,7 @@
         <property name="rememberMeManager" ref="rememberMeManager"/>
     </bean>
 
-    <bean name="MyRealm" class="com.realm.MyRealm"/>
+    <bean name="MyRealm" class="com.ticket.*.MyRealm"/>
 
     <bean name="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
         <property name="cookie" ref="rememberMeCookie"/>

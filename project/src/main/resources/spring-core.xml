@@ -9,21 +9,17 @@
 
     <import resource="spring-mybatis.xml"/>
     <import resource="spring-shiro.xml"/>
-
-
-    <context:annotation-config/>
-    <mvc:annotation-driven/>
-    <mvc:default-servlet-handler/>
-
-    <context:component-scan base-package="com.ticket"/>
+    <import resource="spring-redis.xml"/>
 
 
 
-    <bean name="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <context:component-scan base-package="com.ticket">
 
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
 
 
 

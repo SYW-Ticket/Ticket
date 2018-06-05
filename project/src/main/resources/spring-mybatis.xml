@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="dataSourceRead" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="#########" />
+        <property name="user" value="#####"/>
+        <property name="password" value="#######"/>
+    </bean>
+
+
+    <bean id="sqlSessionFactoryRead" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceRead"/>
+        <property name="mapperLocations" value="mapper/*/*.xml"/>
+    </bean>
+
+    <bean id="dataSourceWrite" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="#########" />
+        <property name="user" value="#####"/>
+        <property name="password" value="#######"/>
+    </bean>
+
+
+    <bean id="sqlSessionFactoryWrite" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceWrite"/>
+        <property name="mapperLocations" value="mapper/*/*.xml"/>
+    </bean>
+
+
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="dataSourceWrite"/>
+        </property>
+    </bean>
+
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+</beans>

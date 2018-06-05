@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-06-05 14:59:29
+Date: 2018-06-05 15:23:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -126,6 +126,7 @@ CREATE TABLE `film` (
   `film_name` varchar(50) NOT NULL,
   `film_score` int(11) DEFAULT NULL,
   `film_price` double DEFAULT NULL,
+  `film_hot` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-06-05 10:43:02
+Date: 2018-06-05 14:53:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,11 +39,30 @@ CREATE TABLE `actor_film_details_chose` (
   `actor_id` int(11) NOT NULL,
   `film_details_id` int(11) NOT NULL,
   `main_actor_flag` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_b` (`actor_id`),
+  KEY `fk_g` (`film_details_id`),
+  CONSTRAINT `fk_b` FOREIGN KEY (`actor_id`) REFERENCES `actor` (`id`),
+  CONSTRAINT `fk_g` FOREIGN KEY (`film_details_id`) REFERENCES `film_details` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of actor_film_details_chose
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin_username` varchar(30) NOT NULL,
+  `admin_password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of admin
 -- ----------------------------
 
 -- ----------------------------
@@ -122,10 +141,10 @@ CREATE TABLE `film_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `film_id` int(11) NOT NULL,
   `details` varchar(100) NOT NULL,
-  `film_start_data` varchar(100) NOT NULL,
+  `film_start_date` varchar(100) NOT NULL,
   `director` varchar(20) NOT NULL,
   `synopsis` varchar(200) DEFAULT NULL,
-  `film_end_data` varchar(200) DEFAULT NULL,
+  `film_end_date` varchar(200) DEFAULT NULL,
   `film_length` varchar(50) NOT NULL,
   `language` varchar(20) NOT NULL,
   `3DLV` varchar(20) DEFAULT NULL,
@@ -191,6 +210,21 @@ CREATE TABLE `hall` (
 
 -- ----------------------------
 -- Records of hall
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `hyper_admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `hyper_admin`;
+CREATE TABLE `hyper_admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hyper_admin_username` varchar(30) NOT NULL,
+  `hyper_admin_password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of hyper_admin
 -- ----------------------------
 
 -- ----------------------------

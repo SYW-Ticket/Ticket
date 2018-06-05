@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-06-05 14:53:42
+Date: 2018-06-05 14:59:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -205,7 +205,10 @@ CREATE TABLE `hall` (
   `hall_name` varchar(50) NOT NULL,
   `row_max` int(11) NOT NULL,
   `col_max` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `cinema_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_j` (`cinema_id`),
+  CONSTRAINT `fk_j` FOREIGN KEY (`cinema_id`) REFERENCES `cinema` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------

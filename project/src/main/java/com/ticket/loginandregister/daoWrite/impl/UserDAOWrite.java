@@ -1,5 +1,6 @@
 package com.ticket.loginandregister.daoWrite.impl;
 
+import com.ticket.loginandregister.bean.UserBean;
 import com.ticket.loginandregister.daoWrite.IUserDAOWrite;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,10 +20,8 @@ public class UserDAOWrite extends SqlSessionDaoSupport implements IUserDAOWrite 
 
 
     @Override
-    public void insertUserWithTel() {
-
+    public void insertUserWithTel(UserBean userBean) {
         SqlSession sqlSession = getSqlSession();
-        int insert = sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel");
-
+        sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel",userBean);
     }
 }

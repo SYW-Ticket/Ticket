@@ -12,6 +12,9 @@
     <import resource="spring-redis.xml"/>
 
 
+    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+        <property name="maxInactiveIntervalInSeconds" value="3600"></property>
+    </bean>
 
     <context:component-scan base-package="com.ticket">
 

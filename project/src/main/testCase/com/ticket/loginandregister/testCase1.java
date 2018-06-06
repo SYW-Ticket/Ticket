@@ -1,7 +1,6 @@
 package com.ticket.loginandregister;
 
-import com.ticket.loginandregister.daoRead.IUserDAORead;
-import org.apache.log4j.Logger;
+import com.ticket.loginandregister.DAORead.IUserDAORead;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,7 @@ public class testCase1 {
     @Test
     public void testCase1(){
         userDAO.selectUser();
-        Logger logger = Logger.getLogger(testCase1.class);
-        logger.debug("gegegege");
+
     }
 
 }

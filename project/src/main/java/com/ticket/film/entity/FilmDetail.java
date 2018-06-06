@@ -1,5 +1,8 @@
 package com.ticket.film.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +11,7 @@ import java.util.List;
  * @Date 2018/6/6
  * @Time 14:59
  */
+@Component
 public class FilmDetail {
     //电影id
     private int id;
@@ -22,7 +26,10 @@ public class FilmDetail {
     //别名
     private String details;
     //上映时间
+//    @DateTimeFormat(pattern = "YY-MM-DD")
+    @DateTimeFormat
     private Date filmStartDate;
+
     //导演
     private String director;
     //剧情

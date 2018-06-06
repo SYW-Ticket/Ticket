@@ -4,6 +4,7 @@ import com.ticket.film.entity.Actor;
 import com.ticket.film.entity.Film;
 import com.ticket.film.entity.FilmDetail;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,16 +15,16 @@ import java.util.List;
  */
 public interface IFilmDao {
     //查询所有正在上映的电影
-    List<Film> filmsLoading();
+    List<FilmDetail> filmsLoading();
 
     //查找所有即将上映的电影
-    List<Film> filmsWillLoad();
+    List<FilmDetail> filmsWillLoad();
 
     //分页查找正在上映的电影
-    List<Film> filmsLoadingByPage(int currentPage);
+    List<FilmDetail> filmsLoadingByPage(int currentPage);
 
     //分页查找即将上映的电影
-    List<Film> filmsWillLoadByPage(int currentPage);
+    List<FilmDetail> filmsWillLoadByPage(int currentPage);
 
     //查看电影详情
     FilmDetail filmDetail(int filmId);

@@ -17,7 +17,7 @@
 
     <bean id="dataSourceRead" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://192.168.72.1:3306/ticket?useUnicode=true&amp;characterEncoding=utf-8" />
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.58.93:3306/ticket?useUnicode=true&amp;characterEncoding=utf-8" />
         <property name="user" value="root"/>
         <property name="password" value="123456"/>
     </bean>

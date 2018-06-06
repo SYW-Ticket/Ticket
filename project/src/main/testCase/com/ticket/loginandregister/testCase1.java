@@ -1,6 +1,6 @@
 package com.ticket.loginandregister;
 
-import com.ticket.loginandregister.DAO.IUserDAO;
+import com.ticket.loginandregister.DAORead.IUserDAORead;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class testCase1 {
 
     @Autowired
-    private IUserDAO userDAO;
+    private IUserDAORead userDAO;
 
 
     @Test
     public void testCase1(){
-        userDAO.InsertUser();
+        userDAO.selectUser();
 
     }
 

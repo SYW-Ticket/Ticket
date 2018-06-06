@@ -7,6 +7,6 @@ public interface IUserDAO {
 
     public void InsertUser();
 
-    void selectUser();
+
 
 }

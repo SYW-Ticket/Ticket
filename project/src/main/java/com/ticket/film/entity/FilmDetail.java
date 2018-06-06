@@ -1,4 +1,4 @@
-package com.film.entity;
+package com.ticket.film.entity;
 
 import java.util.Date;
 import java.util.List;

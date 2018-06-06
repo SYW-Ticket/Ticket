@@ -1,4 +1,4 @@
-package com.film.entity;
+package com.ticket.film.entity;
 
 /**
  * @Author wangpeng

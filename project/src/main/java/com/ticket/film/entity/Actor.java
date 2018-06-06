@@ -1,4 +1,4 @@
-package com.film.entity;
+package com.ticket.film.entity;
 
 /**
  * @Author wangpeng
@@ -9,4 +9,13 @@ public class Actor {
     private int id;
     private String actorName;
     private String actorPhoto;
+
+    @Override
+    public String toString() {
+        return "Actor{" +
+                "id=" + id +
+                ", actorName='" + actorName + '\'' +
+                ", actorPhoto='" + actorPhoto + '\'' +
+                '}';
+    }
 }

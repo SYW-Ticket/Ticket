@@ -1,7 +1,8 @@
-package com.film.dao;
+package com.ticket.film.dao;
 
-import com.film.entity.Film;
-import com.film.entity.FilmDetail;
+import com.ticket.film.entity.Actor;
+import com.ticket.film.entity.Film;
+import com.ticket.film.entity.FilmDetail;
 
 import java.util.List;
 
@@ -26,4 +27,5 @@ public interface IFilmDao {
 
     //查看电影详情
     FilmDetail filmDetail(int filmId);
+
 }

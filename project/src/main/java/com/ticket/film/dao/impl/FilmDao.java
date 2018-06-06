@@ -1,17 +1,15 @@
-package com.film.dao.impl;
+package com.ticket.film.dao.impl;
 
-import com.film.dao.IFilmDao;
-import com.film.entity.Film;
-import com.film.entity.FilmDetail;
+import com.ticket.film.dao.IFilmDao;
+import com.ticket.film.entity.Actor;
+import com.ticket.film.entity.Film;
+import com.ticket.film.entity.FilmDetail;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -50,8 +48,7 @@ public class FilmDao extends SqlSessionDaoSupport implements IFilmDao {
     @Override
     public FilmDetail filmDetail(int filmId) {
         SqlSession sqlSession = getSqlSession();
-        return sqlSession.selectOne("com.film.dao.IFilmDao.filmDetail",filmId);
+        return sqlSession.selectOne("com.ticket.film.dao.IFilmDao.filmDetail",filmId);
     }
-
 
 }

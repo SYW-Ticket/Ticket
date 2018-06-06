@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ticket.film.dao.IFilmDao">
+    <resultMap id="filmDetailResultMap" type="com.ticket.film.entity.FilmDetail">
+        <id property="id" column="film_id"></id>
+        <result property="filmName" column="film_name"></result>
+        <result property="filmImg" column="film_img"></result>
+        <result property="filmScore" column="film_score"></result>
+        <result property="filmHot" column="film_hot"></result>
+        <result property="details" column="details"></result>
+        <result property="filmStartDate" column="film_start_date"></result>
+        <result property="director" column="director"></result>
+        <result property="synopsis" column="synopsis"></result>
+        <result property="trailerAddress" column="trailer_address"></result>
+        <result property="filmLength" column="film_length"></result>
+        <result property="language" column="language"></result>
+        <result property="threeDLV" column="3DLV"></result>
+        <collection property="actors" column="film_id"  select="selectActorsByFilmId"/>
+        <collection property="types" column="film_id"  select="selectTypesByFilmId" ></collection>
+    </resultMap>
+
+    <resultMap id="actorResultMap" type="com.ticket.film.entity.Actor">
+        <id property="id" column="id"></id>
+        <result property="actorName" column="actor_name"></result>
+        <result property="actorPhoto" column="actor_photo"></result>
+    </resultMap>
+    
+    <select id="filmDetail" resultMap="filmDetailResultMap">
+        SELECT fd.film_id,f.film_name,f.film_img,f.film_score,f.film_hot,
+        fd.details,fd.film_start_date,fd.director,fd.synopsis,
+        fd.trailer_address,fd.film_length,fd.language,fd.3DLV
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+        WHERE f.id = #{id}
+    </select>
+
+    <select id="selectTypesByFilmId" resultType="java.lang.String">
+        SELECT type_name FROM film_type_chose ft
+        JOIN film f ON ft.film_id = f.id
+        JOIN type t ON ft.type_id = t.id
+        WHERE f.id = #{id}
+    </select>
+
+    <select id="selectActorsByFilmId" resultMap="actorResultMap">
+        SELECT a.id,a.actor_name,a.actor_photo FROM actor_film_details_chose af
+        JOIN actor a ON af.actor_id = a.id
+        JOIN film_details fd ON af.film_details_id  = fd.id
+        WHERE fd.film_id = #{id}
+    </select>
+</mapper>

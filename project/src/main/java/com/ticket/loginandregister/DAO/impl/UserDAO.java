@@ -28,8 +28,6 @@ public class UserDAO extends SqlSessionDaoSupport implements IUserDAO {
         System.out.println(insert);
 
     }
-
-    @Override
     public void selectUser() {
         SqlSession sqlSession = getSqlSession();
         UserBean o = sqlSession.selectOne("com.ticket.loginandregister.bean.UserBeanMapper.selectUser");

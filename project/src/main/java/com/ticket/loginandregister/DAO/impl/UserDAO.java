@@ -34,6 +34,5 @@ public class UserDAO extends SqlSessionDaoSupport implements IUserDAO {
         SqlSession sqlSession = getSqlSession();
         UserBean o = sqlSession.selectOne("com.ticket.loginandregister.bean.UserBeanMapper.selectUser");
         System.out.println(o.getAcount());
-
     }
 }

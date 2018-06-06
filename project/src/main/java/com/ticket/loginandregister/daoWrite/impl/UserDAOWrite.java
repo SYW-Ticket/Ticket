@@ -14,13 +14,12 @@ import org.springframework.stereotype.Repository;
 public class UserDAOWrite extends SqlSessionDaoSupport implements IUserDAOWrite {
     @Autowired
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactoryWrite) {
-
         super.setSqlSessionFactory(sqlSessionFactoryWrite);
     }
 
 
     @Override
-    public void InsertUserWithTel() {
+    public void insertUserWithTel() {
 
         SqlSession sqlSession = getSqlSession();
         int insert = sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel");

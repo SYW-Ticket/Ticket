@@ -12,7 +12,5 @@ public class testCase1 {
     @Test
     public void  testCase1(){
         String hex = ShortMessageUtil.bytes2hex();
-
-
     }
 }

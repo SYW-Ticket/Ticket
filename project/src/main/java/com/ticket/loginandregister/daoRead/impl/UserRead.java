@@ -15,19 +15,14 @@ import org.springframework.stereotype.Repository;
 public class UserRead extends SqlSessionDaoSupport implements IUserDAORead {
     @Autowired
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactoryRead) {
-
         super.setSqlSessionFactory(sqlSessionFactoryRead);
     }
 
 
     @Override
-    public void SelectUserByTel() {
+    public UserBean selectUserByTel(String tel) {
         SqlSession sqlSession = getSqlSession();
-
-
         UserBean selectOne = sqlSession.selectOne("com.ticket.loginandregister.bean.UserBeanMapper.selectUserByTel");
-
-
-
+        return selectOne;
     }
 }

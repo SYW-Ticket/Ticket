@@ -1,6 +1,6 @@
-package com.ticket.loginandregister.DAO.impl;
+package com.ticket.loginandregister.daoWrite.impl;
 
-import com.ticket.loginandregister.DAO.IUserDAO;
+import com.ticket.loginandregister.daoWrite.IUserDAO;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;

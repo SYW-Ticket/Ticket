@@ -1,4 +1,4 @@
-package com.ticket.loginandregister.DAO;
+package com.ticket.loginandregister.daoWrite;
 
 /**
  * Created by Shinelon on 2018/6/6.

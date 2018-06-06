@@ -1,6 +1,6 @@
-package com.ticket.loginandregister.DAORead.impl;
+package com.ticket.loginandregister.daoRead.impl;
 
-import com.ticket.loginandregister.DAORead.IUserDAORead;
+import com.ticket.loginandregister.daoRead.IUserDAORead;
 import com.ticket.loginandregister.bean.UserBean;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

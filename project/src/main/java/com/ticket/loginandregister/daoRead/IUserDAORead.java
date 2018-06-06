@@ -1,4 +1,4 @@
-package com.ticket.loginandregister.DAORead;
+package com.ticket.loginandregister.daoRead;
 
 /**
  * Created by Shinelon on 2018/6/6.

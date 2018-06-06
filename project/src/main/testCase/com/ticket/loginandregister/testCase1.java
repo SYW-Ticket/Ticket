@@ -1,7 +1,6 @@
 package com.ticket.loginandregister;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import com.ticket.loginandregister.DAO.IUserDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +15,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class testCase1 {
 
     @Autowired
-    private SqlSessionFactory sqlSessionFactoryWrite;
+    private IUserDAO userDAO;
 
 
     @Test
     public void testCase1(){
-
-        SqlSession sqlSession = sqlSessionFactoryWrite.openSession();
-
-        sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUser");
-
+        userDAO.InsertUser();
 
     }
 

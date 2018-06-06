@@ -10,9 +10,12 @@
         <result column="password" property="password" javaType="java.lang.String"/>
     </resultMap>
 
-    <insert id="insertUser" parameterMap="com.ticket.loginandregister.bean.UserBean">
-        insert INTO user(tel,money,acount,password) VALUES('123456789',522,'123456','123456')
+    <insert id="insertUser"  parameterType="com.ticket.loginandregister.bean.UserBean">
+        insert INTO user(id,tel,money,acount,password) VALUES(235,'123456789',522,'123456','123456')
     </insert>
+    <select id="selectUser" resultMap="UserBeanMapper">
+      select * from USER
+    </select>
 
 </mapper>    
         

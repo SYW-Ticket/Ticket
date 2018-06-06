@@ -22,8 +22,10 @@ public class App {
         //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
         headers.put("Authorization", "APPCODE " + appcode);
         Map<String, String> querys = new HashMap<String, String>();
-        querys.put("param", "123456");
-        querys.put("phone", "18602743162");
+        //短信的内容
+        querys.put("param", "1as23456");
+        //发送到那个手机号
+        querys.put("phone", "13554244942");
         querys.put("sign", "1");
         querys.put("skin", "1");
 

@@ -23,7 +23,7 @@ public class App {
         headers.put("Authorization", "APPCODE " + appcode);
         Map<String, String> querys = new HashMap<String, String>();
         querys.put("param", "123456");
-        querys.put("phone", "18602743162");
+        querys.put("phone", "186027431621");
         querys.put("sign", "1");
         querys.put("skin", "1");
 

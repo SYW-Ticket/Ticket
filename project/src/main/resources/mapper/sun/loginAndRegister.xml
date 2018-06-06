@@ -10,8 +10,8 @@
         <result column="password" property="password" javaType="java.lang.String"/>
     </resultMap>
 
-    <insert id="insertUserWithTel"  parameterType="com.ticket.loginandregister.bean.UserBean" keyProperty="id" useGeneratedKeys="true">
-        insert INTO user(id,tel) VALUES(#{id},#{tel})
+    <insert id="insertUserWithTel"  parameterType="com.ticket.loginandregister.bean.UserBean" useGeneratedKeys="true" keyProperty="id">
+        insert INTO user(tel) VALUES(#{tel})
     </insert>
 
     <select id="selectUserByTel" resultMap="UserBeanMapper">

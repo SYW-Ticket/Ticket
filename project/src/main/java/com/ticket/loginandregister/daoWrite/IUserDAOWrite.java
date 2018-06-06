@@ -7,7 +7,7 @@ import com.ticket.loginandregister.bean.UserBean;
  */
 public interface IUserDAOWrite {
 
-    public void insertUserWithTel(UserBean userBean);
+    void insertUserWithTel(UserBean userBean);
 
 
 

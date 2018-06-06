@@ -15,16 +15,14 @@
         <property name="loginUrl" value="/login.jsp"/>
         <property name="filterChainDefinitions">
             <value>
-               <!-- &lt;!&ndash;anon 代表不需要登录&ndash;&gt;
+               <!-- &lt;!&ndash;anon 代表不需要登录-->
                 /user/login=anon
                 /css/**=anon
-                /dist/**=anon
-                /image/**=anon
+                /img/**=anon
                 /js/**=anon
-                /vendor/**=anon
-                &lt;!&ndash;authc需要登录才能访问&ndash;&gt;
-                &lt;!&ndash;user配合rememberMe使用有效，authc不能配合rememberMe使用&ndash;&gt;
-                /**=user-->
+                <!--authc需要登录才能访问-->
+                <!--user配合rememberMe使用有效，authc不能配合rememberMe使用-->
+                /**=authc
             </value>
         </property>
     </bean>

@@ -17,11 +17,11 @@ public class UserDAOWrite extends SqlSessionDaoSupport implements IUserDAOWrite 
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactoryWrite) {
         super.setSqlSessionFactory(sqlSessionFactoryWrite);
     }
+
+
     @Override
     public void insertUserWithTel(UserBean userBean) {
-
         SqlSession sqlSession = getSqlSession();
-        int insert = sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel");
-
+        sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel",userBean);
     }
 }

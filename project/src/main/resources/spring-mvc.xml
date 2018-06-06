@@ -16,9 +16,7 @@
     	即spring的核心处理机制，如果需要自定义，可以手动配置HandleMapping和HandleAdapter -->
     <mvc:annotation-driven />
 
-    <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
-        <property name="maxInactiveIntervalInSeconds" value="3600"></property>
-    </bean>
+
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"

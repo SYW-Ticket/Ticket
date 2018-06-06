@@ -5,6 +5,6 @@ package com.ticket.loginandregister.daoRead;
  */
 public interface IUserDAORead {
 
-    void selectUser();
+    void SelectUserByTel();
 
 }

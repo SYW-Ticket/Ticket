@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -3632,11 +3633,22 @@
                         </ul>
                     </div>
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
+
                     <div class="sign">
+                        <c:choose>
+                        <c:when test="${user==null}">
                         <ul>
-                            <li>登录</li>
+                            <li><a href="login.jsp">快速登陆</a></li>
                         </ul>
+                        </c:when>
+                        <c:otherwise>
+                            <ul>
+                                <li>欢迎用户${user.tel}</li>
+                            </ul>
+                        </c:otherwise>
+                        </c:choose>
                     </div>
+
                 </div>
                 <div class="city-view-wrap inner">
                     <div class="city-view hidden"><i class="icon-caret-up"></i>
@@ -4224,7 +4236,7 @@
         $.post("users/sendMsg",
             {"tel":tel},
             function (data) {
-                alert("xxxx");
+                alert(data.message);
         });
     }
 
@@ -4232,7 +4244,15 @@
         var tel = $("#tel").val();
         var token = $("#token").val();
         $.post("users/login",{"tel":tel,"token":token},function (data) {
-            window.location.href=""
+            if(data.code==1){
+                alert(data.message);
+                window.location.href="index.jsp";
+            }
+            else {
+                alert(data.message)
+                window.location.href="login.jsp";
+            }
+
         });
     }
 </script>

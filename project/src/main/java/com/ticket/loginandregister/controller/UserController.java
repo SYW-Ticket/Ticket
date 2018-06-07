@@ -1,5 +1,6 @@
 package com.ticket.loginandregister.controller;
 
+import com.ticket.loginandregister.bean.JsonBean;
 import com.ticket.loginandregister.bean.UserBean;
 import com.ticket.loginandregister.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,28 +21,36 @@ UserService userService;
 
 @ResponseBody
 @RequestMapping("/sendMsg")
-@CrossOrigin
-public String sendMsg(String tel){
+public Object sendMsg(String tel){
     userService.SendMessage(tel);
     String s = new String("短信已发送");
-    return s;
+    JsonBean jsonBean = new JsonBean();
+    jsonBean.setCode(0);
+    jsonBean.setMessage(s);
+    return jsonBean;
 }
 
 
 @ResponseBody
 @RequestMapping("/login")
-    public String login(String tel, String token, Model model){
-    if(userService.login(tel,token)!=null){
+    public Object login(String tel, String token, Model model){
+            JsonBean jsonBean = new JsonBean();
             UserBean userBean = userService.login(tel,token);
-//            String log = "登陆成功,登陆者为："+tel;
+            if(userBean!=null){
+            //  String log = "登陆成功,登陆者为："+tel;
             model.addAttribute("user",userBean);
-        String s = new String("登陆成功");
-            return s;
+            String s = new String("登陆成功");
+            jsonBean.setCode(1);
+            jsonBean.setMessage(s);
+            return jsonBean;
     }
     else {
 //        String log = "登陆失败,登陆者为："+tel;
+
         String s = new String("验证码输入错误");
-        return s;
+        jsonBean.setCode(1);
+        jsonBean.setMessage(s);
+        return jsonBean;
     }
 }
 

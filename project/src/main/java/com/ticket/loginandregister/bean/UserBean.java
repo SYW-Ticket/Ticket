@@ -1,9 +1,11 @@
 package com.ticket.loginandregister.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Shinelon on 2018/6/6.
  */
-public class UserBean {
+public class UserBean implements Serializable{
 
     private int id;
     private String tel;

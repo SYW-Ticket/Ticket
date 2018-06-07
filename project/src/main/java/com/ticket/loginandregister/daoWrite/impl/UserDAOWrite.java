@@ -23,7 +23,7 @@ public class UserDAOWrite extends SqlSessionDaoSupport implements IUserDAOWrite 
     public void insertUserWithTel(UserBean userBean) {
 
         SqlSession sqlSession = getSqlSession();
-        int insert = sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel");
+        int insert = sqlSession.insert("com.ticket.loginandregister.bean.UserBeanMapper.insertUserWithTel",userBean);
 
     }
 }

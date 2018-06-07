@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="connectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <!--MQ服务器的地址-->
+        <!--61616端口是客户端用来访问MQ服务器的端口，8161是MQ服务器管理员登录页面的端口号-->
+        <property name="brokerURL" value="tcp://119.23.42.247:61616"/>
+    </bean>
+
+    <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+        <!--指定队列名称-->
+        <constructor-arg value="QQ"/>
+    </bean>
+
+    <!--用来接受和发送消息的工具-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="sessionTransacted" value="true"/>
+        <property name="defaultDestination" ref="queue"/>
+    </bean>
+
+
+    <!--配置消息监听器-->
+    <bean id="messageListener" class="com.ticket.loginandregister.util.Listener"/>
+    <!--消息监听器容器，所有的消息监听器都放在容器中-->
+    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="queue"/>
+        <property name="messageListener" ref="messageListener"/>
+    </bean>
+
+</beans>

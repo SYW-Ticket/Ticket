@@ -22,7 +22,7 @@ public class UserInfoDAO extends SqlSessionDaoSupport implements IUserInfoDAO {
      * @param message 输入的字符串
      * @return 返回验证结果  boolean
      */
-    @Override
+
     public boolean CheckShortMessage(String message) {
 
 

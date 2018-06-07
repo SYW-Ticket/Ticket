@@ -25,7 +25,7 @@ public class App {
         //短信的内容
         querys.put("param", "1as23456");
         //发送到那个手机号
-        querys.put("phone", "13554244942");
+        querys.put("phone", "18602743162");
         querys.put("sign", "1");
         querys.put("skin", "1");
 

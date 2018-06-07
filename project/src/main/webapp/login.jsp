@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<script>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>卖座电影</title>
-    <base href="<%=request.getContextPath()%>/">
+    <base href="<%=request.getContextPath()%>/"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -1131,8 +1131,6 @@
     <style type="text/css">
         @font-face {
             font-family: 'icomoon';
-            src: url(//static.maizuo.com/pc/v1/static/asset/62e9204cbb017aba6a1958d039d1e9e5.eot);
-            src: url(//static.maizuo.com/pc/v1/static/asset/62e9204cbb017aba6a1958d039d1e9e5.eot#iefix) format('embedded-opentype'), url(//static.maizuo.com/pc/v1/static/asset/2ac0acbc528a55a4a817d4aeea4e83b0.ttf) format('truetype'), url(//static.maizuo.com/pc/v1/static/asset/b41074ffb3306864933b21f355566531.woff) format('woff'), url(//static.maizuo.com/pc/v1/static/asset/0127bcc835c854239a444015d33ab812.svg#icomoon) format('svg');
             font-weight: normal;
             font-style: normal;
         }
@@ -3607,13 +3605,13 @@
         }
     </style>
 
-    <!--<script type="text/javascript" charset="utf8" async="" src="./登录_files/jsapi"></script>-->
-    <link href="http://119.23.42.247:83/css/unifull.min.css" rel="stylesheet" type="text/css">
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/66-33797b.js.下载"></script>-->
-
     <!--jQuery导入导致页面空白-->
 
-    <script src="js/jQuery.3.3.1.js" ></script>
+
+    <!--<script type="text/javascript" charset="utf8" async="" src="./登录_files/jsapi"></script>-->
+    <link href="http://119.23.42.247:83/css/unifull.min.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/66-33797b.js.下载"></script>-->
 </head>
 
 <body>
@@ -3637,7 +3635,6 @@
                     <div class="sign">
                         <ul>
                             <li>登录</li>
-                            <li>注册</li>
                         </ul>
                     </div>
                 </div>
@@ -4134,19 +4131,15 @@
                         <div class="login-form-view">
                             <div class="togglePanel"><span class="active">快捷登录</span></div>
                             <form class="login-form">
-                                <div class="field-wrap"><span class="field"><input type="tel" id="tel" placeholder="输入手机号码" maxlength="11" value="" autocomplete="off" class="input"><span class="addon"></span></span>
+                                <div class="field-wrap"><span class="field"><input type="tel" id="tel" placeholder="输入手机号码" maxlength="11" value="" class="input"><span class="addon"></span></span>
                                     <p class="message-error"></p>
                                 </div>
-                                <div class="field-wrap"><span class="field"><input type="text" id="token" placeholder="输入验证码" maxlength="6" value="" autocomplete="off" class="input"><span class="addon"><span class="throttle sms-code-btn" id="send"><a href="javascript:sendMsg();">发送验证码</a></span></span>
+                                <div class="field-wrap"><span class="field"><input type="text" id="token" placeholder="输入验证码" maxlength="6" value="" class="input"><span class="addon"><span class="throttle sms-code-btn" id="send"><a href="javascript:sendMsg();">发送验证码</a></span></span>
 											</span>
                                     <p class="message-error"></p>
-                                </div><button type="submit" onclick="login()">登录</button></form>
+                                </div><button type="button" onclick="login()">登录</button></form>
                             <div class="service">
-                                <ul>
-                                    <li>
-                                        <a>立即注册</a>
-                                    </li>
-                                </ul>
+
                             </div>
                             <div class="service">
                                 <ul class="third-login">
@@ -4225,26 +4218,28 @@
         </div>
     </div>
 </div>
-<script src="js"/>
-<!--<script src="./登录_files/app-92cd8fd4df.js.下载"></script>-->
-<!--<script type="text/javascript" src="./登录_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
-</body>
-
 <script>
     function sendMsg() {
         var tel = $("#tel").val();
-        $.get("user/sendMsg",{tel:tel},function (data) {
-            alert(data);
+        $.post("users/sendMsg",
+            {"tel":tel},
+            function (data) {
+                alert("xxxx");
         });
     }
 
     function login() {
         var tel = $("#tel").val();
         var token = $("#token").val();
-        $.get("user/login",{tel:tel,token:token},function (data) {
-            alert(data);
+        $.post("users/login",{"tel":tel,"token":token},function (data) {
+            window.location.href=""
         });
     }
 </script>
+<!--<script src="./登录_files/app-92cd8fd4df.js.下载"></script>-->
+<!--<script type="text/javascript" src="./登录_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
+</body>
+
+
 
 </html>

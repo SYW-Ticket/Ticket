@@ -3,10 +3,9 @@ package com.ticket.UserInfo.Controller;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
 import com.ticket.UserInfo.util.JsonResult;
 import com.ticket.UserInfo.util.JsonTools;
+import com.ticket.UserInfo.util.MyselfException.YangException;
 import com.ticket.UserInfo.util.ShortMessageUtil;
 import com.ticket.UserInfo.util.SystemConfig;
-import com.ticket.UserInfo.util.MyselfException.YangException;
-import com.ticket.loginandregister.redis.Redis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/UserInfo")
 public class CheckShortMessageController {
-
-    String redMess="redMess";
-
-    @Autowired
-    Redis redis;
     @Autowired
     private IUserInfoService userInfoService;
 
@@ -66,7 +60,7 @@ public class CheckShortMessageController {
         //获取短信验证码 的内容（随机数）
         String pwd = ShortMessageUtil.bytes2hex();
 
-        redis.saveString(redMess,pwd);
+
 
 
         userInfoService.sendMessage(pwd,tel);

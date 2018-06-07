@@ -22,7 +22,7 @@ public class UserRead extends SqlSessionDaoSupport implements IUserDAORead {
     @Override
     public UserBean selectUserByTel(String tel) {
         SqlSession sqlSession = getSqlSession();
-        UserBean selectOne = sqlSession.selectOne("com.ticket.loginandregister.bean.UserBeanMapper.selectUserByTel",tel);
+        UserBean selectOne = sqlSession.selectOne("com.ticket.loginandregister.bean.UserBeanMapper.selectUserByTel");
         return selectOne;
     }
 }

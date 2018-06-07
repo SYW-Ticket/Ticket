@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        
-<mapper namespace="com.ticket.loginandregister.bean.UserBeanMapper">
-    <resultMap id="UserBeanMapper" type="com.ticket.loginandregister.bean.UserBean">
+
+<mapper namespace="com.ticket.UserInfo.bean.UserBeanMapper">
+    <resultMap id="UserBeanResulterMapper" type="com.ticket.UserInfo.bean.UserBean">
         <id column="id" property="id" javaType="java.lang.Integer"/>
         <result column="tel" property="tel" javaType="java.lang.String"/>
         <result column="money" property="money" javaType="java.lang.Integer"/>
@@ -10,13 +10,15 @@
         <result column="password" property="password" javaType="java.lang.String"/>
     </resultMap>
 
-    <insert id="insertUserWithTel"  parameterType="com.ticket.loginandregister.bean.UserBean" keyProperty="id" useGeneratedKeys="true">
-        insert INTO user(id,tel) VALUES(#{id},#{tel})
-    </insert>
 
-    <select id="selectUserByTel" resultMap="UserBeanMapper">
-      select * from USER WHERE tel = #{tel}
+
+    <select id="selectUserPassword" resultMap="UserBeanResulterMapper">
+        select id,tel,money,acount,password from user WHERE tel = #{tel}
     </select>
 
-</mapper>    
-        
+
+    <update id="updateUserpassword" parameterType="com.ticket.UserInfo.bean.UserBean">
+        update user set password=#{password} where tel=#{tel}
+    </update>
+
+</mapper>

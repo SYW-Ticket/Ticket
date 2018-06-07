@@ -30,8 +30,9 @@
     <!--演员结果集-->
     <resultMap id="actorResultMap" type="com.ticket.film.entity.Actor">
         <id property="id" column="id"></id>
-        <result property="actorName" column="actor_name"></result>
-        <result property="actorPhoto" column="actor_photo"></result>
+        <result property="actorName" column="actor_name"/>
+        <result property="actorPhoto" column="actor_photo"/>
+        <result property="flag" column="main_actor_flag"/>
     </resultMap>
 
     <sql id="filmDetailsPro">
@@ -56,7 +57,7 @@
     </select>
     <!--电影id查找所有演员-->
     <select id="selectActorsByFilmId" resultMap="actorResultMap">
-        SELECT a.id,a.actor_name,a.actor_photo FROM actor_film_details_chose af
+        SELECT a.id,a.actor_name,a.actor_photo,af.main_actor_flag FROM actor_film_details_chose af
         JOIN actor a ON af.actor_id = a.id
         JOIN film_details fd ON af.film_details_id  = fd.id
         WHERE fd.film_id = #{id}
@@ -77,20 +78,28 @@
         on f.id = fd.film_id
         WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !=''
     </select>
-    <!--分页查找上映的电影-->
-    <select id="filmsLoadingByPage" resultMap="filmDetailResultMap">
-        SELECT  <include refid="filmDetailsPro"/>
-        FROM film f
-        JOIN film_details fd
-        on f.id = fd.film_id
-        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !='' limit #{currentPage},5
-    </select>
-    <!--分页查找即将上映的电影-->
-    <select id="filmsWillLoadByPage" resultMap="filmDetailResultMap">
-        SELECT  <include refid="filmDetailsPro"/>
-        FROM film f
-        JOIN film_details fd
-        on f.id = fd.film_id
-        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' limit #{currentPage},5
-    </select>
+    <!--&lt;!&ndash;分页查找上映的电影&ndash;&gt;-->
+    <!--<select id="filmsLoadingByPage" resultMap="filmDetailResultMap">-->
+        <!--SELECT  <include refid="filmDetailsPro"/>-->
+        <!--FROM film f-->
+        <!--JOIN film_details fd-->
+        <!--on f.id = fd.film_id-->
+        <!--WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !='' limit #{start},5-->
+    <!--</select>-->
+    <!--&lt;!&ndash;分页查找即将上映的电影&ndash;&gt;-->
+    <!--<select id="filmsWillLoadByPage" resultMap="filmDetailResultMap">-->
+        <!--SELECT  <include refid="filmDetailsPro"/>-->
+        <!--FROM film f-->
+        <!--JOIN film_details fd-->
+        <!--on f.id = fd.film_id-->
+        <!--WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' limit #{start},5-->
+    <!--</select>-->
+    <!--&lt;!&ndash;查找正在上映的电影总数&ndash;&gt;-->
+    <!--<select id="selectLoadingCounts" resultType="java.lang.Integer">-->
+        <!--SELECT count(*) FROM film_details WHERE film_start_date &lt; #{now}-->
+    <!--</select>-->
+    <!--&lt;!&ndash;查找即将上映的电影总数&ndash;&gt;-->
+    <!--<select id="selectWillLoadCounts" resultType="java.lang.Integer">-->
+        <!--SELECT count(*) FROM film_details WHERE film_start_date &gt; #{now}-->
+    <!--</select>-->
 </mapper>

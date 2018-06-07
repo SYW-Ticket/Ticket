@@ -41,25 +41,41 @@ public class FilmDao extends SqlSessionDaoSupport implements IFilmDao {
         return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsWillLoad",new Date());
     }
 
-    @Override
-    public List<FilmDetail> filmsLoadingByPage(int currentPage) {
-        SqlSession sqlSession = getSqlSession();
-        Date now = new Date();
-        Map<String,Object> params = new HashMap();
-        params.put("now",now);
-        params.put("currentPage",currentPage-1);
-        return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsLoadingByPage",params);
-    }
-
-    @Override
-    public List<FilmDetail> filmsWillLoadByPage(int currentPage) {
-        return null;
-    }
+//    @Override
+//    public List<FilmDetail> filmsLoadingByPage(int start) {
+//        SqlSession sqlSession = getSqlSession();
+//        Date now = new Date();
+//        Map<String,Object> params = new HashMap();
+//        params.put("now",now);
+//        params.put("start",start);
+//        return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsLoadingByPage",params);
+//    }
+//
+//    @Override
+//    public List<FilmDetail> filmsWillLoadByPage(int start) {
+//        SqlSession sqlSession = getSqlSession();
+//        Date now = new Date();
+//        Map<String,Object> params = new HashMap();
+//        params.put("now",now);
+//        params.put("start",start);
+//        return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsWillLoadByPage",params);
+//    }
 
     @Override
     public FilmDetail filmDetail(int filmId) {
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectOne("com.ticket.film.dao.IFilmDao.filmDetail",filmId);
     }
+
+//    @Override
+//    public int selectLoadingCounts() {
+//        Date now = new Date();
+//        return getSqlSession().selectOne("com.ticket.film.dao.IFilmDao.selectLoadingCounts",now);
+//    }
+//
+//    @Override
+//    public int selectWillLoadCounts() {
+//        return getSqlSession().selectOne("com.ticket.film.dao.IFilmDao.selectWillLoadCounts",new Date());
+//    }
 
 }

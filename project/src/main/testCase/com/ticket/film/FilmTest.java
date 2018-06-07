@@ -27,4 +27,15 @@ public class FilmTest {
             System.out.println(filmDetail);
         }
     }
+//    @Test
+//    public void filmsLoadingByPage(){
+//        List<FilmDetail> filmDetails= filmDao.filmsLoadingByPage(0);
+//        for (FilmDetail filmDetail : filmDetails) {
+//            System.out.println(filmDetail);
+//        }
+//    }
+//    @Test
+//    public void loadingFilmCounts(){
+//        System.out.println(filmDao.selectLoadingCounts());
+//    }
 }

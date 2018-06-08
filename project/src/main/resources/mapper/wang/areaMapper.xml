@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.film.dao.AreaDao">
+    <resultMap id="areaBaseResult" type="com.ticket.film.entity.AreaBean">
+        <id property="id" column="id"/>
+        <result property="area_name" column="area_name"/>
+        <result property="city_name" column="city_name"/>
+    </resultMap>
+
+    <select id="selectAllArea" resultMap="areaBaseResult">
+        SELECT * FROM area;
+    </select>
+
+</mapper>

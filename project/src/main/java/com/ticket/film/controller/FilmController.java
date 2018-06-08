@@ -7,6 +7,7 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
 import com.ticket.film.entity.PageBean;
+import com.ticket.film.service.AreaService;
 import com.ticket.film.service.FilmService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,9 @@ import java.util.List;
 public class FilmController {
     @Resource
     private FilmService filmService;
+
+    @Resource
+    private AreaService areaService;
 
 //    @RequestMapping("/LoadingFilmsByPage/{currentPage}")
 //    public String findAllFilmsLoadingByPage(@PathVariable("currentPage") int currentPage, Model model){
@@ -59,6 +63,7 @@ public class FilmController {
     @RequestMapping("/filmDetails/{filmId}")
     public String filmDetails(@PathVariable("filmId") int filmId,Model model){
         model.addAttribute("filmDetail", filmService.filmDetail(filmId));
+        model.addAttribute("areas",areaService.findAllArea());
         return "/filmDetails";
     }
 }

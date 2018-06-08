@@ -35,7 +35,6 @@ public class CheckShortMessageController {
     @RequestMapping("/CheckShortmessage")
     @ResponseBody
     public Object CheckShortMessage(String ShortMessage,String tel,Model model){
-        System.out.println("============================");
         //输入的验证码ShortMessage  和发送的手机验证码是否相等
         boolean flag = false;
         try {

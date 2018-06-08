@@ -1,7 +1,8 @@
-package com.ticket.loginandregister;
+package com.ticket.yang;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,6 +22,8 @@ public class testCaseyang {
     @Autowired
     private IUserInfoDAO userInfoDAO;
 
+    @Autowired
+    private IUserinfoOrder userinfoOrder;
 
     @Test
     public void  testCase2(){
@@ -30,7 +33,7 @@ public class testCaseyang {
         userInfoDAO.ModifyPassword("123456789","11231");
 
     }
-
+    /*测试通过*/
     @Test
     public void  testCase3(){
         try {
@@ -39,6 +42,17 @@ public class testCaseyang {
             e.printStackTrace();
         }
     }
+
+
+
+
+    //测试订单的逻辑
+    @Test
+    public void testCase4(){
+        userinfoOrder.selectOrder(0);
+
+    }
+
 
 
 }

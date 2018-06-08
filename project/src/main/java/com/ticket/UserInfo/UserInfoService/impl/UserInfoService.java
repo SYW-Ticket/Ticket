@@ -3,6 +3,7 @@ package com.ticket.UserInfo.UserInfoService.impl;
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
 import com.ticket.UserInfo.bean.UserBean;
+import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
 import com.ticket.UserInfo.util.MyselfException.YangException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class UserInfoService implements IUserInfoService {
 
     @Autowired
     private IUserInfoDAO userInfoDAO;
-
+    @Autowired
+    private IUserinfoOrder userinfoOrder;
 
     /**
      *    发送短信验证码功能
@@ -60,6 +62,17 @@ public class UserInfoService implements IUserInfoService {
             int row = userInfoDAO.ModifyPassword(tel, newpassword);
             System.out.println(row);
         }
+
+    }
+
+    /**
+     *      查询未支付订单   超时删除  新增删除
+     * @param costState
+     */
+    @Override
+    public void findUnPayOrder(int tel,int costState) {
+
+        userinfoOrder.selectOrder(tel,costState);
 
     }
 

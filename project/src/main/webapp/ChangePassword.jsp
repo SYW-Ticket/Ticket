@@ -11,8 +11,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>修改密码</title>
-    <link rel="stylesheet" type="text/css" href="css/modify.css" />
-    <script src="js/jQuery.3.3.1.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="http://119.23.42.247:83/css/modify.css" />
+    <script src="http://119.23.42.247:83/js/jQuery.3.3.1.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
@@ -36,15 +36,9 @@
         </div>
         <div class="user">
             <ul>
-                <li>
-                    <a href="uesr">手机用户</a>
-                </li>
-                <li>
-                    <a href="logout">退出</a>
-                </li>
-                <li>
-                    <a href="javascript:;">APP下载</a>
-                </li>
+                        <ul>
+                            <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+                        </ul>
             </ul>
         </div>
     </div>
@@ -53,7 +47,7 @@
     <div class="wrap">
         <div class="nav">
             <div class="nav-head">
-                <img src="img/maizuomoren66.jpg" />
+                <img src="http://119.23.42.247:83/img/maizuomoren66.jpg" />
                 <p class="grey">手机用户</p>
                 <p>余额：<span class="red">0</span></p>
             </div>
@@ -86,7 +80,7 @@
                 <div class="count">
                     <div class="tit">
                         <img src="img/phone.png" alt="" />
-                        <p>已绑定手机号<span class="red">188****2610</span></p>
+                        <p>已绑定手机号<span class="red">${user.tel}</span></p>
                     </div>
                     <div class="form">
                         <div class="form-group">
@@ -117,13 +111,13 @@
 <div class="footer">
     <div class="wrap">
         <div class="mark">
-            <img src="img/mark.png" />
+            <img src="http://119.23.42.247:83/img/mark.png" />
         </div>
         <div class="f-contact">
-            <img src="img/contact.png" />
+            <img src="http://119.23.42.247:83/img/contact.png" />
         </div>
         <div class="f-links">
-            <img src="img/links.png" />
+            <img src="http://119.23.42.247:83/img/links.png" />
         </div>
     </div>
 </div>
@@ -140,10 +134,10 @@
         <a href="">社区管理</a>
     </div>
     <p class="copyR">Copyright © 2018 maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318</p>
-    <img src="img/cop.png"/>
+    <img src="http://119.23.42.247:83/img/cop.png"/>
 </div>
 
-<script src="js/modify.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://119.23.42.247:83/js/modify.js" type="text/javascript" charset="utf-8"></script>
 <%--
 <script>
     function sendCode() {

@@ -3609,8 +3609,7 @@
             display: none;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf8" async="" src="./影片详情页+在线购票页_files/jsapi"></script>-->
-    <link href="./影片详情页+在线购票页_files/unifull.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
@@ -3641,7 +3640,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <ul>
-                                        <li>欢迎用户${user.tel}</li>
+                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
                                     </ul>
                                 </c:otherwise>
                             </c:choose>

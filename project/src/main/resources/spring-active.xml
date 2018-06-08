@@ -22,9 +22,9 @@
         <property name="defaultDestination" ref="queue"/>
     </bean>
 
-
     <!--配置消息监听器-->
     <bean id="messageListener" class="com.ticket.loginandregister.util.Listener"/>
+
     <!--消息监听器容器，所有的消息监听器都放在容器中-->
     <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>

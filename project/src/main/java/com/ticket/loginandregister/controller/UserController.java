@@ -48,7 +48,7 @@ public Object sendMsg(String tel){
 //        String log = "登陆失败,登陆者为："+tel;
 
         String s = new String("验证码输入错误");
-        jsonBean.setCode(1);
+        jsonBean.setCode(2);
         jsonBean.setMessage(s);
         return jsonBean;
     }

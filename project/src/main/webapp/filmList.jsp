@@ -2722,7 +2722,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <ul>
-                                        <li>欢迎用户${user.tel}</li>
+                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
                                     </ul>
                                 </c:otherwise>
                             </c:choose>

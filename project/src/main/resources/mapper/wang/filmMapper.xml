@@ -28,6 +28,7 @@
         <!--<result property="filmHot" column="film_hot"></result>-->
     <!--</resultMap>-->
     <!--演员结果集-->
+
     <resultMap id="actorResultMap" type="com.ticket.film.entity.Actor">
         <id property="id" column="id"></id>
         <result property="actorName" column="actor_name"/>

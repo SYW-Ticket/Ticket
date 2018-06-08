@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.film.dao.CinemaDao">
+
+    <resultMap id="cinemaBaseResult" type="com.ticket.film.entity.CinemaBean">
+        <id property="id" column="id"/>
+        <result property="cinema_name" column="cinema_name"/>
+        <result property="cinema_adress" column="cinema_adress"/>
+        <result property="cinema_tel" column="cinema_tel"/>
+        <result property="area_id" column="area_id"/>
+    </resultMap>
+
+    <select id="findcinmeByAreaId" resultMap="cinemaBaseResult">
+        SELECT * FROM cinema where area_id = #{area_id}
+    </select>
+
+</mapper>

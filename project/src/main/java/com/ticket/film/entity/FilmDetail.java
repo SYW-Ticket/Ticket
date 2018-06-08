@@ -28,7 +28,6 @@ public class FilmDetail implements Serializable{
     //别名
     private String details;
     //上映时间
-    @DateTimeFormat(pattern = "yy-MM-dd")
     private Date filmStartDate;
     //导演
     private String director;

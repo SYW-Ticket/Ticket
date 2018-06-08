@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by Shinelon on 2018/6/6.
+ * Created by Shinelon on 201c8/6/6.
  */
 @Controller
 @RequestMapping("/UserInfo")

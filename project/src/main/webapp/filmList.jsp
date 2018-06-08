@@ -2706,16 +2706,27 @@
                         <!-- /react-text --><i class="icon-caret-down"></i></div>
                     <div class="menu">
                         <ul>
-                            <li class="">首页</li>
-                            <li class="active">影片</li>
+                            <a href="home.html"> <li class="">首页</li></a>
+                            <a href="film/LoadingByPage/1"><li class="active">影片</li></a>
                             <li class="">影院</li>
                         </ul>
                     </div>
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
                         <ul>
-                            <li>登录</li>
-                            <li>注册</li>
+                            <c:choose>
+                                <c:when test="${user==null}">
+                                    <ul>
+                                        <li><a href="login.jsp">快速登陆</a></li>
+                                    </ul>
+                                </c:when>
+                                <c:otherwise>
+                                    <ul>
+                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+                                        <li><a href="users/logout">退出登陆</a></li>
+                                    </ul>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>

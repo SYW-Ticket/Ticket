@@ -2,11 +2,15 @@ package com.ticket.loginandregister.redis.Redisimpl;
 
 import com.ticket.loginandregister.redis.Redis;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 
 @Component
@@ -51,7 +55,23 @@ public class Redisimpl implements Redis {
 
     }
 
+    @Override
+    public void incr(String key) {
+        RedisAtomicLong redisAtomicLong = new RedisAtomicLong(key,redisTemplate.getConnectionFactory());
+        redisAtomicLong.getAndIncrement();
+    }
+
+    //保存字符串并只保存20分钟
     public void saveStringToSet(String key,String value){
-        redisTemplate.opsForSet().add(key,value);
+        redisTemplate.opsForValue().set(key,value,TimeUnit.MINUTES.toSeconds(20));
+    }
+    //模糊查询keys
+    public Set <String> selectKeysLike(String pattern){
+        return redisTemplate.keys(pattern);
+    }
+
+    @Override
+    public void deleteKeyValue(String key) {
+        redisTemplate.delete(key);
     }
 }

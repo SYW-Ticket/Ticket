@@ -2,6 +2,8 @@ package com.ticket.film;
 
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
+import com.ticket.film.service.FilmService;
+import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author wangpeng
@@ -20,6 +23,12 @@ import java.util.List;
 public class FilmTest {
     @Resource
     private FilmDao filmDao;
+    @Resource
+    private FilmService filmService;
+    @Resource
+    private Redisimpl redisImpl;
+
+
     @Test
     public void filmsLoading(){
         List<FilmDetail> filmDetails= filmDao.filmsLoading();
@@ -38,4 +47,34 @@ public class FilmTest {
 //    public void loadingFilmCounts(){
 //        System.out.println(filmDao.selectLoadingCounts());
 //    }
+
+    /*
+    测试FilmService的缓存查询
+     */
+    @Test
+    public void filmServiceLoading(){
+        List<FilmDetail> filmDetails = filmService.allFilmDetailsLoading();
+        for (FilmDetail filmDetail : filmDetails) {
+            System.out.println(filmDetail);
+        }
+    }
+    @Test
+    public void filmServiceWillLoad(){
+        List<FilmDetail> filmDetails = filmService.allFilmDetailsWillLoad();
+        for (FilmDetail filmDetail : filmDetails) {
+            System.out.println(filmDetail);
+        }
+    }
+    @Test
+    public void filmDetailService(){
+        FilmDetail filmDetail = filmService.filmDetail(1);
+        System.out.println(filmDetail);
+    }
+    @Test
+    public void testRedisImpl(){
+        Set<String> keys =redisImpl.selectKeysLike("filmIdForHot_*");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+    }
 }

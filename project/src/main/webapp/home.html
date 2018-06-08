@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- saved from url=(0035)https://www.maizuo.com/#/?_k=hfdcsh -->
+<html class=" ">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>卖座电影</title>
-    <base href="<%=request.getContextPath()%>/"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -13,6 +12,12 @@
     <meta name="copyright" content="Copyright (c) 2016 maizuo.">
     <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <meta content="telephone=no" name="format-detection">
+    <style type="text/css">
+        a{
+            text-decoration: none;
+            color: #b2b2b2;
+        }
+    </style>
     <style type="text/css">
         .field {
             display: -webkit-box;
@@ -1132,6 +1137,8 @@
     <style type="text/css">
         @font-face {
             font-family: 'icomoon';
+            src: url(//static.maizuo.com/pc/v1/static/asset/62e9204cbb017aba6a1958d039d1e9e5.eot);
+            src: url(//static.maizuo.com/pc/v1/static/asset/62e9204cbb017aba6a1958d039d1e9e5.eot#iefix) format('embedded-opentype'), url(//static.maizuo.com/pc/v1/static/asset/2ac0acbc528a55a4a817d4aeea4e83b0.ttf) format('truetype'), url(//static.maizuo.com/pc/v1/static/asset/b41074ffb3306864933b21f355566531.woff) format('woff'), url(//static.maizuo.com/pc/v1/static/asset/0127bcc835c854239a444015d33ab812.svg#icomoon) format('svg');
             font-weight: normal;
             font-style: normal;
         }
@@ -2293,8 +2300,8 @@
             display: inline-block;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf8" async="" src="./登录_files/vds.js.下载"></script>-->
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/14-9d4191.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf8" async="" src="./首页_files/vds.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./首页_files/14-9d4191.js"></script>-->
     <style type="text/css">
         .mz-pagination {
             font-size: 14px;
@@ -2683,943 +2690,12 @@
             text-decoration: none;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/11-54fadc.js.下载"></script>-->
-    <style type="text/css">
-        .cinema-list-view {
-            padding: 23px 0 80px;
-        }
-
-        .cinema-list-view .cinema-list {
-            width: 840px;
-            display: inline-block;
-        }
-
-        .cinema-list-view .cinema-header {
-            border-bottom: 1px solid #ccc;
-            padding: 5px 0 17px 0;
-            width: 838px;
-        }
-
-        .cinema-list-view .cinema-header h3 {
-            font-size: 24px;
-            color: #333;
-            margin: 0;
-            font-weight: normal;
-            display: inline;
-        }
-
-        .cinema-list-view .cinema-header .search {
-            float: right;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            width: 318px;
-            height: 32px;
-            position: relative;
-            text-align: center;
-            margin: 5px 0 0 20px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        .cinema-list-view .cinema-header .search.icon-search:before {
-            position: absolute;
-            right: 12px;
-            top: 3px;
-            font-size: 20px;
-            padding: 6px;
-            cursor: pointer;
-        }
-
-        .cinema-list-view .cinema-header .search input {
-            border: none;
-            line-height: 30px;
-            padding: 0 10px;
-            width: 80%;
-            border-radius: 20px;
-            vertical-align: top;
-            color: #808080;
-            font-size: 14px;
-        }
-
-        .cinema-list-view .cinema-header .search .icon-search {
-            position: absolute;
-            padding: 6px;
-            right: 12px;
-            cursor: pointer;
-            color: #ff6640;
-            font-size: 20px;
-        }
-
-        .cinema-list-view .result {
-            font-size: 16px;
-            color: #333;
-            margin-top: 20px;
-        }
-
-        .cinema-list-view .result span {
-            color: #f00;
-        }
-
-        .cinema-list-view .nothing {
-            width: 430px;
-            height: 280px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .cinema-list-view .nothing img {
-            width: 100%;
-        }
-
-        .cinema-list-view .nothing p {
-            font-size: 16px;
-            margin-top: 15px;
-        }
-
-        .cinema-list-view .item {
-            padding: 20px 0;
-            border-bottom: 1px solid #e5e5e5;
-            width: 838px;
-            font-size: 12px;
-            letter-spacing: 0;
-        }
-
-        .cinema-list-view .item span {
-            margin-right: 10px;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
-        .cinema-list-view .item div {
-            color: #333;
-            display: inline-block;
-            vertical-align: top;
-            width: 790px;
-        }
-
-        .cinema-list-view .item div .active {
-            color: #fff;
-            background: #36bfd1;
-            border-radius: 20px;
-        }
-
-        .cinema-list-view .item div li {
-            padding: 8px 13px;
-            font-family: MicrosoftYaHei;
-            color: #808080;
-            text-align: center;
-            float: left;
-            cursor: pointer;
-        }
-
-        .cinema-list-view .cinema-item {
-            border-bottom: 1px solid #e5e5e5;
-            padding: 22px 0;
-            width: 838px;
-            display: table-cell;
-        }
-
-        .cinema-list-view .cinema-item .cinema-img {
-            border: 1px solid #e5e5e5;
-            display: inline-block;
-            width: 146px;
-            height: 146px;
-            float: left;
-            cursor: pointer;
-        }
-
-        .cinema-list-view .cinema-item .cinema-img img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .cinema-list-view .cinema-item .detail {
-            width: 500px;
-            height: 146px;
-            display: inline-block;
-            float: left;
-            margin-left: 22px;
-        }
-
-        .cinema-list-view .cinema-item .detail h3 {
-            cursor: pointer;
-            margin: 0;
-            padding: 0;
-            margin-top: 15px;
-            display: inline-block;
-            font-size: 18px;
-            color: #333;
-            letter-spacing: 0px;
-        }
-
-        .cinema-list-view .cinema-item .detail .information {
-            display: inline-block;
-            width: 100%;
-            margin-top: 40px;
-            font-size: 12px;
-        }
-
-        .cinema-list-view .cinema-item .detail .information li {
-            margin-top: 5px;
-        }
-
-        .cinema-list-view .cinema-item .detail .information li label {
-            color: #333;
-            margin-right: 5px;
-        }
-
-        .cinema-list-view .cinema-item .detail .information li span {
-            color: #808080;
-        }
-
-        .cinema-list-view .cinema-item button {
-            width: 118px;
-            height: 46px;
-            border-radius: 20px;
-            background-color: #ff6640;
-            float: right;
-            color: #fff;
-            font-size: 16px;
-            border: none;
-            margin-top: 50px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .cinema-list-view .cinema-item button:hover {
-            background-color: #ff5000;
-        }
-
-        .cinema-list-view .content-right {
-            width: 284px;
-            float: right;
-        }
-
-        .cinema-list-view .content-right .active-view .header {
-            padding-bottom: 17px;
-        }
-
-        .cinema-list-view .content-right .cinema-rank {
-            float: right;
-            width: 284px;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .cinema-header {
-            border-bottom: 1px solid #ccc;
-            padding: 0 0 12px 0;
-            margin-top: 0;
-            width: 100%;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .cinema-header h3 {
-            font-size: 24px;
-            color: #333;
-            margin: 0;
-            font-weight: normal;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .rank li {
-            height: 70px;
-            width: 100%;
-            border-bottom: 1px solid #e5e5e5;
-            font-size: 14px;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .rank li i {
-            color: #fff;
-            display: inline-block;
-            width: 26px;
-            height: 26px;
-            text-align: center;
-            line-height: 22px;
-            background-color: #36bfd1;
-            border-radius: 13px;
-            margin-top: 22px;
-            font-style: normal;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .rank li .order {
-            background-color: #b2b2b2;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .rank li span {
-            color: #333;
-            margin-left: 10px;
-        }
-
-        .cinema-list-view .content-right .cinema-rank .rank li p {
-            display: inline-block;
-            float: right;
-            font-size: 12px;
-            margin-top: 22px;
-            color: #b2b2b2;
-        }
-    </style>
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/4-94c1ee.js.下载"></script>-->
-    <style type="text/css">
-        .mini-seating-chart {
-            padding: 20px 12px;
-            border: 10px solid #e5e5e5;
-            border-radius: 20px;
-            position: absolute;
-            background-color: #fff;
-            bottom: 55px;
-            left: -22px;
-            min-width: 150px;
-        }
-
-        .mini-seating-chart .icon-caret-down {
-            position: absolute;
-            bottom: -23px;
-            left: 25px;
-            font-size: 22px;
-            color: #e5e5e5;
-        }
-
-        .mini-seating-chart .map {
-            position: relative;
-        }
-
-        .mini-seating-chart .seat {
-            position: absolute;
-            background-color: #e5e5e5;
-            display: inline-block;
-            border-radius: 2px;
-            width: 8px;
-            height: 8px;
-        }
-
-        .mini-seating-chart .seat.occupied {
-            background-color: #ff6640;
-        }
-
-        .mini-seating-chart .seat.occupied.broken {
-            background-color: #ff6640;
-        }
-
-        .mini-seating-chart .seat.broken {
-            background-color: #ff6640;
-        }
-
-        .mini-seating-chart .seat.selected {
-            background-color: #ff6640;
-        }
-    </style>
-    <style type="text/css">
-        .film-detail-view .banner {
-            text-align: center;
-            background-color: #e5e5e5;
-            min-height: 100px;
-            position: relative;
-        }
-
-        .film-detail-view .banner:after {
-            content: '';
-            background: url(//static.maizuo.com/pc/v1/static/asset/b1deea6fbf220b5354be7535b101b510.png) repeat;
-            height: 100%;
-            display: block;
-            top: 0;
-            position: absolute;
-            width: 100%;
-        }
-
-        .film-detail-view .banner .video-popup-view .mz-modal {
-            width: 70%;
-            border: none;
-            background-color: #000;
-        }
-
-        .film-detail-view .banner .video-popup-view .mz-modal-body {
-            padding: 50px 0 0 0;
-        }
-
-        .film-detail-view .banner .video-popup-view .mz-modal-close {
-            font-weight: bold;
-            font-size: 50px;
-            z-index: 99;
-            height: 50px;
-            line-height: 50px;
-        }
-
-        .film-detail-view .banner .video-popup-view .mz-modal-header {
-            padding: 0;
-        }
-
-        .film-detail-view .banner .cover-play {
-            color: #fff;
-            font-size: 115px;
-            cursor: pointer;
-            opacity: 0.4;
-            position: absolute;
-            z-index: 99;
-            top: 200px;
-            display: inline-block;
-        }
-
-        .film-detail-view .banner .cover-play:hover {
-            opacity: 1;
-        }
-
-        .film-detail-view .banner .play-button {
-            color: #808080;
-            display: inline-block;
-            line-height: 145px;
-            left: 50%;
-            position: absolute;
-            margin-left: 520px;
-        }
-
-        .film-detail-view .banner .play-button .play {
-            font-size: 40px;
-            cursor: pointer;
-            z-index: 99;
-            position: relative;
-        }
-
-        .film-detail-view .banner .play-button .play:hover {
-            opacity: 1;
-        }
-
-        .film-detail-view .banner .play-button span {
-            display: inline-block;
-            position: relative;
-            font-size: 14px;
-            top: -10px;
-            right: 10px;
-        }
-
-        .film-detail-view .banner img {
-            margin: 0 auto;
-            display: block;
-            height: 520px;
-            width: 100%;
-        }
-
-        .film-detail-view .banner #youkuplayer {
-            width: 100%;
-            height: 520px;
-            margin-bottom: 60px;
-            margin: 0;
-        }
-
-        .film-detail-view .banner #youkuplayer .icon-play {
-            color: #fff;
-            font-size: 115px;
-            line-height: 600px;
-            cursor: pointer;
-            opacity: 0.4;
-        }
-
-        .film-detail-view .banner #youkuplayer .icon-play:hover {
-            opacity: 1;
-        }
-
-        .film-detail-view .information {
-            margin-top: -50px;
-            position: relative;
-        }
-
-        .film-detail-view .information img {
-            border: 10px solid #fff;
-            float: left;
-        }
-
-        .film-detail-view .outline {
-            margin-left: 300px;
-            color: #808080;
-        }
-
-        .film-detail-view .outline .title {
-            font-size: 36px;
-            margin-top: 40px;
-            border-bottom: 1px dotted #ccc;
-            padding-bottom: 25px;
-        }
-
-        .film-detail-view .outline .title h3 {
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-            font-size: 32px;
-            font-weight: normal;
-            color: #333;
-        }
-
-        .film-detail-view .outline .title .grade {
-            color: #ff6640;
-            margin: 0 30px;
-            vertical-align: middle;
-        }
-
-        .film-detail-view .outline .title .grade i {
-            font-size: 18px;
-            vertical-align: super;
-            font-style: normal;
-        }
-
-        .film-detail-view .outline .title .intro {
-            font-size: 18px;
-        }
-
-        .film-detail-view .label {
-            color: #fff;
-        }
-
-        .film-detail-view .label i {
-            font-style: normal;
-            border: 1px solid #fff;
-            border-radius: 30px;
-            padding: 6px 20px;
-            margin-right: 15px;
-            display: inline-block;
-        }
-
-        .film-detail-view .cover-label {
-            color: #36bfd1;
-        }
-
-        .film-detail-view .cover-label i {
-            font-style: normal;
-            border: 1px solid #36bfd1;
-            border-radius: 30px;
-            padding: 6px 20px;
-            margin-right: 15px;
-            display: inline-block;
-        }
-
-        .film-detail-view .film-intro {
-            padding-top: 20px;
-        }
-
-        .film-detail-view .film-intro label {
-            color: #333;
-            float: left;
-        }
-
-        .film-detail-view .film-intro li {
-            margin-right: 30px;
-        }
-
-        .film-detail-view .film-intro li label {
-            margin-right: 5px;
-        }
-
-        .film-detail-view .film-intro .film-intro-one {
-            height: 20px;
-            margin-bottom: 10px;
-        }
-
-        .film-detail-view .film-intro .film-intro-one li,
-        .film-detail-view .film-intro .film-intro-three li {
-            float: left;
-            display: inline;
-        }
-
-        .film-detail-view .film-intro .film-intro-two li {
-            margin: 0 0 10px;
-        }
-
-        .film-detail-view .film-intro .synopsis {
-            vertical-align: top;
-            padding-left: 40px;
-            line-height: 22px;
-        }
-
-        .film-detail-view .film-intro .synopsis span {
-            color: #ff6640;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .film-detail-view .film-intro .avatar label {
-            margin-top: 20px;
-        }
-
-        .film-detail-view .film-intro .avatar-wrap {
-            display: inline-block;
-        }
-
-        .film-detail-view .film-intro .film-intro-three img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            float: none;
-        }
-
-        .film-detail-view .film-intro .film-intro-three li {
-            width: 60px;
-            padding: 0 10px;
-        }
-
-        .film-detail-view .film-intro .film-intro-three li span {
-            text-align: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            display: block;
-        }
-
-        .film-detail-view .poster {
-            padding: 32px 0;
-            width: 1220px;
-            margin: 0 auto;
-        }
-
-        .film-detail-view .poster .slick-list {
-            width: 1200px;
-        }
-
-        .film-detail-view .poster .item {
-            cursor: pointer;
-        }
-
-        .film-detail-view .poster .slick-arrow {
-            z-index: 1;
-            width: 50px;
-            height: 50px;
-            top: 50%;
-            margin-top: 5px;
-        }
-
-        .film-detail-view .poster .slick-prev {
-            left: 20px;
-        }
-
-        .film-detail-view .poster .slick-next {
-            right: 60px;
-        }
-
-        .film-detail-view .poster .slick-prev:before,
-        .film-detail-view .poster .slick-next:before {
-            font-size: 50px;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal-header {
-            padding: 0px;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal-body {
-            padding: 0;
-            height: 650px;
-            line-height: 650px;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal-body img {
-            max-width: 600px;
-            max-height: 560px;
-            vertical-align: middle;
-        }
-
-        .film-detail-view .poster .popup-poster .icon-close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            border: none;
-            background: transparent;
-            color: #fff;
-            opacity: 0.3;
-            font-size: 45px;
-            cursor: pointer;
-        }
-
-        .film-detail-view .poster .popup-poster .icon-pre,
-        .film-detail-view .poster .popup-poster .icon-next {
-            font-size: 55px;
-            position: absolute;
-            color: #fff;
-            opacity: 0.3;
-            top: 250px;
-            cursor: pointer;
-            top: 50%;
-            margin-top: -30px;
-        }
-
-        .film-detail-view .poster .popup-poster .icon-pre {
-            left: 20px;
-        }
-
-        .film-detail-view .poster .popup-poster .icon-next {
-            right: 20px;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal-mask {
-            background-color: #333;
-            opacity: 0.94;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal {
-            border-radius: 20px;
-            width: 980px;
-            height: 650px;
-            border: 10px solid rgba(229, 229, 229, 0.21);
-            background: initial;
-        }
-
-        .film-detail-view .poster .popup-poster .mz-modal-content {
-            text-align: center;
-            position: relative;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        .film-detail-view .online {
-            width: 850px;
-            display: inline-block;
-            color: #808080;
-            float: left;
-        }
-
-        .film-detail-view .active-view {
-            float: right;
-        }
-
-        .film-detail-view .cinema-select .header {
-            padding: 5px 0;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .film-detail-view .cinema-select .header h3 {
-            font-size: 24px;
-            font-weight: normal;
-            color: #333;
-            margin: 0;
-        }
-
-        .film-detail-view .cinema-select span {
-            color: #333;
-            margin-right: 10px;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
-        .film-detail-view .cinema-select .item {
-            padding: 20px 0;
-            border-bottom: 1px solid #e5e5e5;
-        }
-
-        .film-detail-view .cinema-select .item .item-inner {
-            display: inline-block;
-            vertical-align: top;
-            width: 93%;
-        }
-
-        .film-detail-view .cinema-select .item li {
-            float: left;
-            padding: 8px 13px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .film-detail-view .cinema-select .item .mz-pagination {
-            padding-top: 20px;
-        }
-
-        .film-detail-view .cinema-select .item .mz-pagination li {
-            padding: 0;
-        }
-
-        .film-detail-view .cinema-select .item .mz-pagination span {
-            color: #808080;
-            margin: 0px;
-        }
-
-        .film-detail-view .cinema-select .item .mz-pagination span.current {
-            color: #36bfd1;
-        }
-
-        .film-detail-view .cinema-select .item .cineme-panel li {
-            width: 20%;
-            text-align: center;
-            margin: 0 12px 10px 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .film-detail-view .cinema-select .item .active {
-            color: #fff;
-            background: #36bfd1;
-            border-radius: 20px;
-        }
-
-        .film-detail-view .foretell {
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .film-detail-view .foretell .icon-caret-up {
-            position: absolute;
-            top: 69px;
-            left: 100px;
-            color: #e5e5e5;
-        }
-
-        .film-detail-view .foretell .header {
-            padding: 25px 0 25px 50px;
-            color: #ccc;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .film-detail-view .foretell .header h4 {
-            display: inline-block;
-            margin: 0px 20px 0 0;
-            font-size: 18px;
-            font-weight: normal;
-            color: #333;
-        }
-
-        .film-detail-view .foretell .header span {
-            color: #ccc;
-            vertical-align: text-bottom;
-            margin-right: 10px;
-        }
-
-        .film-detail-view .foretell .header .address {
-            margin: 0px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .film-detail-view .foretell .content {
-            border: 10px solid #e5e5e5;
-            border-radius: 20px;
-            padding: 0 38px;
-            min-height: 300px;
-        }
-
-        .film-detail-view .foretell .content .search {
-            position: relative;
-            width: 50px;
-        }
-
-        .film-detail-view .foretell .content .title {
-            font-size: 12px;
-            margin-top: 0;
-            border-bottom: 3px solid #e5e5e5;
-            color: #ccc;
-        }
-
-        .film-detail-view .foretell .content .title .time {
-            width: 70px;
-            margin-right: 30px;
-        }
-
-        .film-detail-view .foretell .content .title .buy {
-            width: 89px;
-            padding-right: 0;
-        }
-
-        .film-detail-view .foretell .content li {
-            float: left;
-            padding: 20px 15px 20px 0;
-            width: 14%;
-            text-align: center;
-        }
-
-        .film-detail-view .foretell .content .item {
-            border-bottom: 1px solid #e5e5e5;
-            color: #808080;
-        }
-
-        .film-detail-view .foretell .content .item:last-child {
-            border-bottom: 0;
-        }
-
-        .film-detail-view .foretell .content .item .time {
-            font-size: 24px;
-            color: #333;
-            width: 70px;
-            text-align: left;
-            margin-right: 30px;
-        }
-
-        .film-detail-view .foretell .content .item .icon-search {
-            font-size: 15px;
-            cursor: pointer;
-            padding: 15px;
-        }
-
-        .film-detail-view .foretell .content .item li {
-            height: 36px;
-            line-height: 36px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .film-detail-view .foretell .content .item li.search {
-            overflow: initial;
-            text-overflow: initial;
-            white-space: initial;
-        }
-
-        .film-detail-view .foretell .content .item .price {
-            font-size: 24px;
-            color: #ff6640;
-        }
-
-        .film-detail-view .foretell .content .item .buy {
-            width: 89px;
-            padding-right: 0;
-        }
-
-        .film-detail-view .foretell .content .item button {
-            background: #ff6640;
-            border-radius: 20px;
-            border: none;
-            width: 89px;
-            height: 35px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .film-detail-view .foretell .content .item button.disable {
-            background: #ccc;
-        }
-
-        .film-detail-view .foretell .content .item button.disable:hover {
-            background-color: #ccc;
-        }
-
-        .film-detail-view .foretell .content .item button:hover {
-            background-color: #ff5000;
-        }
-
-        .film-detail-view .foretell .loading-circle {
-            margin-top: 120px;
-            zoom: 0.8;
-        }
-
-        .film-detail-view .curtain {
-            color: #e5e5e5;
-            font-size: 35px;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .film-detail-view .hidden {
-            display: none;
-        }
-    </style>
-
-    <!--jQuery导入导致页面空白-->
-
-
-    <!--<script type="text/javascript" charset="utf8" async="" src="./登录_files/jsapi"></script>-->
-    <link href="http://119.23.42.247:83/css/unifull.min.css" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./登录_files/66-33797b.js.下载"></script>-->
 </head>
 
 <body>
-<div id="hide" style="display: none">${user.id}</div>
 <div id="main">
     <div data-reactroot="">
-        <div class="application">F
+        <div class="application">
             <div class="navbar-wrap">
                 <div class="navbar inner">
                     <h1><a href="https://www.maizuo.com/#/">maizuo</a></h1>
@@ -3628,28 +2704,18 @@
                         <!-- /react-text --><i class="icon-caret-down"></i></div>
                     <div class="menu">
                         <ul>
-                            <li class="">首页</li>
-                            <li class="">影片</li>
+                            <a href="home.html"><li class="active">首页</li></a>
+                            <a href="film/LoadingByPage/1"><li class="">影片</li></a>
                             <li class="">影院</li>
                         </ul>
                     </div>
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
-
                     <div class="sign">
-                        <c:choose>
-                        <c:when test="${user==null}">
                         <ul>
-                            <li><a href="login.jsp">快速登陆</a></li>
+                            <li>登录</li>
+                            <li>注册</li>
                         </ul>
-                        </c:when>
-                        <c:otherwise>
-                            <ul>
-                                <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
-                            </ul>
-                        </c:otherwise>
-                        </c:choose>
                     </div>
-
                 </div>
                 <div class="city-view-wrap inner">
                     <div class="city-view hidden"><i class="icon-caret-up"></i>
@@ -4135,32 +3201,264 @@
                         </div>
                     </div>
                 </div>
-                <!-- react-empty: 2267 -->
+                <!-- react-empty: 43 -->
                 <!-- react-empty: 44 -->
             </div>
             <div class="application-main">
-                <div class="login-view" style="background:url(&quot;https://pic.maizuo.com/manager/6f214638a922e26b818004d8eebc03c3.jpg&quot;) center center no-repeat;">
-                    <div class="inner">
-                        <div class="login-form-view">
-                            <div class="togglePanel"><span class="active">快捷登录</span></div>
-                            <form class="login-form">
-                                <div class="field-wrap"><span class="field"><input type="tel" id="tel" placeholder="输入手机号码" maxlength="11" value="" class="input"><span class="addon"></span></span>
-                                    <p class="message-error"></p>
+                <div class="home-view">
+                    <div class="banner">
+                        <div class="slick-initialized slick-slider">
+                            <div class="slick-list">
+                                <div class="slick-track" style="opacity: 1; width: 6665px; transform: translate3d(-1333px, 0px, 0px);">
+                                    <div data-growing-title="卖座卡公告" data-index="-1" class="slick-slide" style="background: url(&quot;https://pic.maizuo.com/manager/83579cb8a9a272ea2347e5e579f24a79.jpg&quot;) center center no-repeat; height: 400px; width: 1333px;"></div>
+                                    <div data-growing-title="游侠索罗" data-index="0" class="slick-slide slick-active" tabindex="-1" style="outline: none; background: url(&quot;https://pic.maizuo.com/manager/587a47a1941cf4f2df3564a7b43f2bb8.jpg&quot;) center center no-repeat; height: 400px; width: 1333px;"></div>
+                                    <div data-growing-title="苏打卡使用说明" data-index="1" class="slick-slide" tabindex="-1" style="outline: none; background: url(&quot;https://pic.maizuo.com/manager/5d2db41cb7cae3204826710d63702cb9.jpg&quot;) center center no-repeat; height: 400px; width: 1333px;"></div>
+                                    <div data-growing-title="卖座卡公告" data-index="2" class="slick-slide" tabindex="-1" style="outline: none; background: url(&quot;https://pic.maizuo.com/manager/83579cb8a9a272ea2347e5e579f24a79.jpg&quot;) center center no-repeat; height: 400px; width: 1333px;"></div>
+                                    <div data-growing-title="游侠索罗" data-index="3" class="slick-slide slick-active" style="background: url(&quot;https://pic.maizuo.com/manager/587a47a1941cf4f2df3564a7b43f2bb8.jpg&quot;) center center no-repeat; height: 400px; width: 1333px;"></div>
                                 </div>
-                                <div class="field-wrap"><span class="field"><input type="text" id="token" placeholder="输入验证码" maxlength="6" value="" class="input"><span class="addon"><span class="throttle sms-code-btn" id="send"><a href="javascript:sendMsg();">发送验证码</a></span></span>
-											</span>
-                                    <p class="message-error"></p>
-                                </div><button type="button" onclick="login()">登录</button></form>
-                            <div class="service">
-
                             </div>
-                            <div class="service">
-                                <ul class="third-login">
-                                    <li>
-                                        <a><img src="http://119.23.42.247:83/img/ce402ffd0ccd2499f976e53db87ecf90.png" width="33"></a>
-                                    </li>
-                                    <!-- react-text: 2298 -->
+                            <ul class="slick-dots" style="display: block;">
+                                <li class="slick-active"><button>1</button></li>
+                                <li class=""><button>2</button></li>
+                                <li class=""><button>3</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <div class="film clearfix">
+                            <div class="header">
+                                <h3><span class="active">正在热映</span><!-- react-text: 745 -->/<!-- /react-text --><span class="">即将上映 </span></h3>
+                                <p>
+                                    <!-- react-text: 748 -->武汉正在上映
+                                    <!-- /react-text --><span><a href="https://www.maizuo.com/#/film">32</a></span>
+                                    <!-- react-text: 751 -->部电影&nbsp;&nbsp;&nbsp;&nbsp;
                                     <!-- /react-text -->
+                                    <a href="https://www.maizuo.com/#/film">更多》</a>
+                                </p>
+                            </div>
+                            <div class="content">
+                                <div class="slick-initialized slick-slider"><button type="button" class="slick-arrow slick-prev">Previous</button>
+                                    <div class="slick-initialized slick-slider">
+                                        <div class="slick-list">
+                                            <div class="slick-track" style="opacity: 1; width: 3666px; transform: translate3d(0px, 0px, 0px);">
+                                                <div class="slick-slide slick-active item-wrap" data-index="-6" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/7e62d5bf19601e62227fa9f528c4fc81.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>超时空同居</a></span><span class="grade">8</span><i><!-- react-text: 941 -->.<!-- /react-text --><!-- react-text: 942 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="-5" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/25221b5ca9121504202039051f15947f.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>哆啦A梦：大雄的金银岛</a></span><span class="grade">8</span><i><!-- react-text: 951 -->.<!-- /react-text --><!-- react-text: 952 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="-4" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/f3357e10bc51cc5d69313ac80672a0fb.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>复仇者联盟3：无限战争</a></span><span class="grade">8</span><i><!-- react-text: 961 -->.<!-- /react-text --><!-- react-text: 962 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="-3" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/a61d8ec1713b39990a15fe756622ce2c.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>完美陌生人</a></span><span class="grade">8</span><i><!-- react-text: 971 -->.<!-- /react-text --><!-- react-text: 972 -->0<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="-2" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/6da2344e47b9807920b5b7adc9df238a.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>游侠索罗：星球大战外传</a></span><span class="grade">8</span><i><!-- react-text: 981 -->.<!-- /react-text --><!-- react-text: 982 -->3<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="-1" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/b0979f2f946d7282aea011cb392ee6bf.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>寂静之地</a></span><span class="grade">8</span><i><!-- react-text: 991 -->.<!-- /react-text --><!-- react-text: 992 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="0" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/7e62d5bf19601e62227fa9f528c4fc81.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>超时空同居</a></span><span class="grade">8</span><i><!-- react-text: 1001 -->.<!-- /react-text --><!-- react-text: 1002 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="1" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/25221b5ca9121504202039051f15947f.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>哆啦A梦：大雄的金银岛</a></span><span class="grade">8</span><i><!-- react-text: 1011 -->.<!-- /react-text --><!-- react-text: 1012 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="2" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/f3357e10bc51cc5d69313ac80672a0fb.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>复仇者联盟3：无限战争</a></span><span class="grade">8</span><i><!-- react-text: 1021 -->.<!-- /react-text --><!-- react-text: 1022 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="3" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/a61d8ec1713b39990a15fe756622ce2c.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>完美陌生人</a></span><span class="grade">8</span><i><!-- react-text: 1031 -->.<!-- /react-text --><!-- react-text: 1032 -->0<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="4" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/6da2344e47b9807920b5b7adc9df238a.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>游侠索罗：星球大战外传</a></span><span class="grade">8</span><i><!-- react-text: 1041 -->.<!-- /react-text --><!-- react-text: 1042 -->3<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="5" tabindex="-1" style="outline: none; width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/b0979f2f946d7282aea011cb392ee6bf.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>寂静之地</a></span><span class="grade">8</span><i><!-- react-text: 1051 -->.<!-- /react-text --><!-- react-text: 1052 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="6" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/7e62d5bf19601e62227fa9f528c4fc81.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>超时空同居</a></span><span class="grade">8</span><i><!-- react-text: 1061 -->.<!-- /react-text --><!-- react-text: 1062 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="7" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/25221b5ca9121504202039051f15947f.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>哆啦A梦：大雄的金银岛</a></span><span class="grade">8</span><i><!-- react-text: 1071 -->.<!-- /react-text --><!-- react-text: 1072 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="8" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/f3357e10bc51cc5d69313ac80672a0fb.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>复仇者联盟3：无限战争</a></span><span class="grade">8</span><i><!-- react-text: 1081 -->.<!-- /react-text --><!-- react-text: 1082 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="9" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/a61d8ec1713b39990a15fe756622ce2c.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>完美陌生人</a></span><span class="grade">8</span><i><!-- react-text: 1091 -->.<!-- /react-text --><!-- react-text: 1092 -->0<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="10" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/6da2344e47b9807920b5b7adc9df238a.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>游侠索罗：星球大战外传</a></span><span class="grade">8</span><i><!-- react-text: 1101 -->.<!-- /react-text --><!-- react-text: 1102 -->3<!-- /react-text --></i></p>
+                                                </div>
+                                                <div class="slick-slide slick-active item-wrap" data-index="11" style="width: 203.667px;">
+                                                    <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/a070e18b83afa091473f46bb8e1ea750.png&quot;);"><img src="./首页_files/b0979f2f946d7282aea011cb392ee6bf.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                                    <p><span class="name"><a>寂静之地</a></span><span class="grade">8</span><i><!-- react-text: 1111 -->.<!-- /react-text --><!-- react-text: 1112 -->4<!-- /react-text --></i></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><button type="button" class="slick-arrow slick-next">next</button></div>
+                            </div>
+                        </div>
+                        <!-- react-empty: 760 -->
+                        <div class="maizuo-card">
+                            <div class="card-header">
+                                <h3>卖座卡购买</h3></div>
+                            <div class="card-img">
+                                <ul>
+                                    <li>
+                                        <a><img src="./首页_files/6b02e2bb1ad24bf3ddfe61117f7623d9.jpg">
+                                            <div class="imageTitle">卖座卡</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="popular-active">
+                            <div class="active-header">
+                                <h3>热门活动</h3></div>
+                            <div class="active-img">
+                                <ul>
+                                    <li>
+                                        <a href="http://m.maizuo.com/act/active/1286">
+                                            <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/efcbe16b8312f6090f14deb91cf556f4.png&quot;);"><img src="./首页_files/32e2d30aa328c4221d0d57fa96e2c31b.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                            <div class="imageTitle">给欢聚加点气氛</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://m.sdyxmall.com/v1/#/product/2553">
+                                            <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/efcbe16b8312f6090f14deb91cf556f4.png&quot;);"><img src="./首页_files/85998a18df8d8a0606cd6033932c3171.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                            <div class="imageTitle">舌尖上的纸醉金迷</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://m.sdyxmall.com/v1/#/topic/iky03WKp">
+                                            <div class="item" style="background-size: 100%; background-image: url(&quot;//static.maizuo.com/pc/v1/static/asset/efcbe16b8312f6090f14deb91cf556f4.png&quot;);"><img src="./首页_files/0ffc17f68d8811999032e937319ac2e7.jpg" style="width: 100%; transition: all 1.2s ease; opacity: 1;"></div>
+                                            <div class="imageTitle">车就是男人的小老婆</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="comment-view">
+                            <div class="comment-header">
+                                <h3><!-- react-text: 778 -->精华评论<!-- /react-text --><span class="icon-refresh"></span></h3></div>
+                            <div class="comment-content" id="comment">
+                                <ul class="item" id="item" style="transform: translate(0px, -339px); transition-duration: 6000ms;">
+                                    <li><img src="./首页_files/132">
+                                        <div class="contents">
+                                            <h5>啊朗</h5><span>24 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="不跟你逼逼，明年同个位置再见！">不跟你逼逼，明年同个位置再见！</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/291b2e7466d63514846298688eee66cc.jpg">
+                                        <div class="contents">
+                                            <h5>手机用户9699</h5><span>24 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="二刷完成……还是Imx爽……不过有个问题像请教下，灭霸打响指用的是中指加食指还是中指？？？">二刷完成……还是Imx爽……不过有个问题像请教下，灭霸打响指用的是中指加食指还是中指？？？</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/132(1)">
+                                        <div class="contents">
+                                            <h5>岚岚岚</h5><span>24 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="论猪队友的力量">论猪队友的力量</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/291b2e7466d63514846298688eee66cc.jpg">
+                                        <div class="contents">
+                                            <h5>手机用户9699</h5><span>25 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="我突然喜欢上灭霸了……真是无私的人……这尼玛……">我突然喜欢上灭霸了……真是无私的人……这尼玛……</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/3b48dfbece716c001dee98796ddfa4f4.jpg">
+                                        <div class="contents">
+                                            <h5>手机用户0186</h5><span>1 个月前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="十年布局，毁于剧透">十年布局，毁于剧透</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/maizuomoren66.jpg">
+                                        <div class="contents">
+                                            <h5>手机用户9011</h5><span>1 个月前</span><span>评论了电影</span><i>后来的我们</i>
+                                            <p title="昨天看完。这是一部叙事完整描写到位的电影。不像其他电影会大肆渲染感情。从电影的细节，演员的眼神，再到适时响起的插曲。每一个环节都很刘若英。隐忍，坚强，不屈，自信。一路走来，没有轰轰烈烈，却深入人心。这是一部看完没有代入感且不会回味的电影，却也是一部观影当下会被感动会心疼也会替男女主惋惜的电影。">昨天看完。这是一部叙事完整描写到位的电影。不像其他电影会大肆渲染感情。从电影的细节，演员的眼神，再到适时响起的插曲。每一个环节都很刘若英。隐忍，坚强，不屈，自信。一路走来，没有轰轰烈烈，却深入人心。这是一部看完没有代入感且不会回味的电影，却也是一部观影当下会被感动会心疼也会替男女主惋惜的电影。</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/100">
+                                        <div class="contents">
+                                            <h5>小咪</h5><span>1 个月前</span><span>评论了电影</span><i>后来的我们</i>
+                                            <p title="说实话，拍的不是很真实啊，没有共鸣感，稍微真实一点的是父亲的角色，07年，穿着完全与当时的时代不在一条线啊">说实话，拍的不是很真实啊，没有共鸣感，稍微真实一点的是父亲的角色，07年，穿着完全与当时的时代不在一条线啊</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/132(2)">
+                                        <div class="contents">
+                                            <h5>Glass Or Tea</h5><span>1 个月前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="巴基洛基妮妮荷兰卷卷CE海总炮总我来了！！">巴基洛基妮妮荷兰卷卷CE海总炮总我来了！！</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/132(3)">
+                                        <div class="contents">
+                                            <h5>罪  酒</h5><span>1 个月前</span><span>评论了电影</span><i>后来的我们</i>
+                                            <p title="从很小的时候&amp;nbsp;听你的歌&amp;nbsp;一定要&amp;nbsp;去看看你导演的电影。">从很小的时候&amp;nbsp;听你的歌&amp;nbsp;一定要&amp;nbsp;去看看你导演的电影。</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/132">
+                                        <div class="contents">
+                                            <h5>方卓朗</h5><span>1 个月前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="别说了，3DMax影厅见">别说了，3DMax影厅见</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/132">
+                                        <div class="contents">
+                                            <h5>啊朗</h5><span>24 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="不跟你逼逼，明年同个位置再见！">不跟你逼逼，明年同个位置再见！</p>
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/291b2e7466d63514846298688eee66cc.jpg">
+                                        <div class="contents">
+                                            <h5>手机用户9699</h5><span>24 天前</span><span>评论了电影</span><i>复仇者联盟3：无限战争</i>
+                                            <p title="二刷完成……还是Imx爽……不过有个问题像请教下，灭霸打响指用的是中指加食指还是中指？？？">二刷完成……还是Imx爽……不过有个问题像请教下，灭霸打响指用的是中指加食指还是中指？？？</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phone-ticket">
+                            <div class="ticket-header">
+                                <h3>手机购票</h3></div>
+                            <div class="ticket-code">
+                                <ul>
+                                    <li><img src="./首页_files/ec5f0f45fc548050c5e613a416294452.png">
+                                        <div class="code-content">
+                                            <!-- react-text: 790 -->扫码下载
+                                            <!-- /react-text --><br>
+                                            <!-- react-text: 792 -->卖座电影APP
+                                            <!-- /react-text -->
+                                        </div>
+                                    </li>
+                                    <li><img src="./首页_files/500b205c9fbf141e4b3c2824d4e8d7fe.png">
+                                        <div class="code-content">
+                                            <!-- react-text: 796 -->扫码关注
+                                            <!-- /react-text --><br>
+                                            <!-- react-text: 798 -->卖座官方微信
+                                            <!-- /react-text -->
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -4169,19 +3467,19 @@
             </div>
             <div class="footer">
                 <div class="content inner">
-                    <h2><img src="http://119.23.42.247:83/img/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
-                    <div class="service"><img src="http://119.23.42.247:83/img/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
+                    <h2><img src="./首页_files/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
+                    <div class="service"><img src="./首页_files/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
                     <div class="follow">
-                        <div class="item"><img src="http://119.23.42.247:83/img/b9e924f8e417675ce2e125649d7530ce.png">
-                            <div class="tip"><img src="http://119.23.42.247:83/img/ec5f0f45fc548050c5e613a416294452.png" width="151">
+                        <div class="item"><img src="./首页_files/b9e924f8e417675ce2e125649d7530ce.png">
+                            <div class="tip"><img src="./首页_files/ec5f0f45fc548050c5e613a416294452.png" width="151">
                                 <p>扫码下载卖座电影APP</p><span class="icon-caret-down"></span></div>
                         </div>
-                        <div class="item"><img src="http://119.23.42.247:83/img/d4af003a3ca8ad39fb8715440c15b17c.png">
-                            <div class="tip"><img src="http://119.23.42.247:83/img/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
+                        <div class="item"><img src="./首页_files/d4af003a3ca8ad39fb8715440c15b17c.png">
+                            <div class="tip"><img src="./首页_files/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
                                 <p>扫码关注卖座官方微信</p><span class="icon-caret-down"></span></div>
                         </div>
                         <div class="item">
-                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="http://119.23.42.247:83/img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
+                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="./首页_files/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
                         </div>
                     </div>
                 </div>
@@ -4225,53 +3523,14 @@
                             <!-- /react-text -->
                             <!-- react-text: 114 -->maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318
                             <!-- /react-text -->
-                        </p><img src="http://119.23.42.247:83/img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
+                        </p><img src="./首页_files/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(function () {
-        var check = $("#hide").val();
-        if(check!=""){
-          alert("您已登录，为您跳转到首页");
-            window.location.href="film/LoadingByPage/1";
-        }
-    })
-
-    function sendMsg() {
-        var tel = $("#tel").val();
-        $.post("users/sendMsg",
-            {"tel":tel},
-            function (data) {
-                alert(data.message);
-        });
-    }
-
-    function login() {
-
-
-
-        var tel = $("#tel").val();
-        var token = $("#token").val();
-        $.post("users/login",{"tel":tel,"token":token},function (data) {
-            if(data.code == 1){
-                alert(data.message);
-                window.location.href="film/LoadingByPage/1";
-            }
-            else {
-                alert(data.message)
-                window.location.href="login.jsp";
-            }
-
-        });
-    }
-</script>
-<!--<script src="./登录_files/app-92cd8fd4df.js.下载"></script>-->
-<!--<script type="text/javascript" src="./登录_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
+<!--<script src="./首页_files/app-92cd8fd4df.js"></script>-->
+<!--<script type="text/javascript" src="./首页_files/browser-blocker-43804fd688.js" charset="utf-8" data-ie-minimum="8"></script>-->
 </body>
-
-
 
 </html>

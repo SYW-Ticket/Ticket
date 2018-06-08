@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping(value = "/users")
@@ -53,5 +54,9 @@ public Object sendMsg(String tel){
         return jsonBean;
     }
 }
-
+    @RequestMapping("/logout")
+    public String login(SessionStatus sessionStatus){
+            sessionStatus.setComplete();
+            return "/login";
+    }
 }

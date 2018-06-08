@@ -15,6 +15,11 @@
         <constructor-arg value="QQ"/>
     </bean>
 
+    <!--热点数据修改队列-->
+    <bean id="filmHot" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="hot"/>
+    </bean>
+
     <!--用来接受和发送消息的工具-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
@@ -22,14 +27,32 @@
         <property name="defaultDestination" ref="queue"/>
     </bean>
 
+    <!--热点数据修改队列操作工具-->
+    <bean id="jmsTemplateHot" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="sessionTransacted" value="true"/>
+        <property name="defaultDestination" ref="filmHot"/>
+    </bean>
+
     <!--配置消息监听器-->
     <bean id="messageListener" class="com.ticket.loginandregister.util.Listener"/>
 
+    <!--热点数据修改消息监听器-->
+    <bean id="messageListenerHot" class="com.ticket.film.util.FilmHotListener"/>
+
+
     <!--消息监听器容器，所有的消息监听器都放在容器中-->
-    <bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+    <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>
         <property name="destination" ref="queue"/>
         <property name="messageListener" ref="messageListener"/>
+    </bean>
+
+
+    <bean id="jmsContainer2" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="filmHot"/>
+        <property name="messageListener" ref="messageListenerHot"/>
     </bean>
 
 </beans>

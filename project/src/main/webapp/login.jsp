@@ -4233,9 +4233,9 @@
 </div>
 <script>
     $(function () {
-        var check = $("#hide").html();
-        if(check!=null){
-            alert("您已登录，为您跳转到首页");
+        var check = $("#hide").val();
+        if(check!=""){
+          alert("您已登录，为您跳转到首页");
             window.location.href="film/LoadingByPage/1";
         }
     })

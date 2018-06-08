@@ -2723,6 +2723,7 @@
                                 <c:otherwise>
                                     <ul>
                                         <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+                                        <li><a href="users/logout">退出登陆</a></li>
                                     </ul>
                                 </c:otherwise>
                             </c:choose>

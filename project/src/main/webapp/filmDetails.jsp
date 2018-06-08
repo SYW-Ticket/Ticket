@@ -8,6 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>${filmDetail.filmName}</title>
+    <base href="<%=request.getContextPath()%>/"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -3609,7 +3610,7 @@
             display: none;
         }
     </style>
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
@@ -4220,39 +4221,16 @@
                                     <div class="item"><span>区域：</span>
                                         <div class="clearfix item-inner">
                                             <ul>
-                                                <li class="active">全部</li>
-                                                <li class="">硚口区</li>
-                                                <li class="">武昌区</li>
-                                                <li class="">江汉区</li>
-                                                <li class="">洪山区</li>
-                                                <li class="">汉南区</li>
-                                                <li class="">江岸区</li>
-                                                <li class="">汉阳区</li>
-                                                <li class="">江夏区</li>
-                                                <li class="">黄陂区</li>
-                                                <li class="">新洲区</li>
-                                                <li class="">蔡甸区</li>
-                                                <li class="">东西湖区</li>
-                                                <li class="">经济技术开发区</li>
-                                                <li class="">青山区</li>
+                                                <c:forEach items="${areas}" var="area">
+                                                <li class=""><a href="javascript:findCinema(${area.id})">${area.area_name}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="item"><span>影院：</span>
                                         <div class="item-inner">
-                                            <ul class="cineme-panel clearfix">
-                                                <li class="active">武汉博影时代影城</li>
-                                                <li class="">金逸影城中南店</li>
-                                                <li class="">武汉百老汇影城(亚贸兴汇店)</li>
-                                                <li class="">金逸影城武胜路店</li>
-                                                <li class="">金逸影城杨汊湖店</li>
-                                                <li class="">武汉新唐万科摩尔国际电影城</li>
-                                                <li class="">华谊兄弟武汉影院光谷天地店</li>
-                                                <li class="">武汉天河影城（汉南店）</li>
-                                                <li class="">CGV星聚汇星星影城武汉天地店</li>
-                                                <li class="">武汉万达汉阳汉商银座店</li>
-                                                <li class="">武汉洪山礼堂银兴影城</li>
-                                                <li class="">武汉东汉影城</li>
+                                            <ul class="cineme-panel clearfix" id="cinemas">
+
                                             </ul>
                                         </div>
                                         <div class="mz-pagination"><i class="icon-pre pre"></i>
@@ -4371,6 +4349,28 @@
         </div>
     </div>
 </div>
+<script>
+
+    
+    
+    function findPlatoon(cinema_id) {
+
+
+    }
+
+
+    function findCinema(areaid) {
+        $("#cinemas").html("");
+        $.get("cinema/findCinema",{"areaid":areaid},function (data) {
+          $.each(data,function (index,obj) {
+              $("#cinemas").append("<li onclick='findPlatoon("+obj.id+")'>"+obj.cinema_name+"</li>");
+          });
+        });
+    }
+    
+</script>
+
+
 <!--<script src="./影片详情页+在线购票页_files/app-92cd8fd4df.js.下载"></script>-->
 <!--<script type="text/javascript" src="./影片详情页+在线购票页_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
 </body>

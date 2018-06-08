@@ -2,6 +2,7 @@ package com.ticket.film;
 
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
+import com.ticket.film.service.FilmService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,6 +21,8 @@ import java.util.List;
 public class FilmTest {
     @Resource
     private FilmDao filmDao;
+    @Resource
+    private FilmService filmService;
     @Test
     public void filmsLoading(){
         List<FilmDetail> filmDetails= filmDao.filmsLoading();
@@ -38,4 +41,12 @@ public class FilmTest {
 //    public void loadingFilmCounts(){
 //        System.out.println(filmDao.selectLoadingCounts());
 //    }
+
+    @Test
+    public void filmService(){
+        List<FilmDetail> filmDetails = filmService.allFilmDetailsLoading();
+        for (FilmDetail filmDetail : filmDetails) {
+            System.out.println(filmDetail);
+        }
+    }
 }

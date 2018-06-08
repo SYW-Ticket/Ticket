@@ -12,6 +12,7 @@ public class Listener implements MessageListener {
         TextMessage textMessage = (TextMessage) message;
         try {
             LogWriter.writer(textMessage.getText());
+
         } catch (JMSException e) {
             e.printStackTrace();
         }

@@ -3616,6 +3616,7 @@
 </head>
 
 <body>
+<div id="hide" style="display: none">${user.id}</div>
 <div id="main">
     <div data-reactroot="">
         <div class="application">F
@@ -3643,7 +3644,7 @@
                         </c:when>
                         <c:otherwise>
                             <ul>
-                                <li>欢迎用户${user.tel}</li>
+                                <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
                             </ul>
                         </c:otherwise>
                         </c:choose>
@@ -4231,6 +4232,14 @@
     </div>
 </div>
 <script>
+    $(function () {
+        var check = $("#hide").val();
+        if(check!=""){
+          alert("您已登录，为您跳转到首页");
+            window.location.href="film/LoadingByPage/1";
+        }
+    })
+
     function sendMsg() {
         var tel = $("#tel").val();
         $.post("users/sendMsg",
@@ -4241,12 +4250,15 @@
     }
 
     function login() {
+
+
+
         var tel = $("#tel").val();
         var token = $("#token").val();
         $.post("users/login",{"tel":tel,"token":token},function (data) {
-            if(data.code==1){
+            if(data.code == 1){
                 alert(data.message);
-                window.location.href="index.jsp";
+                window.location.href="film/LoadingByPage/1";
             }
             else {
                 alert(data.message)

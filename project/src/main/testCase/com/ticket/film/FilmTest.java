@@ -23,6 +23,8 @@ public class FilmTest {
     private FilmDao filmDao;
     @Resource
     private FilmService filmService;
+
+
     @Test
     public void filmsLoading(){
         List<FilmDetail> filmDetails= filmDao.filmsLoading();
@@ -42,11 +44,26 @@ public class FilmTest {
 //        System.out.println(filmDao.selectLoadingCounts());
 //    }
 
+    /*
+    测试FilmService的缓存查询
+     */
     @Test
-    public void filmService(){
+    public void filmServiceLoading(){
         List<FilmDetail> filmDetails = filmService.allFilmDetailsLoading();
         for (FilmDetail filmDetail : filmDetails) {
             System.out.println(filmDetail);
         }
+    }
+    @Test
+    public void filmServiceWillLoad(){
+        List<FilmDetail> filmDetails = filmService.allFilmDetailsWillLoad();
+        for (FilmDetail filmDetail : filmDetails) {
+            System.out.println(filmDetail);
+        }
+    }
+    @Test
+    public void filmDetailService(){
+        FilmDetail filmDetail = filmService.filmDetail(1);
+        System.out.println(filmDetail);
     }
 }

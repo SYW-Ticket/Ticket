@@ -75,7 +75,7 @@ public class FilmService {
             List<FilmDetail> filmDetails = gson.fromJson(strFilmDetails,type);
             return filmDetails;
         }else {
-            List<FilmDetail> filmDetails = filmDao.filmsLoading();
+            List<FilmDetail> filmDetails = filmDao.filmsWillLoad();
             strFilmDetails = gson.toJson(filmDetails);
             redisImpl.saveString("filmDetailsWillLoad",strFilmDetails);
             return filmDetails;

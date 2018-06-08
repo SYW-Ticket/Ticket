@@ -39,7 +39,7 @@ public class MessageTool {
              * 相应的依赖请参照
              * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml
              */
-            HttpResponse response = com.ticket.loginandregister.util.HttpUtils.doGet(host, path, method, headers, querys);
+            HttpResponse response = com.ticket.UserInfo.util.Message.HttpUtils.doGet(host, path, method, headers, querys);
             //System.out.println(response.toString());
             //获取response的body
             System.out.println(EntityUtils.toString(response.getEntity()));

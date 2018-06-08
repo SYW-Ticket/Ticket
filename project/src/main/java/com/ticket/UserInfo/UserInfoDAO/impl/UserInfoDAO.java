@@ -2,8 +2,8 @@ package com.ticket.UserInfo.UserInfoDAO.impl;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.bean.UserBean;
+import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.util.Message.MessageTool;
-import com.ticket.UserInfo.util.ShortMessageUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class UserInfoDAO extends SqlSessionDaoSupport implements IUserInfoDAO {
+    @Autowired
+    private IRedis red;
 
     @Autowired
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactoryWrite) {
@@ -63,14 +65,14 @@ public class UserInfoDAO extends SqlSessionDaoSupport implements IUserInfoDAO {
     @Override
     public boolean CheckShortMessage(String message,String tel) {
 
+        //根据tel  查找redis中的信息
+        String valueByKey = red.getValueByKey(tel);
 
-        String shortMessage = ShortMessageUtil.bytes2hex();
-
-
-        if (shortMessage.equals(message)){
-            return true;
+        //如果redis中不存在该验证码  或者验证码不匹配返回false
+        if ( valueByKey==null || !valueByKey.equals(message)){
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**

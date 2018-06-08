@@ -28,5 +28,30 @@ public class SystemConfig {
 
         }
 
+    /**
+     *
+     * 修改密码的状态
+     *
+     */
+    public final static class UserinfoPassword{
+
+
+        /**
+         * 修改成功
+         */
+        public  static final int CODEPASSWORD_SUCCESS=1;
+        public static  final  String MSGPASSWORD_SUCCESS="修改成功";
+
+
+
+        /**
+         * 新旧密码相同
+         */
+        public  static final int CODEPASSWORD_FALSE=2;
+        public static  final  String MSGPASSWORD_FALSE="新旧密码相同";
+
 
     }
+
+
+}

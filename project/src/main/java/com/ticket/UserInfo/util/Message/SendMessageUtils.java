@@ -1,6 +1,7 @@
 package com.ticket.UserInfo.util.Message;
 
-import com.ticket.loginandregister.util.ShortMessageUtil;
+
+import com.ticket.UserInfo.util.ShortMessageUtil;
 import org.apache.http.HttpResponse;
 
 import java.util.HashMap;

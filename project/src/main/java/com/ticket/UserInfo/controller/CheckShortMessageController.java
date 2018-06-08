@@ -1,8 +1,10 @@
-package com.ticket.UserInfo.Controller;
+package com.ticket.UserInfo.controller;
 
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.util.JsonResult;
 import com.ticket.UserInfo.util.JsonTools;
+import com.ticket.UserInfo.util.MyselfException.EqualsException;
 import com.ticket.UserInfo.util.MyselfException.YangException;
 import com.ticket.UserInfo.util.ShortMessageUtil;
 import com.ticket.UserInfo.util.SystemConfig;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/UserInfo")
 public class CheckShortMessageController {
+    @Autowired
+    private IRedis redis;
+
     @Autowired
     private IUserInfoService userInfoService;
 
@@ -40,7 +45,6 @@ public class CheckShortMessageController {
             //返回json对象
             return jsonResult;
 
-
         } catch (YangException e) {
             e.printStackTrace();
             JsonResult jsonResult = JsonTools.formJsonResult(SystemConfig.Userinfo.CODE_FAIL
@@ -51,24 +55,56 @@ public class CheckShortMessageController {
         }
 
     }
-
-
-
-    @RequestMapping("/sendMessage")
+    /**
+     *   发送验证码
+     * @param tel
+     * @param model
+     */
     @ResponseBody
-    public  void sendMessage(String tel,Model model){
+    @RequestMapping("/sendMessage")
+    public void sendMessage(String tel,Model model){
+
+        System.out.println("发送信息");
         //获取短信验证码 的内容（随机数）
         String pwd = ShortMessageUtil.bytes2hex();
 
+        //将短信验证码信息放入redis中
+        redis.saveString(tel,pwd);
 
-
-
+        //调用service层的发送验证码功能模块
         userInfoService.sendMessage(pwd,tel);
+    }
 
-
+    /**
+     *   修改密码
+     * @param tel
+     * @param pws
+     * @param model
+     * @return
+     */
+    @RequestMapping("/ModeifyPassword")
+    @ResponseBody
+    public Object ModifyPasswodController(String tel,String pws,Model model){
+        try {
+            userInfoService.ModifyPasswordService(tel,pws);
+            JsonResult jsonResult = JsonTools.formJsonResult(SystemConfig.UserinfoPassword.CODEPASSWORD_SUCCESS
+                    , SystemConfig.UserinfoPassword.MSGPASSWORD_SUCCESS);
+            return jsonResult;
+        } catch (EqualsException e) {
+            JsonResult jsonResult = JsonTools.formJsonResult(SystemConfig.UserinfoPassword.CODEPASSWORD_FALSE
+                    , SystemConfig.UserinfoPassword.MSGPASSWORD_FALSE);
+            e.printStackTrace();
+            return jsonResult;
+        }
 
 
     }
+
+
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@ import com.ticket.film.dao.PlatoonDao;
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
 import com.ticket.film.service.FilmService;
+import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author wangpeng
@@ -25,6 +27,10 @@ public class FilmTest {
     private FilmDao filmDao;
     @Resource
     private FilmService filmService;
+    @Resource
+    private Redisimpl redisImpl;
+
+
     @Resource
     private AreaDao areaDao;
     @Resource
@@ -55,14 +61,5 @@ public class FilmTest {
         for (FilmDetail filmDetail : filmDetails) {
             System.out.println(filmDetail);
         }
-    }
-
-    @Test
-    public void filmDao(){
-        System.out.println(areaDao.findAllArea().get(0).getArea_name());
-    }
-    @Test
-    public void filmDao2(){
-        System.out.println(platoonDao.selectAllPlatoonByFilm_id(1).get(0).getId());
     }
 }

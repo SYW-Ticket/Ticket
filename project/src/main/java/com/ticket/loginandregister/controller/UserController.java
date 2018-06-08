@@ -31,7 +31,6 @@ public Object sendMsg(String tel){
     return jsonBean;
 }
 
-
 @ResponseBody
 @RequestMapping("/login")
     public Object login(String tel, String token, Model model){

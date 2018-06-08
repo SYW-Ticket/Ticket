@@ -40,7 +40,11 @@ public class FilmDao extends SqlSessionDaoSupport implements IFilmDao {
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsWillLoad",new Date());
     }
-
+    @Override
+    public FilmDetail filmDetail(int filmId) {
+        SqlSession sqlSession = getSqlSession();
+        return sqlSession.selectOne("com.ticket.film.dao.IFilmDao.filmDetail",filmId);
+    }
 //    @Override
 //    public List<FilmDetail> filmsLoadingByPage(int start) {
 //        SqlSession sqlSession = getSqlSession();
@@ -60,12 +64,6 @@ public class FilmDao extends SqlSessionDaoSupport implements IFilmDao {
 //        params.put("start",start);
 //        return sqlSession.selectList("com.ticket.film.dao.IFilmDao.filmsWillLoadByPage",params);
 //    }
-
-    @Override
-    public FilmDetail filmDetail(int filmId) {
-        SqlSession sqlSession = getSqlSession();
-        return sqlSession.selectOne("com.ticket.film.dao.IFilmDao.filmDetail",filmId);
-    }
 
 //    @Override
 //    public int selectLoadingCounts() {

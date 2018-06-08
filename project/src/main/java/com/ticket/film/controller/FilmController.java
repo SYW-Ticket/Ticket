@@ -62,6 +62,7 @@ public class FilmController {
 
     @RequestMapping("/filmDetails/{filmId}")
     public String filmDetails(@PathVariable("filmId") int filmId,Model model){
+        System.out.println("controller+++"+Thread.currentThread());
         model.addAttribute("filmDetail", filmService.filmDetail(filmId));
         model.addAttribute("areas",areaService.findAllArea());
         return "/filmDetails";

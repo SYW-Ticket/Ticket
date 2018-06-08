@@ -13,5 +13,10 @@ public interface Redis {
     String saveObject(String key, Object obj);
     //保存集合到Redis缓存
     Integer saveSet(String key, Set<String> set);
-
+    // 操作缓存数据自增的方法 by wangpeng
+    void incr(String key);
+    //模糊查询keys
+    Set <String> selectKeysLike(String pattern);
+    //删除缓存中指定的key
+    void deleteKeyValue(String key);
 }

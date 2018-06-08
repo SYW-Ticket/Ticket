@@ -2714,8 +2714,18 @@
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
                         <ul>
-                            <li>登录</li>
-                            <li>注册</li>
+                            <c:choose>
+                                <c:when test="${user==null}">
+                                    <ul>
+                                        <li><a href="login.jsp">快速登陆</a></li>
+                                    </ul>
+                                </c:when>
+                                <c:otherwise>
+                                    <ul>
+                                        <li>欢迎用户${user.tel}</li>
+                                    </ul>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>

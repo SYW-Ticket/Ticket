@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 
 @Component
@@ -50,8 +51,8 @@ public class Redisimpl implements Redis {
         return 0;
 
     }
-
+    //保存字符串并只保存20分钟
     public void saveStringToSet(String key,String value){
-        redisTemplate.opsForSet().add(key,value);
+        redisTemplate.opsForValue().set(key,value,TimeUnit.MINUTES.toSeconds(20));
     }
 }

@@ -4246,7 +4246,7 @@
         $.post("users/login",{"tel":tel,"token":token},function (data) {
             if(data.code==1){
                 alert(data.message);
-                window.location.href="index.jsp";
+                window.location.href="film/LoadingByPage/1";
             }
             else {
                 alert(data.message)

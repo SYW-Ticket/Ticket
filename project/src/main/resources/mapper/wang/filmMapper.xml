@@ -78,6 +78,14 @@
         on f.id = fd.film_id
         WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !=''
     </select>
+    <!--根据电影id查找热度film_hot-->
+    <select id="selectFilmHot" resultType="java.lang.Integer">
+        SELECT film_hot FROM film WHERE id = #{filmId}
+    </select>
+    <!--根据电影id修改电影热度film_Hot-->
+    <update id="updateFilmHot">
+        UPDATE film set film_hot = #{hotValue} WHERE id = #{filmId}
+    </update>
     <!--&lt;!&ndash;分页查找上映的电影&ndash;&gt;-->
     <!--<select id="filmsLoadingByPage" resultMap="filmDetailResultMap">-->
         <!--SELECT  <include refid="filmDetailsPro"/>-->

@@ -3,6 +3,7 @@ package com.ticket.film;
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
 import com.ticket.film.service.FilmService;
+import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author wangpeng
@@ -23,6 +25,8 @@ public class FilmTest {
     private FilmDao filmDao;
     @Resource
     private FilmService filmService;
+    @Resource
+    private Redisimpl redisImpl;
 
 
     @Test
@@ -65,5 +69,12 @@ public class FilmTest {
     public void filmDetailService(){
         FilmDetail filmDetail = filmService.filmDetail(1);
         System.out.println(filmDetail);
+    }
+    @Test
+    public void testRedisImpl(){
+        Set<String> keys =redisImpl.selectKeysLike("filmIdForHot_*");
+        for (String key : keys) {
+            System.out.println(key);
+        }
     }
 }

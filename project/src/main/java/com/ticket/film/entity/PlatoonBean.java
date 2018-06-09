@@ -13,6 +13,7 @@ public class PlatoonBean {
     private double film_price;
     private FilmDetail film;
     private HallBean hallBean;
+    private Date show_start_date;
 
     public int getId() {
         return id;
@@ -68,5 +69,13 @@ public class PlatoonBean {
 
     public void setHallBean(HallBean hallBean) {
         this.hallBean = hallBean;
+    }
+
+    public Date getShow_start_date() {
+        return show_start_date;
+    }
+
+    public void setShow_start_date(Date show_start_date) {
+        this.show_start_date = show_start_date;
     }
 }

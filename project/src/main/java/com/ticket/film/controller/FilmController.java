@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author wangpeng
@@ -63,9 +64,22 @@ public class FilmController {
 
     @RequestMapping("/filmDetails/{filmId}")
     public String filmDetails(@PathVariable("filmId") int filmId,Model model){
-        System.out.println("controller+++"+Thread.currentThread());
         model.addAttribute("filmDetail", filmService.filmDetail(filmId));
         model.addAttribute("areas",areaService.findAllArea());
+        Date date=new Date();//取时间
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = formatter.format(date);
+        Calendar  calendar = new GregorianCalendar();
+        List<String> listdates = new ArrayList<>();
+        listdates.add(dateString);
+        for(int i=1;i<=2;i++){
+            calendar.setTime(date);
+            calendar.add(calendar.DATE,1);
+            date = calendar.getTime();
+            String str = formatter.format(date);
+            listdates.add(str);
+        }
+        model.addAttribute("dates",listdates);
         return "/filmDetails";
     }
 }

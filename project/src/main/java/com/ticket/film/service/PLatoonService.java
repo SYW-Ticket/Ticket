@@ -10,10 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class PLatoonService {
@@ -23,7 +22,7 @@ public class PLatoonService {
     @Autowired
     private Redis redis;
 
-    public List<PlatoonBean> getPlatoon(int film_id,int cinema_id){
+    public List<PlatoonBean> getPlatoon(int film_id,int cinema_id,String str) throws ParseException {
         Gson gson = new Gson();
         //查询缓存
         String key = "platoon"+film_id;
@@ -38,9 +37,13 @@ public class PLatoonService {
         }
         //缓存不存在，查询数据库
         else {
-            HashMap<String,Integer> map = new HashMap<>();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            date = sdf.parse(str);
+            HashMap<String,Object> map = new HashMap<>();
             map.put("film_id",film_id);
             map.put("cinema_id",cinema_id);
+            map.put("show_start_date",date);
             List<PlatoonBean> platoons = platoonDao.selectAllPlatoonByFilm_id(map);
             strPlatoon = gson.toJson(platoons);
             redis.saveString(key,strPlatoon);

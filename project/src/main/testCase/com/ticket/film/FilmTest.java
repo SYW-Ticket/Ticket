@@ -13,10 +13,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author wangpeng
@@ -60,8 +60,16 @@ public class FilmTest {
 
 
     @Test
-    public void film02(){
-       List<FilmDetail> list = filmDao.test();
-        System.out.println(list);
+    public void film02() throws ParseException {
+        String str = "2018-06-08";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        date = sdf.parse(str);
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("film_id",1);
+        map.put("cinema_id",2);
+        map.put("show_start_date",date);
+        List<PlatoonBean> platoonBeans = platoonDao.selectAllPlatoonByFilm_id(map);
+        System.out.println(platoonBeans);
     }
 }

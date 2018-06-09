@@ -19,4 +19,6 @@ public interface Redis {
     Set <String> selectKeysLike(String pattern);
     //删除缓存中指定的key
     void deleteKeyValue(String key);
+
+    void saveStringToSet(String key,String value);
 }

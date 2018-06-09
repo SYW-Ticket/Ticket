@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.film.dao.HallDao">
+    <resultMap id="HallBaseResult" type="com.ticket.film.entity.HallBean">
+        <id property="id" column="id"/>
+        <result property="hall_name" column="hall_name"/>
+        <result property="row_max" column="row_max"/>
+        <result property="col_max" column="col_max"/>
+        <result property="cinema_id" column="cinema_id"/>
+    </resultMap>
+
+    <select id="selectHallWithID" resultMap="HallBaseResult">
+    SELECT * FROM hall WHERE id = #{hall_id}
+    </select>
+
+</mapper>

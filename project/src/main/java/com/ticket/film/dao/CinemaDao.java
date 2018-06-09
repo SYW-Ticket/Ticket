@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CinemaDao {
     public List<CinemaBean> findcinmeByAreaId(int area_id);
+    public CinemaBean findcinmeByID(int id);
 }

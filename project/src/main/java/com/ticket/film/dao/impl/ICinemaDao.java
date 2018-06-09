@@ -22,4 +22,9 @@ public class ICinemaDao extends SqlSessionDaoSupport implements CinemaDao {
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectList("com.ticket.film.dao.CinemaDao.findcinmeByAreaId",area_id);
     }
+    @Override
+    public CinemaBean findcinmeByID(int id) {
+        SqlSession sqlSession = getSqlSession();
+        return sqlSession.selectOne("com.ticket.film.dao.CinemaDao.findcinmeByID",id);
+    }
 }

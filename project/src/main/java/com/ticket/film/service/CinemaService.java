@@ -35,8 +35,28 @@ public class CinemaService {
         else {
             List<CinemaBean> cinemas = cinemaDao.findcinmeByAreaId(area_id);
             strfindCinema = gson.toJson(cinemas);
-            redisimpl.saveString("findCinema",strfindCinema);
+            redisimpl.saveString(key,strfindCinema);
             return cinemas;
+        }
+    }
+
+    public CinemaBean findCinemaByid(int id){
+        Gson gson = new Gson();
+        String key = "findCinemaByid" + id;
+        String strCinema = redisimpl.getValueByKey(key);
+        if(strCinema != null && !strCinema.equals("")){
+            //转为List<AreaBean>对象
+            Type type =  new TypeToken<CinemaBean>(){}.getType();
+            CinemaBean cinema = gson.fromJson(strCinema,type);
+            //返回
+            return cinema;
+        }
+        //缓存不存在，查询数据库
+        else {
+            CinemaBean cinema = cinemaDao.findcinmeByID(id);
+            strCinema = gson.toJson(cinema);
+            redisimpl.saveString(key,strCinema);
+            return cinema;
         }
     }
 }

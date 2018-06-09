@@ -33,4 +33,6 @@ public interface IFilmDao {
 //    int selectLoadingCounts();
 //    //查找即将上映的电影总数
 //    int selectWillLoadCounts();
+
+    List<FilmDetail> test();
 }

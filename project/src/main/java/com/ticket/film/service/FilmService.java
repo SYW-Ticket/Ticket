@@ -54,10 +54,11 @@ public class FilmService {
 //        return pageBean;
 //    }
 
-    public List<FilmDetail> allFilmDetailsLoading(){
+    public List<FilmDetail> allFilmDetailsLoading(int currentPage){
         Gson gson = new Gson();
         //查询缓存
-        String strFilmDetails = redisImpl.getValueByKey("filmDetailsLoading");
+        String key = "filmDetailsLoading"+currentPage;
+        String strFilmDetails = redisImpl.getValueByKey(key);
         //缓存不为空
         if(strFilmDetails != null && !strFilmDetails.equals("")){
             //转为List<FilmDetail>对象
@@ -70,14 +71,15 @@ public class FilmService {
         else {
             List<FilmDetail> filmDetails = filmDao.filmsLoading();
             strFilmDetails = gson.toJson(filmDetails);
-            redisImpl.saveString("filmDetailsLoading",strFilmDetails);
+            redisImpl.saveString(key,strFilmDetails);
             return filmDetails;
         }
 
     }
-    public List<FilmDetail> allFilmDetailsWillLoad(){
+    public List<FilmDetail> allFilmDetailsWillLoad(int currentPage){
         Gson gson = new Gson();
-        String strFilmDetails = redisImpl.getValueByKey("filmDetailsWillLoad");
+        String key = "filmDetailsWillLoad"+currentPage;
+        String strFilmDetails = redisImpl.getValueByKey("key");
         if(strFilmDetails != null && !strFilmDetails.equals("")){
             Type type =  new TypeToken<ArrayList<FilmDetail>>(){}.getType();
             List<FilmDetail> filmDetails = gson.fromJson(strFilmDetails,type);
@@ -85,7 +87,7 @@ public class FilmService {
         }else {
             List<FilmDetail> filmDetails = filmDao.filmsWillLoad();
             strFilmDetails = gson.toJson(filmDetails);
-            redisImpl.saveString("filmDetailsWillLoad",strFilmDetails);
+            redisImpl.saveString(key,strFilmDetails);
             return filmDetails;
         }
     }

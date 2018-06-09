@@ -42,6 +42,14 @@
         fd.trailer_address,fd.film_length,fd.language,fd.3DLV
     </sql>
     <!--电影id查找电影详情-->
+
+    <select id="test" resultMap="filmDetailResultMap">
+        SELECT <include refid="filmDetailsPro"></include>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+    </select>
+
     <select id="filmDetail" resultMap="filmDetailResultMap">
         SELECT <include refid="filmDetailsPro"></include>
         FROM film f

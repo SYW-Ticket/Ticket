@@ -1,5 +1,6 @@
 package com.ticket.loginandregister.redis;
 
+import java.util.List;
 import java.util.Set;
 
 public interface Redis {
@@ -19,6 +20,8 @@ public interface Redis {
     Set <String> selectKeysLike(String pattern);
     //删除缓存中指定的key
     void deleteKeyValue(String key);
+    //删除所有指定的key
+    void deleteKeys(Set<String> keys);
 
     void saveStringToSet(String key,String value);
 }

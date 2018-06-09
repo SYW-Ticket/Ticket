@@ -74,4 +74,8 @@ public class Redisimpl implements Redis {
     public void deleteKeyValue(String key) {
         redisTemplate.delete(key);
     }
+    @Override
+    public void deleteKeys(Set<String> keys) {
+        redisTemplate.delete(keys);
+    }
 }

@@ -3264,7 +3264,7 @@
                                         <ul>
                                             <%--<li class="active">1</li>--%>
                                             <c:forEach begin="1" var="i" end="${pageInfo.lastPage}">
-                                                <li class=""><a href="film/LoadingByPage/${i}">${i}</a></li>
+                                                <li class="pageButton"><a href="film/LoadingByPage/${i}">${i}</a></li>
                                             </c:forEach>
                                         </ul>
                                     </div>
@@ -3348,6 +3348,7 @@
 <script type="text/javascript" >
     $(function () {
         $("#loadingFilms").click(function () {
+
             window.location ="http://localhost:8080/film/film/LoadingByPage/1";
         });
         $("#willLoad").click(function () {

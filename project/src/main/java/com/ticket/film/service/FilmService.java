@@ -58,6 +58,7 @@ public class FilmService {
         Gson gson = new Gson();
         //查询缓存
         String strFilmDetails = redisImpl.getValueByKey("filmDetailsLoading");
+
         //缓存不为空
         if(strFilmDetails != null && !strFilmDetails.equals("")){
             //转为List<FilmDetail>对象
@@ -70,6 +71,7 @@ public class FilmService {
         else {
             List<FilmDetail> filmDetails = filmDao.filmsLoading();
             strFilmDetails = gson.toJson(filmDetails);
+            System.out.println(strFilmDetails);
             redisImpl.saveString("filmDetailsLoading",strFilmDetails);
             return filmDetails;
         }

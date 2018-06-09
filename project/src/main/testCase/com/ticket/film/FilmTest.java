@@ -4,6 +4,7 @@ import com.ticket.film.dao.AreaDao;
 import com.ticket.film.dao.PlatoonDao;
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
+import com.ticket.film.entity.PlatoonBean;
 import com.ticket.film.service.FilmService;
 import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
@@ -12,7 +13,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -55,11 +58,10 @@ public class FilmTest {
 //        System.out.println(filmDao.selectLoadingCounts());
 //    }
 
+
     @Test
-    public void filmService(){
-        List<FilmDetail> filmDetails = filmService.allFilmDetailsLoading();
-        for (FilmDetail filmDetail : filmDetails) {
-            System.out.println(filmDetail);
-        }
+    public void film02(){
+       List<FilmDetail> list = filmDao.test();
+        System.out.println(list);
     }
 }

@@ -14,5 +14,9 @@
     <select id="findcinmeByAreaId" resultMap="cinemaBaseResult">
         SELECT * FROM cinema where area_id = #{area_id}
     </select>
+    <select id="findcinmeByID" resultMap="cinemaBaseResult">
+        SELECT * FROM cinema where id = #{id}
+    </select>
+
 
 </mapper>

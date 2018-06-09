@@ -34,7 +34,7 @@ public class UserService {
        //发送验证短信
         String code = SendMessageUtils.send(tel);
        //将验证短信的验证码存到缓存中
-        redis.saveString("token",code);
+        redis.saveStringToSet("token",code);
         final String CODE = code;
         final String TEL = tel;
         jmsTemplate.send(new MessageCreator() {

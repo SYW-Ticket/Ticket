@@ -45,6 +45,11 @@ public class FilmDao extends SqlSessionDaoSupport implements IFilmDao {
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectOne("com.ticket.film.dao.IFilmDao.filmDetail",filmId);
     }
+
+    public List<FilmDetail> test(){
+        SqlSession sqlSession = getSqlSession();
+        return sqlSession.selectList("com.ticket.film.dao.IFilmDao.test");
+    }
 //    @Override
 //    public List<FilmDetail> filmsLoadingByPage(int start) {
 //        SqlSession sqlSession = getSqlSession();

@@ -47,11 +47,11 @@ public class testCaseyang {
 
 
     //测试订单的逻辑
-//    @Test
-//    public void testCase4(){
-//        userinfoOrder.selectOrder(0);
-//
-//    }
+    @Test
+    public void testCase4(){
+
+
+    }
 
 
 

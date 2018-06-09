@@ -46,7 +46,7 @@ public class FilmController {
     @RequestMapping("/LoadingByPage/{currentPage}")
     public String pageLoading(@PathVariable("currentPage") int currentPage,HttpSession session){
         PageHelper.startPage(currentPage,5);
-        List<FilmDetail> list = filmService.allFilmDetailsLoading();
+        List<FilmDetail> list = filmService.allFilmDetailsLoading(currentPage);
         PageInfo<FilmDetail> pageInfo = new PageInfo<>(list);
         session.setAttribute("pageInfo",pageInfo);
         return "/filmList";
@@ -55,7 +55,7 @@ public class FilmController {
     @RequestMapping("/willLoadByPage/{currentPage}")
     public String pageWillLoad(@PathVariable("currentPage") int currentPage,HttpSession session,Model model){
         PageHelper.startPage(currentPage,5);
-        List<FilmDetail> list = filmService.allFilmDetailsWillLoad();
+        List<FilmDetail> list = filmService.allFilmDetailsWillLoad(currentPage);
         PageInfo<FilmDetail> pageInfo = new PageInfo<>(list);
         model.addAttribute("pageInfo",pageInfo);
         return "/filmList";

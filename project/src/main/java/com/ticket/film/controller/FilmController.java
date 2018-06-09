@@ -51,6 +51,7 @@ public class FilmController {
         session.setAttribute("pageInfo",pageInfo);
         return "/filmList";
     }
+
     @RequestMapping("/willLoadByPage/{currentPage}")
     public String pageWillLoad(@PathVariable("currentPage") int currentPage,HttpSession session,Model model){
         PageHelper.startPage(currentPage,5);

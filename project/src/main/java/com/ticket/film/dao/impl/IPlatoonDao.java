@@ -21,7 +21,7 @@ public class IPlatoonDao extends SqlSessionDaoSupport implements PlatoonDao{
     }
 
     @Override
-    public List<PlatoonBean> selectAllPlatoonByFilm_id(Map<String,Integer> map) {
+    public List<PlatoonBean> selectAllPlatoonByFilm_id(Map<String,Object> map) {
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectList("com.ticket.film.dao.PlatoonDao.selectAllPlatoonByFilm_id",map);
     }

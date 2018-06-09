@@ -8,12 +8,13 @@
         <result property="show_start_time" column="show_start_time"/>
         <result property="hall_id" column="hall_id"/>
         <result property="film_price" column="film_price"/>
+        <result property="show_start_date" column="show_start_date"/>
         <association property="film" column="film_id" select="com.ticket.film.dao.IFilmDao.filmDetail"/>
         <association property="hallBean" column="hall_id" select="com.ticket.film.dao.HallDao.selectHallWithID"/>
     </resultMap>
 
     <select id="selectAllPlatoonByFilm_id" resultMap="platoonBaseResult" parameterType="hashmap">
-          SELECT p.*,h.* FROM platoon p JOIN hall h ON p.hall_id = h.id WHERE p.film_id = #{film_id} and h.cinema_id = #{cinema_id}
+          SELECT p.*,h.* FROM platoon p JOIN hall h ON p.hall_id = h.id WHERE p.film_id = #{film_id} and h.cinema_id = #{cinema_id} AND p.show_start_date=#{show_start_date}
     </select>
 
 </mapper>

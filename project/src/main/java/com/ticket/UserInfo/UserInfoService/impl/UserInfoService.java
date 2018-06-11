@@ -87,14 +87,6 @@ public class UserInfoService implements IUserInfoService {
             //将对象创建时间转化为时间戳 加15分钟
             long time = orderTime.getTime()+900000;
             Long staytime=time-nowtime;
-
-
-
-
-
-
-
-
         } catch (OutOfTimeYang outOfTimeYang) {
             outOfTimeYang.printStackTrace();
         }

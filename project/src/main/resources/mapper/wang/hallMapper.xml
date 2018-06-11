@@ -8,6 +8,7 @@
         <result property="row_max" column="row_max"/>
         <result property="col_max" column="col_max"/>
         <result property="cinema_id" column="cinema_id"/>
+        <collection property="seats" column="id" select="com.ticket.seat.dao.ISeatDao.selectAllSeatByHallId"/>
     </resultMap>
 
     <select id="selectHallWithID" resultMap="HallBaseResult">

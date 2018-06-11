@@ -1,5 +1,8 @@
 package com.ticket.film.entity;
 
+
+import java.util.List;
+
 public class HallBean {
     private int id;
     private String hall_name;
@@ -7,6 +10,15 @@ public class HallBean {
     private int col_max;
     private int cinema_id;
     private CinemaBean cinemaBean;
+    private List<Seat> seats;
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
 
     public int getId() {
         return id;
@@ -54,5 +66,18 @@ public class HallBean {
 
     public void setCinemaBean(CinemaBean cinemaBean) {
         this.cinemaBean = cinemaBean;
+    }
+
+    @Override
+    public String toString() {
+        return "HallBean{" +
+                "id=" + id +
+                ", hall_name='" + hall_name + '\'' +
+                ", row_max=" + row_max +
+                ", col_max=" + col_max +
+                ", cinema_id=" + cinema_id +
+                ", cinemaBean=" + cinemaBean +
+                ", seats=" + seats +
+                '}';
     }
 }

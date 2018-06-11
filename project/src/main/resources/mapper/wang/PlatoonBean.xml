@@ -13,8 +13,11 @@
         <association property="hallBean" column="hall_id" select="com.ticket.film.dao.HallDao.selectHallWithID"/>
     </resultMap>
 
-    <select id="selectAllPlatoonByFilm_id" resultMap="platoonBaseResult" parameterType="hashmap">
+    <select id="selectAllPlatoonByFilm_id" resultMap="platoonBaseResult" parameterType="HashMap">
           SELECT p.*,h.* FROM platoon p JOIN hall h ON p.hall_id = h.id WHERE p.film_id = #{film_id} and h.cinema_id = #{cinema_id} AND p.show_start_date=#{show_start_date}
+    </select>
+    <select id="selectPlatoonById" resultMap="platoonBaseResult">
+        SELECT * FROM  platoon WHERE id = #{PId}
     </select>
 
 </mapper>

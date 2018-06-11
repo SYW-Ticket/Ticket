@@ -25,4 +25,9 @@ public class IPlatoonDao extends SqlSessionDaoSupport implements PlatoonDao{
         SqlSession sqlSession = getSqlSession();
         return sqlSession.selectList("com.ticket.film.dao.PlatoonDao.selectAllPlatoonByFilm_id",map);
     }
+
+    @Override
+    public PlatoonBean selectPlatoonById(int PId) {
+        return getSqlSession().selectOne("com.ticket.film.dao.PlatoonDao.selectPlatoonById",PId);
+    }
 }

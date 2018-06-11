@@ -23,7 +23,6 @@ public class FilmHotJob implements Job {
     private FilmWriteDao filmWriteDao;
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("测试job==========================");
         //获取redis里所有的filmIdForHot_'id'的key，正则表达式："filmIdForHot_*"
         Set<String> keys = redisImpl.selectKeysLike("filmIdForHot_*");
         //遍历keys
@@ -38,15 +37,21 @@ public class FilmHotJob implements Job {
                 int hot = filmWriteDao.selectFilmHot(filmId);
                 //更新电影热度
                 filmWriteDao.updateFilmHot(filmId, hot + hotOnIncr);
-                //清除缓存新增热度
-                redisImpl.deleteKeyValue(key);
                 //清除电影详情
                 redisImpl.deleteKeyValue("filmId_" + filmId);
             }
+            //清除缓存新增热度
+            redisImpl.deleteKeys(keys);
+            System.out.println("热度记录缓存已经清除，数据库热度已更新");
             //清除（更新）redis的filmDetails电影详情列表缓存
-            redisImpl.deleteKeyValue("filmDetailsLoading");
-            redisImpl.deleteKeyValue("filmDetailsWillLoad");
-            System.out.println("缓存已经清除，数据库热度已更新");
+            Set<String> filmDetailsWillKeys = redisImpl.selectKeysLike("filmDetailsWillLoad_*");
+            if (filmDetailsWillKeys !=null) {
+                redisImpl.deleteKeys(filmDetailsWillKeys);
+            }
+            Set<String> filmDetailsLoadingKeys = redisImpl.selectKeysLike("filmDetailsLoading_*");
+            if(filmDetailsLoadingKeys != null) {
+                redisImpl.deleteKeys(filmDetailsLoadingKeys);
+            }
         }
 
 

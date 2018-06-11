@@ -77,7 +77,7 @@
         FROM film f
         JOIN film_details fd
         on f.id = fd.film_id
-        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !=''
+        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !=''  ORDER BY f.film_hot DESC
     </select>
     <!--查找所有即将上映的电影-->
     <select id="filmsWillLoad" resultMap="filmDetailResultMap">
@@ -85,7 +85,7 @@
         FROM film f
         JOIN film_details fd
         on f.id = fd.film_id
-        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !=''
+        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' ORDER BY f.film_hot DESC
     </select>
     <!--根据电影id查找热度film_hot-->
     <select id="selectFilmHot" resultType="java.lang.Integer">

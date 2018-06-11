@@ -4335,7 +4335,8 @@
     function findPlatoon(cinema_id) {
         $("#one").html("");
         $("#three").html("");
-        var film_id = $("#filmID").html();
+        $("#two").html("");
+        var film_id = $("#filmID").append();
         $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
             $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
         });
@@ -4343,7 +4344,7 @@
         $.get("cinema/findPlatoon",{"film_id":film_id,"cinema_id":cinema_id,"show_start_date":strdate},function (data) {
                  console.log(data);
                 $.each(data,function (index,obj) {
-                    $("#two").html("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ obj.show_start_time+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
+                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ obj.show_start_time+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
                 });
         });
 

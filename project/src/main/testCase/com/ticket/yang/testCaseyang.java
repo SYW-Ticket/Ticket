@@ -2,21 +2,17 @@ package com.ticket.yang;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
-import com.ticket.UserInfo.UserInfoService.deleteService.AyTestJob;
-import com.ticket.UserInfo.UserInfoService.deleteService.DeleteByTime;
+import com.ticket.UserInfo.UserInfoService.deleteService.RemoveJob;
 import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
 import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.quartz.*;
-import org.quartz.impl.JobDetailImpl;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerFactory;
 import org.quartz.impl.StdSchedulerFactory;
-import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,10 +21,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import static org.quartz.CronScheduleBuilder.cronSchedule;
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.TriggerBuilder.newTrigger;
 /**
  * Created by Shinelon on 2018/6/6.
  */
@@ -40,9 +32,13 @@ public class testCaseyang {
     private IUserInfoService userInfoService;
     @Autowired
     private IUserInfoDAO userInfoDAO;
+    @Autowired
+    private RemoveJob removeJob;
 
     @Autowired
     private IUserinfoOrder userinfoOrder;
+
+
 
     @Test
     public void  testCase2(){
@@ -79,13 +75,8 @@ public class testCaseyang {
     //测试删除成功
     @Test
     public void  testCase5(){
-        int i = userInfoDAO.deleteOrderById(4);
+        int i = userInfoDAO.deleteOrderById(2);
         System.out.println(i);
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -116,7 +107,7 @@ public class testCaseyang {
         SchedulerFactory sf = new StdSchedulerFactory();
         Scheduler sched = null;
 
-        try {
+     /*   try {
             sched = sf.getScheduler();
             JobDetail job = newJob(DeleteByTime.class)
                     .withIdentity("hw_job", "hw_group")
@@ -144,9 +135,11 @@ public class testCaseyang {
 
     @Test
     public void  testCase10(){
-        ApplicationContext ac = new ClassPathXmlApplicationContext("spring-quartz.xml");
+
 
     }
+
+
 
 
     private static SchedulerFactory schedulerFactory = new StdSchedulerFactory();
@@ -167,19 +160,30 @@ public class testCaseyang {
                 JobDetail myJobDetail = new JobDetailImpl("AyTestJob",Scheduler.DEFAULT_GROUP, AyTestJob.class);
                 //定义出发器，每1秒触发一次
                 Trigger myTrigger = new CronTriggerImpl("AyTestTrigger",
-                        Scheduler.DEFAULT_GROUP, "0/1 * * * * ?");
+                        Scheduler.DEFAULT_GROUP, "0/5 * * * * ?");
                 //设置Job任务类和触发器
                 scheduler.scheduleJob(myJobDetail, myTrigger);
                 //启动定时器！！！
                 scheduler.start();
                 System.out.println("每隔10秒的定时器已经启动了........");
+                System.in.read();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
+
+    @Test
+    public void testCase11(){
+        removeJob.testremoveJob(5);
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

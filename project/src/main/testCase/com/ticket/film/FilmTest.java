@@ -4,6 +4,7 @@ import com.ticket.film.dao.AreaDao;
 import com.ticket.film.dao.PlatoonDao;
 import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
+import com.ticket.film.entity.PlatoonBean;
 import com.ticket.film.service.FilmService;
 import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
@@ -12,8 +13,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * @Author wangpeng
@@ -55,11 +58,18 @@ public class FilmTest {
 //        System.out.println(filmDao.selectLoadingCounts());
 //    }
 
+
     @Test
-    public void filmService(){
-        List<FilmDetail> filmDetails = filmService.allFilmDetailsLoading();
-        for (FilmDetail filmDetail : filmDetails) {
-            System.out.println(filmDetail);
-        }
+    public void film02() throws ParseException {
+        String str = "2018-06-08";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        date = sdf.parse(str);
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("film_id",1);
+        map.put("cinema_id",2);
+        map.put("show_start_date",date);
+        List<PlatoonBean> platoonBeans = platoonDao.selectAllPlatoonByFilm_id(map);
+        System.out.println(platoonBeans);
     }
 }

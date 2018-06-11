@@ -63,7 +63,7 @@ public class Redisimpl implements Redis {
 
     //保存字符串并只保存20分钟
     public void saveStringToSet(String key,String value){
-        redisTemplate.opsForValue().set(key,value,TimeUnit.MINUTES.toSeconds(20));
+        redisTemplate.opsForValue().set(key,value,20,TimeUnit.MINUTES);
     }
     //模糊查询keys
     public Set <String> selectKeysLike(String pattern){
@@ -73,5 +73,9 @@ public class Redisimpl implements Redis {
     @Override
     public void deleteKeyValue(String key) {
         redisTemplate.delete(key);
+    }
+    @Override
+    public void deleteKeys(Set<String> keys) {
+        redisTemplate.delete(keys);
     }
 }

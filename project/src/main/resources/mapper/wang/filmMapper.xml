@@ -42,6 +42,14 @@
         fd.trailer_address,fd.film_length,fd.language,fd.3DLV
     </sql>
     <!--电影id查找电影详情-->
+
+    <select id="test" resultMap="filmDetailResultMap">
+        SELECT <include refid="filmDetailsPro"></include>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+    </select>
+
     <select id="filmDetail" resultMap="filmDetailResultMap">
         SELECT <include refid="filmDetailsPro"></include>
         FROM film f
@@ -69,7 +77,7 @@
         FROM film f
         JOIN film_details fd
         on f.id = fd.film_id
-        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !=''
+        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !=''  ORDER BY f.film_hot DESC
     </select>
     <!--查找所有即将上映的电影-->
     <select id="filmsWillLoad" resultMap="filmDetailResultMap">
@@ -77,7 +85,7 @@
         FROM film f
         JOIN film_details fd
         on f.id = fd.film_id
-        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !=''
+        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' ORDER BY f.film_hot DESC
     </select>
     <!--根据电影id查找热度film_hot-->
     <select id="selectFilmHot" resultType="java.lang.Integer">

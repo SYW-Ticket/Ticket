@@ -4165,7 +4165,8 @@
                                     <h3>${filmDetail.filmName}</h3><span class="grade"><!-- react-text: 1872 -->${filmDetail.filmScore}<!-- /react-text --></span><span class="intro"><!-- react-text: 1875 -->[&nbsp;&nbsp;<!-- /react-text --><!-- react-text: 1876 -->${filmDetail.details}<!-- /react-text --><!-- react-text: 1877 -->&nbsp;&nbsp;]<!-- /react-text --></span></div>
                                 <div class="film-intro">
                                     <ul class="film-intro-one">
-                                        <li><label>上映：</label><span><fmt:formatDate value="${filmDetail.filmStartDate}" pattern="yy-MM-dd"/> </span></li>
+                                        <p id="filmID" style="display: none">${filmDetail.id}</p>
+                                        <li><label>上映：</label><span><fmt:formatDate value="${filmDetail.filmStartDate}" pattern="yyyy-MM-dd"/> </span></li>
                                         <li><label>类型：</label><span><c:forEach var="type" items="${filmDetail.types}">${type} /</c:forEach> </span></li>
                                         <li><label>导演：</label><span>${filmDetail.director}</span></li>
                                     </ul>
@@ -4214,7 +4215,10 @@
                                     <div class="item date"><span>日期：</span>
                                         <div class="clearfix item-inner">
                                             <ul>
-                                                <li class="active">2018-06-05 (今天)</li>
+                                                <%--<li class="active">2018-06-05 (今天)</li>--%>
+                                                <c:forEach items="${dates}" var="date">
+                                                    <li class="" onclick="event2('${date}')">${date}</li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
@@ -4222,7 +4226,7 @@
                                         <div class="clearfix item-inner">
                                             <ul>
                                                 <c:forEach items="${areas}" var="area">
-                                                <li class=""><a href="javascript:findCinema(${area.id})">${area.area_name}</a></li>
+                                                <li class="" onclick="findCinema(${area.id})">${area.area_name}</li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -4240,43 +4244,14 @@
                             </div>
                             <div class="foretell">
                                 <div class="header">
-                                    <h4>武汉博影时代影城</h4><span>027-83806099</span><span class="address">武汉市硚口区航空路13号</span></div><i class="icon-caret-up"></i>
-                                <div class="content clearfix">
+                                   <div id="one"><h4>武汉博影时代影城</h4><span>027-83806099</span><span class="address">武汉市硚口区航空路13号</span></div><i class="icon-caret-up"></i>
+                                <div class="content clearfix" id="two">
                                     <ul class="title clearfix">
                                         <li class="time">放映时间</li>
-                                        <li>散场时间</li>
                                         <li>语言/版本</li>
                                         <li>放映厅</li>
-                                        <li class="search">座位情况</li>
                                         <li>票价</li>
-                                        <li class="buy"></li>
-                                    </ul>
-                                    <ul class="item clearfix">
-                                        <li class="time">16:00</li>
-                                        <li>预计17:41散场</li>
-                                        <li>国语/2D</li>
-                                        <li>VIP1</li>
-                                        <li class="search"><i class="icon-search"></i></li>
-                                        <li class="price">¥38</li>
-                                        <li class="buy"><button type="button" class="">选座购票</button></li>
-                                    </ul>
-                                    <ul class="item clearfix">
-                                        <li class="time">20:05</li>
-                                        <li>预计21:46散场</li>
-                                        <li>国语/2D</li>
-                                        <li>2号厅</li>
-                                        <li class="search"><i class="icon-search"></i></li>
-                                        <li class="price">¥33</li>
-                                        <li class="buy"><button type="button" class="">选座购票</button></li>
-                                    </ul>
-                                    <ul class="item clearfix">
-                                        <li class="time">21:55</li>
-                                        <li>预计23:36散场</li>
-                                        <li>国语/2D</li>
-                                        <li>2号厅</li>
-                                        <li class="search"><i class="icon-search"></i></li>
-                                        <li class="price">¥33</li>
-                                        <li class="buy"><button type="button" class="">选座购票</button></li>
+                                        <li class="buy">立即订票</li>
                                     </ul>
                                 </div>
                             </div>
@@ -4351,10 +4326,26 @@
 </div>
 <script>
 
-    
+    var strdate;
+
+    function event2(str) {
+        strdate = str;
+    }
     
     function findPlatoon(cinema_id) {
+        $("#one").html("");
+        $("#three").html("");
+        var film_id = $("#filmID").html();
+        $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
+            $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
+        });
 
+        $.get("cinema/findPlatoon",{"film_id":film_id,"cinema_id":cinema_id,"show_start_date":strdate},function (data) {
+                 console.log(data);
+                $.each(data,function (index,obj) {
+                    $("#two").html("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ obj.show_start_time+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
+                });
+        });
 
     }
 
@@ -4362,6 +4353,7 @@
     function findCinema(areaid) {
         $("#cinemas").html("");
         $.get("cinema/findCinema",{"areaid":areaid},function (data) {
+
           $.each(data,function (index,obj) {
               $("#cinemas").append("<li onclick='findPlatoon("+obj.id+")'>"+obj.cinema_name+"</li>");
           });

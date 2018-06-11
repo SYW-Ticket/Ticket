@@ -1,5 +1,7 @@
 package com.ticket.film.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ticket.film.dao.impl.FilmDao;
@@ -54,39 +56,77 @@ public class FilmService {
 //        return pageBean;
 //    }
 
-    public List<FilmDetail> allFilmDetailsLoading(){
+    public PageInfo<FilmDetail> filmDetailsLoadingByPage(int currentPage){
+        //pageHelper设置
+        PageHelper.startPage(currentPage,5);
+        PageInfo<FilmDetail> pageInfo = null;
+        //gson工具
         Gson gson = new Gson();
         //查询缓存
-        String strFilmDetails = redisImpl.getValueByKey("filmDetailsLoading");
+        String key = "filmDetailsLoading_"+currentPage;
+        String strFilmDetails = redisImpl.getValueByKey(key);
         //缓存不为空
         if(strFilmDetails != null && !strFilmDetails.equals("")){
             //转为List<FilmDetail>对象
             Type type =  new TypeToken<ArrayList<FilmDetail>>(){}.getType();
             List<FilmDetail> filmDetails = gson.fromJson(strFilmDetails,type);
+            //查询缓存得到pageInfo
+            String strPageInfo = (redisImpl.getValueByKey("filmDetailsLoadingPageInfo"));
+            pageInfo = gson.fromJson(strPageInfo,PageInfo.class);
+            //更新list
+            pageInfo.setList(filmDetails);
             //返回
-            return filmDetails;
+            return pageInfo;
         }
         //缓存不存在，查询数据库
         else {
             List<FilmDetail> filmDetails = filmDao.filmsLoading();
+            //转化为json存入redis
             strFilmDetails = gson.toJson(filmDetails);
-            redisImpl.saveString("filmDetailsLoading",strFilmDetails);
-            return filmDetails;
+            redisImpl.saveString(key,strFilmDetails);
+            //包装pageInfo对象
+            pageInfo = new PageInfo<>(filmDetails);
+            //pageInfo存入缓存
+            String strPageInfo = gson.toJson(pageInfo);
+            redisImpl.saveString("filmDetailsLoadingPageInfo",strPageInfo);
+            return pageInfo;
         }
 
     }
-    public List<FilmDetail> allFilmDetailsWillLoad(){
+    public PageInfo<FilmDetail> FilmsDetailsWillLoadByPage(int currentPage){
+        //pageHelper设置
+        PageHelper.startPage(currentPage,5);
+        PageInfo<FilmDetail> pageInfo = null;
+        //gson工具
         Gson gson = new Gson();
-        String strFilmDetails = redisImpl.getValueByKey("filmDetailsWillLoad");
+        //查询缓存
+        String key = "filmDetailsWillLoad_"+currentPage;
+        String strFilmDetails = redisImpl.getValueByKey(key);
+        //缓存不为空
         if(strFilmDetails != null && !strFilmDetails.equals("")){
+            //转为List<FilmDetail>对象
             Type type =  new TypeToken<ArrayList<FilmDetail>>(){}.getType();
             List<FilmDetail> filmDetails = gson.fromJson(strFilmDetails,type);
-            return filmDetails;
-        }else {
+            //查询缓存得到pageInfo
+            String strPageInfo = (redisImpl.getValueByKey("filmDetailsWillLoadPageInfo"));
+            pageInfo = gson.fromJson(strPageInfo,PageInfo.class);
+            //更新list
+            pageInfo.setList(filmDetails);
+            //返回
+            return pageInfo;
+        }
+        //缓存不存在，查询数据库
+        else {
             List<FilmDetail> filmDetails = filmDao.filmsWillLoad();
+            //转化为json存入redis
             strFilmDetails = gson.toJson(filmDetails);
-            redisImpl.saveString("filmDetailsWillLoad",strFilmDetails);
-            return filmDetails;
+            redisImpl.saveString(key,strFilmDetails);
+            //包装pageInfo对象
+            pageInfo = new PageInfo<>(filmDetails);
+            //pageInfo存入缓存
+            String strPageInfo = gson.toJson(pageInfo);
+            redisImpl.saveString("filmDetailsWillLoadPageInfo",strPageInfo);
+            return pageInfo;
         }
     }
     public FilmDetail filmDetail(int filmId){

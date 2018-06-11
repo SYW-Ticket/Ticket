@@ -4337,7 +4337,7 @@
         $("#three").html("");
         $("#two").html("");
         var film_id = $("#filmID").html();
-        $.get("cinema/findCinemaById",{"id":cinema_id},function (data) {
+        $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
             $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
         });
 
@@ -4351,9 +4351,9 @@
     }
 
 
-    function findCinema(areaId) {
+    function findCinema(areaid) {
         $("#cinemas").html("");
-        $.get("cinema/findCinema",{"areaId":areaId},function (data) {
+        $.get("cinema/findCinema",{"areaid":areaid},function (data) {
 
           $.each(data,function (index,obj) {
               $("#cinemas").append("<li onclick='findPlatoon("+obj.id+")'>"+obj.cinema_name+"</li>");

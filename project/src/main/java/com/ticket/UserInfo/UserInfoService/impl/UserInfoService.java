@@ -2,12 +2,16 @@ package com.ticket.UserInfo.UserInfoService.impl;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.bean.UserBean;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
+import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 import com.ticket.UserInfo.util.MyselfException.YangException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * Created by Shinelon on 2018/6/6.
@@ -70,9 +74,30 @@ public class UserInfoService implements IUserInfoService {
      * @param costState
      */
     @Override
-    public void findUnPayOrder(int tel,int costState) {
+    public void findUnPayOrder(String tel,int costState){
 
-        userinfoOrder.selectOrder(tel,costState);
+        try {
+
+            Order order = userinfoOrder.selectOrder(tel, costState);
+
+            //获取当前系统时间戳
+            long nowtime = System.currentTimeMillis();
+            //获取对象创建时间
+            Date orderTime = order.getOrderTime();
+            //将对象创建时间转化为时间戳 加15分钟
+            long time = orderTime.getTime()+900000;
+            Long staytime=time-nowtime;
+
+
+
+
+
+
+
+
+        } catch (OutOfTimeYang outOfTimeYang) {
+            outOfTimeYang.printStackTrace();
+        }
 
     }
 

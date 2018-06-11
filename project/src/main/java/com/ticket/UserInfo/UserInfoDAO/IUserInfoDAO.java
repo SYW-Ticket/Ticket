@@ -20,4 +20,11 @@ public interface IUserInfoDAO {
      int ModifyPassword(String tel, String newpassword);
 
 
+     //order的方法**********************************************************************************************************
+
+     //删除订单
+     int deleteOrderById(int id);
+
+
+
 }

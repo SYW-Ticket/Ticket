@@ -1,11 +1,12 @@
 package com.ticket.UserInfo.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Shinelon on 2018/6/8.
  */
-public class Order {
+public class Order implements Serializable{
     //数据库f_order 字段
     private int id;
     private int cinemaId;
@@ -33,6 +34,7 @@ public class Order {
     private String tel;
     //电影图像
     private String filmImg;
+
 
 
     public int getId() {

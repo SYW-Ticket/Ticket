@@ -2,15 +2,17 @@ package com.ticket.UserInfo.redis.Redisimpl;
 
 import com.ticket.UserInfo.redis.IRedis;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 
 @Component
-public class Redis implements IRedis {
+public class Red implements IRedis {
 
     @Resource
     StringRedisTemplate redisTemplate;
@@ -51,7 +53,27 @@ public class Redis implements IRedis {
 
     }
 
-    public void saveStringToSet(String key,String value){
-        redisTemplate.opsForSet().add(key,value);
+    @Override
+    public void incr(String key) {
+        RedisAtomicLong redisAtomicLong = new RedisAtomicLong(key,redisTemplate.getConnectionFactory());
+        redisAtomicLong.getAndIncrement();
+    }
+
+
+    @Override
+    //保存字符串并只保存 一定时间
+    public void saveStringToSet(String key,String value,Long staytime){
+        redisTemplate.opsForValue().set(key,value,staytime,TimeUnit.MILLISECONDS);
+    }
+
+
+    //模糊查询keys
+    public Set <String> selectKeysLike(String pattern){
+        return redisTemplate.keys(pattern);
+    }
+
+    @Override
+    public void deleteKeyValue(String key) {
+        redisTemplate.delete(key);
     }
 }

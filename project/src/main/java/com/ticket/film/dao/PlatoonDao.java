@@ -7,4 +7,5 @@ import java.util.Map;
 
 public interface PlatoonDao {
     List<PlatoonBean> selectAllPlatoonByFilm_id(Map<String,Object> map);
+    PlatoonBean selectPlatoonById(int PId);
 }

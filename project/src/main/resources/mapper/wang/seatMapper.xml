@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ticket.seat.dao.ISeatDao">
+    <resultMap id="seatResultMap" type="com.ticket.film.entity.Seat">
+        <id property="id" column="id"/>
+        <result property="flag" column="flag"/>
+        <result property="row" column="row"/>
+        <result property="col" column="col"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="selectAllSeatByHallId" resultMap="seatResultMap">
+        SELECT * FROM seat
+        WHERE hall_id = #{hallId}
+    </select>
+
+    <select id="selectAllSeatOccupiesByPlatoonId" resultType="java.lang.Integer">
+        SELECT so.seat_id FROM f_order fo JOIN seat_occupied so ON fo.id = so.order_id
+        WHERE fo.platoon_id = #{platoonId}
+    </select>
+</mapper>

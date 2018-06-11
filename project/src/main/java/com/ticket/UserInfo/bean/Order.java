@@ -2,6 +2,7 @@ package com.ticket.UserInfo.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Shinelon on 2018/6/8.
@@ -10,7 +11,7 @@ public class Order implements Serializable{
     //数据库f_order 字段
     private int id;
     private int cinemaId;
-    private int seatId;
+    private List<Seat> seats;
     private int filmId;
     //票数
     private int ticketNum;
@@ -53,12 +54,12 @@ public class Order implements Serializable{
         this.cinemaId = cinemaId;
     }
 
-    public int getSeatId() {
-        return seatId;
+    public List<Seat> getSeats() {
+        return seats;
     }
 
-    public void setSeatId(int seatId) {
-        this.seatId = seatId;
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public int getFilmId() {

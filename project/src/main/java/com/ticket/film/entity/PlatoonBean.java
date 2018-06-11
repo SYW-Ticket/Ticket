@@ -7,7 +7,7 @@ import java.util.Date;
 public class PlatoonBean {
     private int id;
     private int film_id;
-    @JsonFormat(pattern = "HH:mm")
+//    @JsonFormat(pattern = "HH:mm")
     private Date show_start_time;
     private int hall_id;
     private double film_price;

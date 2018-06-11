@@ -57,64 +57,7 @@
 
 
 
-<!--   &lt;!&ndash; 杨添加    2018 6 9&ndash;&gt;
-      &lt;!&ndash; Spring整合Quartz进行配置遵循下面的步骤：
-       1：定义工作任务的Job
-       2：定义触发器Trigger，并将触发器与工作任务绑定
-       3：定义调度器，并将Trigger注册到Scheduler
-     1：定义任务的bean ，这里使用JobDetailFactoryBean,也可以使用MethodInvokingJobDetailFactoryBean ，配置类似&ndash;&gt;
-    <bean  name="hwJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-        &lt;!&ndash; 指定job的名称 &ndash;&gt;
-        <property name="name" value="hw_job"/>
-        &lt;!&ndash; 指定job的分组 &ndash;&gt;
-        <property name="group" value="hw_group"/>
-        &lt;!&ndash; 指定具体的job类 &ndash;&gt;
-        <property name="jobClass" value="com.ticket.UserInfo.UserInfoService.deleteService.DeleteByTime"/>
-        &lt;!&ndash; 必须设置为true，如果为false，当没有活动的触发器与之关联时会在调度器中会删除该任务  &ndash;&gt;
-        <property name="durability" value="true"/>
-        &lt;!&ndash; 指定spring容器的key，如果不设定在job中的jobmap中是获取不到spring容器的 &ndash;&gt;
-        &lt;!&ndash;<property name="applicationContextJobDataKey" value="applicationContext"/>&ndash;&gt;
-    </bean>
 
-&lt;!&ndash;     &lt;!&ndash;2.2：定义触发器的bean，定义一个Cron的Trigger，一个触发器只能和一个任务进行绑定&ndash;&gt;
-    <bean id="deleteOrderTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        &lt;!&ndash; 指定Trigger的名称 &ndash;&gt;
-        <property name="name" value="hw_trigger"/>
-        &lt;!&ndash; 指定Trigger group的名称 &ndash;&gt;
-        <property name="group" value="hw_trigger_group"/>
-        &lt;!&ndash; 指定Tirgger绑定的Job &ndash;&gt;
-        <property name="jobDetail" ref="hwJob"/>
-        &lt;!&ndash; 指定Cron 的表达式 ，当前是每隔1s运行一次 &ndash;&gt;
-        <property name="cronExpression" value="0/1 * * * * ?" />
-    </bean>&ndash;&gt;
-
-
-<bean id="directSchedulerFactory" class="org.quartz.impl.DirectSchedulerFactory">
-
-</bean>
-
-
-    <bean id="deleteScheduler" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
-        <property name="jobDetail" ref="hwJob"/>
-        <property name="startDelay" value="5000"/>
-        <property name="repeatInterval" value="0"/>
-        <property name="repeatCount" value="0"/>
-    </bean>
-
-
-
-
-    <bean id="delScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <property name="triggers">
-            <list>
-                &lt;!&ndash; <ref bean="simpleTrigger"/> &ndash;&gt;
-                <ref bean="deleteScheduler"/>
-            </list>
-        </property>
-        &lt;!&ndash;引入自定义jobFactory,使自定义Job类可以注入bean，解决Job定时任务里不能注入Service和Redis操作类的问题 by wangpeng&ndash;&gt;
-        <property name="jobFactory" ref="myBeanJobFactory"></property>
-         <property name="autoStartup" value="false" />
-    </bean>-->
 
 
     <!-- 3.定义调度器，并将Trigger注册到调度器中 -->

@@ -25,7 +25,7 @@ public class PLatoonService {
     public List<PlatoonBean> getPlatoon(int film_id,int cinema_id,String str) throws ParseException {
         Gson gson = new Gson();
         //查询缓存
-        String key = "platoon"+film_id;
+        String key = "platoon"+film_id+cinema_id;
         String strPlatoon = redis.getValueByKey(key);
         //缓存不为空
         if(strPlatoon != null && !strPlatoon.equals("")){
@@ -49,5 +49,9 @@ public class PLatoonService {
             redis.saveString(key,strPlatoon);
             return platoons;
         }
+    }
+
+    public PlatoonBean findPlatoonById(int PId){
+        return platoonDao.selectPlatoonById(PId);
     }
 }

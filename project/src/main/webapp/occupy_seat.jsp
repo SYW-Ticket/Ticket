@@ -1,14 +1,20 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: pc000
+  Date: 2018/6/11
+  Time: 11:24
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<!-- saved from url=(0044)https://www.maizuo.com/#/film/4206?_k=ehejf2 -->
+<!-- saved from url=(0053)https://www.maizuo.com/#/schedule/886781442?_k=y09dyr -->
 <html class=" ">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${filmDetail.filmName}</title>
-    <base href="<%=request.getContextPath()%>/"/>
+    <title>超时空同居</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -2298,8 +2304,8 @@
             display: inline-block;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf8" async="" src="./影片详情页+在线购票页_files/vds.js.下载"></script>-->
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./影片详情页+在线购票页_files/14-9d4191.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf8" async="" src="./选座页面_files/vds.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/14-9d4191.js.下载"></script>-->
     <style type="text/css">
         .mz-pagination {
             font-size: 14px;
@@ -2688,7 +2694,7 @@
             text-decoration: none;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./影片详情页+在线购票页_files/11-54fadc.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/11-54fadc.js.下载"></script>-->
     <style type="text/css">
         .cinema-list-view {
             padding: 23px 0 80px;
@@ -2960,7 +2966,7 @@
             color: #b2b2b2;
         }
     </style>
-    <!--<script type="text/javascript" charset="utf-8" async="" src="./影片详情页+在线购票页_files/4-94c1ee.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/4-94c1ee.js.下载"></script>-->
     <style type="text/css">
         .mini-seating-chart {
             padding: 20px 12px;
@@ -3610,7 +3616,600 @@
             display: none;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!--<script type="text/javascript" charset="utf8" async="" src="./选座页面_files/jsapi"></script>-->
+    <link href="./选座页面_files/unifull.min.css" rel="stylesheet" type="text/css">
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/66-33797b.js.下载"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/25-258edc.js.下载"></script>-->
+    <style type="text/css">
+        .register-view {
+            width: 1000px;
+        }
+
+        .register-view .panel {
+            width: 500px;
+            padding-bottom: 97px;
+            display: inline-block;
+        }
+
+        .register-view .panel h3 {
+            font-size: 24px;
+            font-weight: normal;
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            margin-top: 0;
+            padding: 35px 0 22px 0;
+        }
+
+        .register-view .panel ul {
+            margin: 0 auto;
+            width: 310px;
+            color: #ccc;
+        }
+
+        .register-view .panel li {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .register-view .panel li div {
+            position: absolute;
+            color: #ccc;
+            font-size: 12px;
+            z-index: 99;
+            top: 9px;
+            right: 5px;
+        }
+
+        .register-view .panel li input {
+            width: 100%;
+            height: 34px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            text-indent: 20px;
+        }
+
+        .register-view .panel li input:focus {
+            border: 1px solid #ff6640;
+        }
+
+        .register-view .panel li p {
+            display: none;
+            color: #ff6640;
+            margin: 0;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+
+        .register-view .panel li.active {
+            margin-bottom: 0px;
+        }
+
+        .register-view .panel li.active p {
+            display: inline-block;
+        }
+
+        .register-view .panel .error {
+            color: #ff6640;
+            margin: -25px 0 8px 20px;
+            text-align: left;
+        }
+
+        .register-view .panel .error.hidden {
+            display: none;
+        }
+
+        .register-view .panel .send-btn {
+            color: #ff6640;
+            cursor: pointer;
+        }
+
+        .register-view .panel .captcha {
+            width: 67px;
+            height: 23px;
+            top: 6px;
+        }
+
+        .register-view .panel .captcha img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .register-view .panel p {
+            text-align: center;
+            margin-top: 30px;
+            color: #f00;
+        }
+
+        .register-view .panel button {
+            width: 310px;
+            height: 46px;
+            margin: 0 0 30px 95px;
+            background-color: #ff6640;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .register-view .panel button:hover {
+            background-color: #ff5000;
+        }
+
+        .register-view .panel .title {
+            font-size: 12px;
+            color: #808080;
+            text-align: center;
+        }
+
+        .register-view .panel .title a {
+            color: #ff6640;
+        }
+
+        .register-view .panel .title input {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .register-view .billboard {
+            text-align: center;
+            width: 369px;
+            padding-bottom: 97px;
+            float: right;
+        }
+
+        .register-view .billboard h5 {
+            margin: 47px 0 0 0;
+            font-size: 14px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .register-view .billboard .poster {
+            width: 369px;
+            margin-top: 63px;
+        }
+
+        .register-view .billboard .poster img {
+            width: 100%;
+        }
+
+        .register-view .success {
+            text-align: center;
+            padding: 100px;
+        }
+
+        .register-view .success img {
+            vertical-align: middle;
+        }
+
+        .register-view .success h2 {
+            margin-left: 15px;
+            font-size: 18px;
+            color: #808080;
+            font-weight: normal;
+            display: inline-block;
+        }
+
+        .register-view .success p {
+            margin: 19px 0 0 0;
+            font-size: 12px;
+            color: #808080;
+        }
+
+        .register-view .success p span {
+            color: #ff6640;
+        }
+
+        .register-view .success p i {
+            color: #ff6640;
+            font-style: normal;
+            font-size: 24px;
+        }
+    </style>
+    <!--<script type="text/javascript" charset="utf-8" async="" src="./选座页面_files/5-3ee90a.js.下载"></script>-->
+    <style type="text/css">
+        .mz-alert {
+            padding: 5px 48px 5px 16px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .mz-alert p {
+            margin: 0;
+        }
+
+        .mz-alert.error {
+            border: 1px solid #fdc;
+            background-color: #ffeee6;
+        }
+
+        .mz-alert.success {
+            border: 1px solid #e7f6e1;
+            background-color: #f3faf0;
+        }
+
+        .mz-alert.info {
+            border: 1px solid #cfe8fb;
+            background-color: #e7f4fd;
+        }
+
+        .mz-alert.warning {
+            border: 1px solid #fec;
+            background-color: #fff7e6;
+        }
+    </style>
+    <style type="text/css">
+        .breadcrumb {
+            width: 100%;
+            line-height: 42px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0);
+            display: inline-block;
+        }
+
+        .breadcrumb .breadcrumb-list {
+            display: table;
+            table-layout: fixed;
+            height: 100%;
+            width: 100%;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .breadcrumb .breadcrumb-item {
+            display: inline-block;
+            width: 290px;
+            margin-right: 13px;
+            color: #ddd;
+            font-size: 14px;
+            border-bottom: 4px solid #ddd;
+        }
+
+        .breadcrumb .breadcrumb-item:last-child {
+            margin-right: 0;
+        }
+
+        .breadcrumb .breadcrumb-item .breadcrumb-num {
+            margin-right: 4px;
+            font-style: normal;
+            background-color: #ddd;
+            border-radius: 100%;
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            line-height: 26px;
+            color: #fff;
+        }
+
+        .breadcrumb .breadcrumb-item.active {
+            border-bottom-color: #36bfd1;
+            color: #36bfd1;
+        }
+
+        .breadcrumb .breadcrumb-item.active .breadcrumb-num {
+            background-color: #36bfd1;
+        }
+    </style>
+    <style type="text/css">
+        .schedule-detail-view {
+            padding: 42px 0 80px 0;
+        }
+
+        .schedule-detail-view .breadcrumb {
+            margin-bottom: 20px;
+        }
+
+        .schedule-detail-view .seating-chart-view {
+            width: 806px;
+            padding: 40px;
+            margin: 0px 13px 0 0;
+            position: relative;
+        }
+
+        .schedule-detail-view .seating-chart-view .mz-alert {
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            top: 70px;
+        }
+
+        .schedule-detail-view .seating-chart-view .introduce {
+            color: #808080;
+            padding-bottom: 40px;
+            margin: 0 auto;
+            width: 580px;
+            height: 24px;
+        }
+
+        .schedule-detail-view .seating-chart-view .introduce .seat {
+            position: relative;
+        }
+
+        .schedule-detail-view .seating-chart-view .introduce i {
+            font-size: 24px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .schedule-detail-view .seating-chart-view .introduce li {
+            float: left;
+            position: relative;
+            margin-right: 15px;
+            margin-left: 30px;
+        }
+
+        .schedule-detail-view .seating-chart-view .map {
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .schedule-detail-view .seating-chart-view .map .screen {
+            padding: 10px 0;
+            text-align: center;
+            background: url(//static.maizuo.com/pc/v1/static/asset/6352257bfcd9b5bc1c937bdb19feeca7.png) no-repeat center center;
+            font-size: 14px;
+            color: #b2b2b2;
+            margin: 0 auto;
+        }
+
+        .schedule-detail-view .seating-chart-view .seats {
+            overflow: auto;
+            position: relative;
+            width: 738px;
+            margin: 0 auto;
+            /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+            /*定义滚动条轨道*/
+            /*定义滑块*/
+        }
+
+        .schedule-detail-view .seating-chart-view .seats::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+        }
+
+        .schedule-detail-view .seating-chart-view .seats::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #f5f5f5;
+        }
+
+        .schedule-detail-view .seating-chart-view .seats::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #d2d2d2;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat {
+            position: absolute;
+            display: inline-block;
+            cursor: pointer;
+            color: #e5e5e5;
+            font-size: 24px;
+            transition: all 0.4s ease;
+            line-height: 24px;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.normal-seat {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background-color: #e5e5e5;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.selected {
+            color: #36bfd1;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.selected i {
+            background-color: #fff;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.broken {
+            background-color: #fff;
+            color: #ff6640;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.occupied {
+            background-color: #fff;
+            color: #ff6640;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.occupied.broken {
+            color: #ff6640;
+        }
+
+        .schedule-detail-view .seating-chart-view .seat.double {
+            background-color: #fff;
+        }
+
+        .schedule-detail-view .seating-chart-view .axis-y .coord {
+            position: absolute;
+            background: #ccc;
+            width: 24px;
+            height: 24px;
+            border-radius: 100%;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        .schedule-detail-view .seating-chart-view .axis-middle-y {
+            width: 2px;
+            border-left: 2px dashed #36bfd1;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .schedule-detail-view .seating-chart-view,
+        .schedule-detail-view .information-view {
+            border: 5px solid #e5e5e5;
+            border-radius: 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .schedule-detail-view .seating-chart-view .curtain,
+        .schedule-detail-view .information-view .curtain {
+            padding: 80px 0;
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .schedule-detail-view .information-view {
+            padding: 25px;
+            width: 230px;
+            color: #808080;
+        }
+
+        .schedule-detail-view .information-view .film {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .schedule-detail-view .information-view .film img {
+            float: left;
+            margin-bottom: 20px;
+        }
+
+        .schedule-detail-view .information-view .film p {
+            padding-left: 90px;
+            margin: 0 0 5px 0;
+        }
+
+        .schedule-detail-view .information-view .film .name {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0 10px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 10px;
+        }
+
+        .schedule-detail-view .information-view .pre-order,
+        .schedule-detail-view .information-view .fee {
+            padding: 20px 0 0 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .schedule-detail-view .information-view .pre-order li,
+        .schedule-detail-view .information-view .fee li {
+            margin-bottom: 15px;
+        }
+
+        .schedule-detail-view .information-view .pre-order li label,
+        .schedule-detail-view .information-view .fee li label {
+            margin-right: 5px;
+        }
+
+        .schedule-detail-view .information-view .pre-order .tip {
+            margin: 5px 0 5px 0;
+            padding-left: 40px;
+        }
+
+        .schedule-detail-view .information-view .pre-order .date {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .schedule-detail-view .information-view .pre-order .seats {
+            width: 80%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .schedule-detail-view .information-view .pre-order .seat {
+            border: 1px solid #36bfd1;
+            color: #36bfd1;
+            border-radius: 20px;
+            padding: 7px 0;
+            margin: 0 8px 10px 0;
+            display: inline-block;
+            width: 82px;
+            text-align: center;
+        }
+
+        .schedule-detail-view .information-view .fee {
+            padding: 10px 0 0;
+        }
+
+        .schedule-detail-view .information-view .fee span {
+            font-size: 32px;
+            color: #ff6640;
+        }
+
+        .schedule-detail-view .information-view .mobile {
+            padding: 20px 0;
+        }
+
+        .schedule-detail-view .information-view .mobile p {
+            margin: 0 0 10px 0;
+        }
+
+        .schedule-detail-view .information-view .mobile input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 194px;
+            height: 34px;
+            padding: 0 20px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .schedule-detail-view .information-view .mobile button {
+            background: #ff6640;
+            border-radius: 20px;
+            border: none;
+            color: #fff;
+            width: 236px;
+            height: 46px;
+            font-size: 16px;
+            margin-top: 20px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .schedule-detail-view .information-view .mobile button.disabled {
+            background: #ccc;
+        }
+
+        .schedule-detail-view .information-view .mobile button.disabled:hover {
+            background-color: #ccc;
+        }
+
+        .schedule-detail-view .information-view .mobile button:hover {
+            background-color: #ff5000;
+        }
+
+        .schedule-detail-view .notice {
+            color: #808080;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 35px;
+        }
+
+        .schedule-detail-view .notice p {
+            color: #333;
+            margin: 3px 0;
+        }
+
+        .schedule-detail-view .notice ol {
+            padding: 0;
+        }
+
+        .schedule-detail-view .notice ol li {
+            list-style-type: decimal;
+            margin: 0px 0 5px 14px;
+        }
+    </style>
+    <style type="text/css">
+        .occupied{
+
+        }
+    </style>
 </head>
 
 <body>
@@ -3626,26 +4225,15 @@
                     <div class="menu">
                         <ul>
                             <li class="">首页</li>
-                            <li class="active">影片</li>
+                            <li class="">影片</li>
                             <li class="">影院</li>
                         </ul>
                     </div>
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
                         <ul>
-                            <c:choose>
-                                <c:when test="${user==null}">
-                                    <ul>
-                                        <li><a href="login.jsp">快速登陆</a></li>
-                                    </ul>
-                                </c:when>
-                                <c:otherwise>
-                                    <ul>
-                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
-                                        <li><a href="users/logout">退出登陆</a></li>
-                                    </ul>
-                                </c:otherwise>
-                            </c:choose>
+                            <li>手机用户7635</li>
+                            <li>退出</li>
                         </ul>
                     </div>
                 </div>
@@ -4133,148 +4721,128 @@
                         </div>
                     </div>
                 </div>
-                <!-- react-empty: 43 -->
+                <!-- react-empty: 3017 -->
                 <!-- react-empty: 44 -->
             </div>
             <div class="application-main">
-                <div class="film-detail-view">
-                    <div class="banner"><span class="hidden"></span>
-                        <div class="play-button"><span>预告片</span><i class="icon-play play"></i></div>
-                        <div class="video-popup-view">
-                            <div class="mz-modal-mask mz-modal-mask-hidden"></div>
-                            <div class="mz-modal-wrap mz-modal-wrap-hidden">
-                                <div class="mz-modal">
-                                    <div class="mz-modal-content"><button class="mz-modal-close">×</button>
-                                        <div class="mz-modal-header"></div>
-                                        <div class="mz-modal-body">
-                                            <div id="youkuplayer"><iframe width="100%" height="100%" allow="autoplay" src="./影片详情页+在线购票页_files/XMzU2NDIxODA1Mg==.html" id="iframeId" frameborder="0" allowfullscreen="true" scrolling="no"></iframe></div>
-                                            <!-- react-text: 1859 -->}
-                                            <!-- /react-text -->
-                                        </div>
-                                        <div class="mz-modal-footer"></div>
-                                    </div>
-                                </div>
+                <div class="schedule-detail-view inner">
+                    <div class="breadcrumb">
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><i class="breadcrumb-num">1</i>
+                                <!-- react-text: 3295 -->选择影院，电影
+                                <!-- /react-text -->
+                            </li>
+                            <li class="breadcrumb-item active"><i class="breadcrumb-num">2</i>
+                                <!-- react-text: 3298 -->在线选座
+                                <!-- /react-text -->
+                            </li>
+                            <li class="breadcrumb-item"><i class="breadcrumb-num">3</i>
+                                <!-- react-text: 3301 -->确认订单并支付
+                                <!-- /react-text -->
+                            </li>
+                            <li class="breadcrumb-item"><i class="breadcrumb-num">4</i>
+                                <!-- react-text: 3304 -->到店自助取票观影
+                                <!-- /react-text -->
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="seating-chart-view">
+                        <div class="introduce clearfix">
+                            <ul>
+                                <li><i class="seat normal-seat"></i>
+                                    <!-- react-text: 3310 -->可购座位
+                                    <!-- /react-text -->
+                                </li>
+                                <li><i class="seat icon-check selected"></i>
+                                    <!-- react-text: 3313 -->您选择的座位
+                                    <!-- /react-text -->
+                                </li>
+                                <li><i class="seat icon-people occupied"></i>
+                                    <!-- react-text: 3316 -->已售出座位
+                                    <!-- /react-text -->
+                                </li>
+                                <li><i class="seat icon-double-lover double"></i>
+                                    <!-- react-text: 3319 -->情侣座位
+                                    <!-- /react-text -->
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="map">
+                            <div class="screen">武汉紫星影城 派拉蒙厅</div>
+                            <c:forEach begin="1" end="${platoon.hallBean.col_max}" var="i">
+                                <div class="axis-y"><span class="coord" style="left: 0px; top: ${(i-1)*32+80}px;">${i}</span></div>
+                            </c:forEach>
+                            <div class="seats" style="max-width: 650px; width: 384px; height: 284px;">
+                                <div class="axis-middle-y" style="left: 188px; top: 20px; height: 244px;"></div>
+                                <c:forEach var="seat" items="${platoon.hallBean.seats}">
+                                    <c:if test="${seat.flag !=0}">
+                                        <c:forEach items="${seatsOccupiedIds}" var="idOccupied">
+                                            <c:choose>
+                                                <c:when test="${seat.id != idOccupied}">
+                                                    <div class="seat normal-seat" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class="seat icon-people occupied" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </c:if>
+                                </c:forEach>
                             </div>
+                        </div>
+                        <div class="notice">
+                            <p>使用说明：</p>
+                            <ol>
+                                <li>该影城暂不支持订座票退票，请您确认后再进行购买；</li>
+                                <li>请确定号码无误,支付成功后将无法修改</li>
+                                <li>请在15分钟内完成支付,超时系统将释放你选定的座位</li>
+                            </ol>
                         </div>
                     </div>
-                    <div class="inner clearfix">
-                        <div class="information clearfix"><img src="http://119.23.42.247:83/img/${filmDetail.filmImg}" width="254">
-                            <div class="outline">
-                                <div class="cover-label"><i>${filmDetail.threeDLV}</i><i>${filmDetail.language}</i><i>${filmDetail.filmLength}分钟</i></div>
-                                <div class="title">
-                                    <h3>${filmDetail.filmName}</h3><span class="grade"><!-- react-text: 1872 -->${filmDetail.filmScore}<!-- /react-text --></span><span class="intro"><!-- react-text: 1875 -->[&nbsp;&nbsp;<!-- /react-text --><!-- react-text: 1876 -->${filmDetail.details}<!-- /react-text --><!-- react-text: 1877 -->&nbsp;&nbsp;]<!-- /react-text --></span></div>
-                                <div class="film-intro">
-                                    <ul class="film-intro-one">
-                                        <p id="filmID" style="display: none">${filmDetail.id}</p>
-                                        <li><label>上映：</label><span><fmt:formatDate value="${filmDetail.filmStartDate}" pattern="yyyy-MM-dd"/> </span></li>
-                                        <li><label>类型：</label><span><c:forEach var="type" items="${filmDetail.types}">${type} /</c:forEach> </span></li>
-                                        <li><label>导演：</label><span>${filmDetail.director}</span></li>
-                                    </ul>
-                                    <ul class="film-intro-two">
-                                        <li><label>剧情：</label>
-                                            <div class="synopsis">
-                                                <!-- react-text: 1893 -->${filmDetail.synopsis}
-                                                <!-- /react-text --><span>更多</span></div>
-                                        </li>
-                                        <li class="avatar"><label>主演：</label>
-                                            <div class="avatar-wrap">
-                                                <ul class="film-intro-three">
-                                                    <c:forEach items="${filmDetail.actors}" var="actor">
-                                                    <li><img src="http://119.23.42.247:83/img/${actor.actorPhoto}"><span>${actor.actorName}</span></li>
-                                                    </c:forEach>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="information-view">
+                        <div class="film clearfix"><img src="http://119.23.42.247:83/img/${platoon.film.filmImg}" width="80">
+                            <p class="name">${platoon.film.filmName}</p>
+                            <p>${platoon.film.threeDLV}</p>
+                            <p>${platoon.film.language}</p>
+                            <p>${platoon.film.filmLength}分钟</p>
                         </div>
-                        <div class="poster">
-                            <div class="slick-initialized slick-slider"><button type="button" data-role="none" class="slick-arrow slick-prev" style="display: block;"> Previous</button>
-                                <div class="slick-list">
-                                    <div class="slick-track" style="opacity: 1; width: 2400px; transform: translate3d(0px, 0px, 0px);"></div>
-                                </div><button type="button" data-role="none" class="slick-arrow slick-next" style="display: block;"> Next</button></div>
-                            <div class="popup-poster">
-                                <div class="mz-modal-mask mz-modal-mask-hidden"></div>
-                                <div class="mz-modal-wrap mz-modal-wrap-hidden">
-                                    <div class="mz-modal">
-                                        <div class="mz-modal-content"><button class="mz-modal-close hidden">×</button>
-                                            <div class="mz-modal-header"></div>
-                                            <div class="mz-modal-body"><button class="icon-close"></button><span class="icon-pre"></span><img><span class="icon-next"></span></div>
-                                            <div class="mz-modal-footer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="pre-order">
+                            <ul>
+                                <li><label>影城：</label><span>武汉紫星影城</span></li>
+                                <li><label>影厅：</label><span>${platoon.hallBean.hall_name}</span></li>
+                                <li><label>场次：</label><span class="date"><fmt:formatDate value="${platoon.show_start_time}" pattern="yy-MM-dd HH:mm"/> </span></li>
+                                <li><label>座位：</label>
+                                    <div class="seats"></div>
+                                    <!-- react-text: 3352 -->
+                                    <!-- /react-text -->
+                                </li>
+                            </ul>
                         </div>
-                        <div class="online">
-                            <div class="cinema-select">
-                                <div class="header">
-                                    <h3>在线购票</h3></div>
-                                <div class="content">
-                                    <div class="item date"><span>日期：</span>
-                                        <div class="clearfix item-inner">
-                                            <ul>
-                                                <%--<li class="active">2018-06-05 (今天)</li>--%>
-                                                <c:forEach items="${dates}" var="date">
-                                                    <li class="" onclick="event2('${date}')">${date}</li>
-                                                </c:forEach>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="item"><span>区域：</span>
-                                        <div class="clearfix item-inner">
-                                            <ul>
-                                                <c:forEach items="${areas}" var="area">
-                                                <li class="" onclick="findCinema(${area.id})">${area.area_name}</li>
-                                                </c:forEach>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="item"><span>影院：</span>
-                                        <div class="item-inner">
-                                            <ul class="cineme-panel clearfix" id="cinemas">
-
-                                            </ul>
-                                        </div>
-                                        <div class="mz-pagination"><i class="icon-pre pre"></i>
-                                            <div class="pagination-pages"><span class="current">1</span><span>/10</span></div><i class="icon-next next"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="foretell">
-                                <div class="header">
-                                   <div id="one"><h4>武汉博影时代影城</h4><span>027-83806099</span><span class="address">武汉市硚口区航空路13号</span></div><i class="icon-caret-up"></i>
-                                <div class="content clearfix" id="two">
-                                    <ul class="title clearfix">
-                                        <li class="time">放映时间</li>
-                                        <li>语言/版本</li>
-                                        <li>放映厅</li>
-                                        <li>票价</li>
-                                        <li class="buy">立即订票</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="fee">
+                            <ul>
+                                <li><label>总计：</label><span>¥0</span></li>
+                            </ul>
                         </div>
-                        <!-- react-empty: 1972 -->
+                        <div class="mobile">
+                            <p>请输入您的取票手机号：</p><input type="text" placeholder="请输入手机号码" maxlength="11"><button type="button" class="disabled">确认下单</button></div>
                     </div>
                 </div>
             </div>
             <div class="footer">
                 <div class="content inner">
-                    <h2><img src="./影片详情页+在线购票页_files/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
-                    <div class="service"><img src="./影片详情页+在线购票页_files/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
+                    <h2><img src="./选座页面_files/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
+                    <div class="service"><img src="./选座页面_files/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
                     <div class="follow">
-                        <div class="item"><img src="./影片详情页+在线购票页_files/b9e924f8e417675ce2e125649d7530ce.png">
-                            <div class="tip"><img src="./影片详情页+在线购票页_files/ec5f0f45fc548050c5e613a416294452.png" width="151">
+                        <div class="item"><img src="./选座页面_files/b9e924f8e417675ce2e125649d7530ce.png">
+                            <div class="tip"><img src="./选座页面_files/ec5f0f45fc548050c5e613a416294452.png" width="151">
                                 <p>扫码下载卖座电影APP</p><span class="icon-caret-down"></span></div>
                         </div>
-                        <div class="item"><img src="./影片详情页+在线购票页_files/d4af003a3ca8ad39fb8715440c15b17c.png">
-                            <div class="tip"><img src="./影片详情页+在线购票页_files/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
+                        <div class="item"><img src="./选座页面_files/d4af003a3ca8ad39fb8715440c15b17c.png">
+                            <div class="tip"><img src="./选座页面_files/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
                                 <p>扫码关注卖座官方微信</p><span class="icon-caret-down"></span></div>
                         </div>
                         <div class="item">
-                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="./影片详情页+在线购票页_files/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
+                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="./选座页面_files/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
                         </div>
                     </div>
                 </div>
@@ -4318,82 +4886,14 @@
                             <!-- /react-text -->
                             <!-- react-text: 114 -->maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318
                             <!-- /react-text -->
-                        </p><img src="./影片详情页+在线购票页_files/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
+                        </p><img src="./选座页面_files/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-
-    var strdate;
-
-    function event2(str) {
-        strdate = str;
-    }
-    
-    function findPlatoon(cinema_id) {
-        $("#one").html("");
-        $("#three").html("");
-        $("#two").html("");
-        var film_id = $("#filmID").html();
-        $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
-            $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
-        });
-
-        $.get("cinema/findPlatoon",{"film_id":film_id,"cinema_id":cinema_id,"show_start_date":strdate},function (data) {
-                 console.log(data);
-                $.each(data,function (index,obj) {
-                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ format(obj.show_start_time,"HH:mm")+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
-                });
-        });
-
-    }
-
-
-    function findCinema(areaid) {
-        $("#cinemas").html("");
-        $.get("cinema/findCinema",{"areaid":areaid},function (data) {
-
-          $.each(data,function (index,obj) {
-              $("#cinemas").append("<li onclick='findPlatoon("+obj.id+")'>"+obj.cinema_name+"</li>");
-          });
-        });
-    }
-    //封装时间格式
-    function format(time, format) {
-        var t = new Date(time);
-        var tf = function (i) {
-            return (i < 10 ? '0' : '') + i
-        };
-        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function (a) {
-            switch (a) {
-                case 'yyyy':
-                    return tf(t.getFullYear());
-                    break;
-                case 'MM':
-                    return tf(t.getMonth() + 1);
-                    break;
-                case 'mm':
-                    return tf(t.getMinutes());
-                    break;
-                case 'dd':
-                    return tf(t.getDate());
-                    break;
-                case 'HH':
-                    return tf(t.getHours());
-                    break;
-                case 'ss':
-                    return tf(t.getSeconds());
-                    break;
-            }
-        })
-    }
-</script>
-
-
-<!--<script src="./影片详情页+在线购票页_files/app-92cd8fd4df.js.下载"></script>-->
-<!--<script type="text/javascript" src="./影片详情页+在线购票页_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
+<!--<script src="./选座页面_files/app-92cd8fd4df.js.下载"></script>-->
+<!--<script type="text/javascript" src="./选座页面_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
 </body>
 
 </html>

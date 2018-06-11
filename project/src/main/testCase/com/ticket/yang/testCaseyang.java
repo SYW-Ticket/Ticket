@@ -16,11 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 /**
  * Created by Shinelon on 2018/6/6.
  */
@@ -176,13 +176,10 @@ public class testCaseyang {
 
 
     @Test
-    public void testCase11(){
+    public void testCase11() throws InterruptedException {
         removeJob.testremoveJob(5);
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       Thread.sleep(50000);
+
     }
 
 

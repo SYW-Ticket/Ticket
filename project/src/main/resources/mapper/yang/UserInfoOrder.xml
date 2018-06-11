@@ -6,7 +6,9 @@
     <resultMap id="orderResultMapper" type="com.ticket.UserInfo.bean.Order">
         <id column="id" property="id" javaType="java.lang.Integer"/>
         <result column="cinema_id" property="cinemaId" javaType="java.lang.Integer"/>
+
         <result column="seat_id" property="seatId" javaType="java.lang.Integer"/>
+
         <result column="film_id" property="filmId" javaType="java.lang.Integer"/>
         <result column="ticket_num" property="ticketNum" javaType="java.lang.Integer"/>
         <result column="price" property="price" javaType="java.lang.Double"/>

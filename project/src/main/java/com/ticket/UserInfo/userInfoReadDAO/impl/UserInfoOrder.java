@@ -1,18 +1,16 @@
 package com.ticket.UserInfo.userInfoReadDAO.impl;
 
 
-import com.google.gson.Gson;
 import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
+import com.ticket.UserInfo.util.MyselfException.OrderNotExit;
 import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,11 +27,25 @@ public class UserInfoOrder extends SqlSessionDaoSupport implements IUserinfoOrde
     private IRedis red;
 
 
-    /**
+
+/*
+    */
+/**
      *   此方法是未支付订单表查询
      * @param costState
      */
     @Override
+    public Order selectOrder(int platoonId, int costState, int seatId) throws OutOfTimeYang, OrderNotExit {
+    return null;
+
+
+
+   }
+
+
+
+
+    /*@Override
     public Order selectOrder(String tel,int costState) throws OutOfTimeYang {
 
         Gson gson = new Gson();
@@ -91,7 +103,13 @@ public class UserInfoOrder extends SqlSessionDaoSupport implements IUserinfoOrde
                 return  null;
             }
         }
-    }
+    }*/
+
+
+
+
+
+
 
 
     /**

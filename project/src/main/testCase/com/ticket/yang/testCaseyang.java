@@ -2,8 +2,12 @@ package com.ticket.yang;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.UserInfoService.deleteService.AyTestJob;
+import com.ticket.UserInfo.UserInfoService.deleteService.DeleteByTime;
+import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
+import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.*;
@@ -64,7 +68,11 @@ public class testCaseyang {
     //测试订单的逻辑
     @Test
     public void testCase4(){
-        userinfoOrder.selectOrder(0);
+        try {
+            userinfoOrder.selectOrder("13554244942",0);
+        } catch (OutOfTimeYang outOfTimeYang) {
+            outOfTimeYang.printStackTrace();
+        }
 
     }
 

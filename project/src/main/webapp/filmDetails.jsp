@@ -4336,7 +4336,7 @@
         $("#one").html("");
         $("#three").html("");
         $("#two").html("");
-        var film_id = $("#filmID").append();
+        var film_id = $("#filmID").html();
         $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
             $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
         });

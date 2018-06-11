@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author wangpeng
@@ -30,5 +31,12 @@ public class TestSeat {
 //        }
         HallBean hall = hallDao.selectHallWithID(1);
         System.out.println(hall);
+    }
+    @Test
+    public void testSelectAllSeatOccupiesByPlatoonId(){
+        List<Integer> ids = seatDao.selectAllSeatOccupiesByPlatoonId(1);
+        for (Integer id : ids) {
+            System.out.println(id);
+        }
     }
 }

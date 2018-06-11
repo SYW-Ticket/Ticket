@@ -4205,6 +4205,11 @@
             margin: 0px 0 5px 14px;
         }
     </style>
+    <style type="text/css">
+        .occupied{
+
+        }
+    </style>
 </head>
 
 <body>
@@ -4771,7 +4776,16 @@
                                 <div class="axis-middle-y" style="left: 188px; top: 20px; height: 244px;"></div>
                                 <c:forEach var="seat" items="${platoon.hallBean.seats}">
                                     <c:if test="${seat.flag !=0}">
-                                        <div class="seat normal-seat" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
+                                        <c:forEach items="${seatsOccupiedIds}" var="idOccupied">
+                                            <c:choose>
+                                                <c:when test="${seat.id != idOccupied}">
+                                                    <div class="seat normal-seat" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <div class="seat icon-people occupied" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
                                     </c:if>
                                 </c:forEach>
                             </div>
@@ -4796,7 +4810,7 @@
                             <ul>
                                 <li><label>影城：</label><span>武汉紫星影城</span></li>
                                 <li><label>影厅：</label><span>${platoon.hallBean.hall_name}</span></li>
-                                <li><label>场次：</label><span class="date"><fmt:formatDate value="${platoon.show_start_time}" type="yy-MM-dd HH:mm"/> </span></li>
+                                <li><label>场次：</label><span class="date"><fmt:formatDate value="${platoon.show_start_time}" pattern="yy-MM-dd HH:mm"/> </span></li>
                                 <li><label>座位：</label>
                                     <div class="seats"></div>
                                     <!-- react-text: 3352 -->

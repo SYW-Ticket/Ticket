@@ -26,7 +26,7 @@ public class CinemaController {
 
     @ResponseBody
     @RequestMapping("/findCinema")
-    public Object findCinema(@RequestParam("areaId") String areaId){
+    public Object findCinema(@RequestParam("areaid") String areaId){
         List<CinemaBean> cinemas= cinemaService.findCinema(Integer.parseInt(areaId));
         return cinemas;
     }

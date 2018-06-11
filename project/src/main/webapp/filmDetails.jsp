@@ -4344,7 +4344,7 @@
         $.get("cinema/findPlatoon",{"film_id":film_id,"cinema_id":cinema_id,"show_start_date":strdate},function (data) {
                  console.log(data);
                 $.each(data,function (index,obj) {
-                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ obj.show_start_time+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
+                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ format(obj.show_start_time,"HH:mm")+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
                 });
         });
 

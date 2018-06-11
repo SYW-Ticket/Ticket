@@ -13,4 +13,9 @@
         SELECT * FROM seat
         WHERE hall_id = #{hallId}
     </select>
+
+    <select id="selectAllSeatOccupiesByPlatoonId" resultType="java.lang.Integer">
+        SELECT so.seat_id FROM f_order fo JOIN seat_occupied so ON fo.id = so.order_id
+        WHERE fo.platoon_id = #{platoonId}
+    </select>
 </mapper>

@@ -74,7 +74,10 @@ public class FilmService {
             String strPageInfo = (redisImpl.getValueByKey("filmDetailsLoadingPageInfo"));
             pageInfo = gson.fromJson(strPageInfo,PageInfo.class);
             //更新list
-            pageInfo.setList(filmDetails);
+            if(pageInfo != null) {
+                pageInfo.setPageNum(currentPage);
+                pageInfo.setList(filmDetails);
+            }
             //返回
             return pageInfo;
         }

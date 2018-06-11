@@ -25,6 +25,8 @@
         <result column="film_img" property="filmImg" javaType="java.lang.String"/>
     </resultMap>
 
+
+<!--根据支付状态查询订单-->
     <select id="selectUserOrder" resultMap="orderResultMapper">
         select * from f_order o
 	join user u
@@ -40,5 +42,30 @@
 	and o.cost_state=#{costState};
     </select>
 
+    <!--查询历史订单-->
+    <select id="selectHistoryOrder" resultMap="orderResultMapper">
+        select * from f_order o
+        join user u
+        join platoon p
+        join film f
+        join seat s
+        join cinema c
+        on o.user_id=u.id
+        and o.platoon_id=p.id
+        and o.film_id=f.id
+        and o.seat_id=s.id
+        and o.cinema_id=c.id
+        and p.show_start_time &lt; #{nowtime};
+    </select>
 
+    <!--显示未支付的订单数量-->
+    <select id="selectNumberofUnpay" resultType="java.lang.Integer">
+        select count(1) from f_order where cost_state=#{costState};
+    </select>
+
+
+    <!--删除未支付订单-->
+    <delete id="deleteOrderById" parameterType="com.ticket.UserInfo.bean.Order">
+        delete from f_order where id=#{id}
+    </delete>
 </mapper>

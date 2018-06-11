@@ -18,4 +18,6 @@
         <property name="connectionFactory" ref="jedisConnFactory"></property>
     </bean>
 
+
+
 </beans>

@@ -91,6 +91,29 @@ public class UserInfoDAO extends SqlSessionDaoSupport implements IUserInfoDAO {
 
         return update;
     }
+
+
+
+    //***********************************订单的方法****************************************************************************
+    //********************************************************************************************************************************
+
+    /**
+     *      订单删除方法
+     * @param id
+     * @return
+     */
+    @Override
+    public int deleteOrderById(int id) {
+
+        int flag = getSqlSession().delete("com.ticket.UserInfo.bean.OrderMapper.deleteOrderById",id);
+
+        return flag;
+    }
+
+
+
+
+
 }
 
 

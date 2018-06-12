@@ -3907,6 +3907,7 @@
             padding: 40px;
             margin: 0px 13px 0 0;
             position: relative;
+            float: left;
         }
 
         .schedule-detail-view .seating-chart-view .mz-alert {
@@ -4206,9 +4207,7 @@
         }
     </style>
     <style type="text/css">
-        .occupied{
 
-        }
     </style>
 </head>
 
@@ -4757,14 +4756,11 @@
                                     <!-- react-text: 3313 -->您选择的座位
                                     <!-- /react-text -->
                                 </li>
-                                <li><i class="seat icon-people occupied"></i>
+                                <li><i class="seat normal-seat occupied" style="background-image: url('http://119.23.42.247:83/img/occupied.png')"></i>
                                     <!-- react-text: 3316 -->已售出座位
                                     <!-- /react-text -->
                                 </li>
-                                <li><i class="seat icon-double-lover double"></i>
-                                    <!-- react-text: 3319 -->情侣座位
-                                    <!-- /react-text -->
-                                </li>
+
                             </ul>
                         </div>
                         <div class="map">
@@ -4776,15 +4772,11 @@
                                 <div class="axis-middle-y" style="left: 188px; top: 20px; height: 244px;"></div>
                                 <c:forEach var="seat" items="${platoon.hallBean.seats}">
                                     <c:if test="${seat.flag !=0}">
+                                        <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
                                         <c:forEach items="${seatsOccupiedIds}" var="idOccupied">
-                                            <c:choose>
-                                                <c:when test="${seat.id != idOccupied}">
-                                                    <div class="seat normal-seat" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <div class="seat icon-people occupied" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
-                                                </c:otherwise>
-                                            </c:choose>
+                                            <c:if test="${seat.id == idOccupied}">
+                                                <div class="seat normal-seat occupied"  data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;background-image: url('http://119.23.42.247:83/img/occupied.png')"></div>
+                                            </c:if>
                                         </c:forEach>
                                     </c:if>
                                 </c:forEach>
@@ -4892,8 +4884,12 @@
         </div>
     </div>
 </div>
-<!--<script src="./选座页面_files/app-92cd8fd4df.js.下载"></script>-->
-<!--<script type="text/javascript" src="./选座页面_files/browser-blocker-43804fd688.js.下载" charset="utf-8" data-ie-minimum="8"></script>-->
 </body>
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(".couldOccupy").click(function () {
+        $(this).css("background-image","url('http://119.23.42.247:83/img/choosed.png')");
+    });
+</script>
 </html>
+

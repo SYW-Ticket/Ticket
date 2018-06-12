@@ -4206,9 +4206,6 @@
             margin: 0px 0 5px 14px;
         }
     </style>
-    <style type="text/css">
-
-    </style>
 </head>
 
 <body>
@@ -4772,12 +4769,20 @@
                                 <div class="axis-middle-y" style="left: 188px; top: 20px; height: 244px;"></div>
                                 <c:forEach var="seat" items="${platoon.hallBean.seats}">
                                     <c:if test="${seat.flag !=0}">
-                                        <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;"></div>
-                                        <c:forEach items="${seatsOccupiedIds}" var="idOccupied">
-                                            <c:if test="${seat.id == idOccupied}">
+                                        <input type="hidden" value="${seat.name}">
+                                        <c:set var="i" value="${0}"/>
+                                        <c:forEach var="id" items="${seatsOccupiedIds}">
+                                            <c:if test="${id == seat.id}">
                                                 <div class="seat normal-seat occupied"  data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;background-image: url('http://119.23.42.247:83/img/occupied.png')"></div>
+                                                <c:set var="i" value="${1}"/>
+                                                <input type="hidden" value="1">
                                             </c:if>
                                         </c:forEach>
+                                        <c:if test="${i == 0}" >
+                                            <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;" ></div>
+                                            <input type="hidden" value="0">
+                                        </c:if>
+
                                     </c:if>
                                 </c:forEach>
                             </div>
@@ -4804,7 +4809,8 @@
                                 <li><label>影厅：</label><span>${platoon.hallBean.hall_name}</span></li>
                                 <li><label>场次：</label><span class="date"><fmt:formatDate value="${platoon.show_start_time}" pattern="yy-MM-dd HH:mm"/> </span></li>
                                 <li><label>座位：</label>
-                                    <div class="seats"></div>
+                                    <div class="seats displaySelected">
+                                    </div>
                                     <!-- react-text: 3352 -->
                                     <!-- /react-text -->
                                 </li>
@@ -4887,8 +4893,30 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-    $(".couldOccupy").click(function () {
-        $(this).css("background-image","url('http://119.23.42.247:83/img/choosed.png')");
+//    var MaxSelected = 0;
+//    $(".couldOccupy").click(function () {
+//        $(this).css("background-image","url('http://119.23.42.247:83/img/choosed.png')");
+//    });
+    var totalSelected = 0
+    $(".couldOccupy").bind("click", function() {
+        var oc = $(this);
+        var currentSelected =oc.prev("input").val();
+            if (oc.next("input").val() == 0 && totalSelected < 4) {
+                oc.css("background-image", "url('http://119.23.42.247:83/img/choosed.png')");
+                oc.next("input").val(1);
+                totalSelected = totalSelected + 1;
+                $(".displaySelected").append("<span class = 'seat'  id='"+currentSelected+"'>"+currentSelected+"</span>");
+//                $.each($(".displaySelected"))
+            }else {
+                if(oc.next("input").val() == 1) {
+                    $(oc).css("background-image", "none");
+                    oc.next("input").val(0);
+                    totalSelected = totalSelected - 1;
+                    $("#"+currentSelected+"").remove();
+                }else {
+                    alert("最多四张票");
+                }
+            }
     });
 </script>
 </html>

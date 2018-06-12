@@ -1,8 +1,6 @@
 package com.ticket.UserInfo.userInfoReadDAO;
 
 import com.ticket.UserInfo.bean.Order;
-import com.ticket.UserInfo.util.MyselfException.OrderNotExit;
-import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 
 import java.util.List;
 
@@ -12,14 +10,14 @@ import java.util.List;
 public interface IUserinfoOrder {
 
 
-    //查询订单 by tel
-    Order selectOrder(int platoonId,int costState,int seatId) throws OutOfTimeYang, OrderNotExit;
+   /* //查询订单 by tel
+    Order selectOrder(int userId,int costState) throws OutOfTimeYang, OrderNotExit;*/
 
     //显示订单的数量
     int checkOrderNum(int costState);
 
 
     //查询历史订单
-    List<Order> selectHistoryListOrder(String nowtime);
+    List<Order> selectHistoryListOrder(int userId);
 
 }

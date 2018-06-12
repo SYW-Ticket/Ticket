@@ -12,9 +12,11 @@ public class Platoon {
     private Date showStartTime;
     private int hallId;
     private double filmPrice;
+    private Date showStartDate;
 
+    private Hall hall;
 
-
+    private Film film;
 
     public int getId() {
         return id;
@@ -54,5 +56,29 @@ public class Platoon {
 
     public void setFilmPrice(double filmPrice) {
         this.filmPrice = filmPrice;
+    }
+
+    public Date getShowStartDate() {
+        return showStartDate;
+    }
+
+    public void setShowStartDate(Date showStartDate) {
+        this.showStartDate = showStartDate;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
+    public void setHall(Hall hall) {
+        this.hall = hall;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 }

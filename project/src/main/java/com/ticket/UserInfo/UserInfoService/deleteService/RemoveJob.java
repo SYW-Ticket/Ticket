@@ -28,7 +28,7 @@ public class RemoveJob {
             JobDetail jobDetail = jobBuilder.build();
             jobDetail.getJobDataMap().put("id",id);
             long nowtime = System.currentTimeMillis();
-            long nows =nowtime+5000;
+            long nows =nowtime+900000;
 
 
            /* String res;

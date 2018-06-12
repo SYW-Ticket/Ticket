@@ -30,10 +30,10 @@ public class DeleteByTime implements Job {
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         int id = jobDataMap.getInt("id");
 
-        System.out.println(id);
+        int costState=2;
 
         //删除订单
-        int i = userInfoOrder.deleteOrderById(id);
+        int i = userInfoOrder.deleteOrderById(id,costState);
 
     }
 

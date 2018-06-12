@@ -5037,7 +5037,8 @@
         if($("#orderButton").prop("class") != "disabled"){
             var userId = $("#user").val();
             var platoonId = $("#platoonId").val();
-            $.post("/",{"ticket_num":totalSelected,"total_price":totalPrice,"user_id":userId,"platon_id":platoonId,"seat_ids":seatIds });
+            window.location.href = "insertOrder/getOrder?ticket_num="+totalSelected+"&total_price="+totalPrice+"&user_id="+userId+"&platon_id="+platoonId+"&seat_ids="+seatIds+""
+//            $.post("insertOrder/getOrder",{"ticket_num":totalSelected,"total_price":totalPrice,"user_id":userId,"platon_id":platoonId,"seat_ids":seatIds });
     }
     })
 

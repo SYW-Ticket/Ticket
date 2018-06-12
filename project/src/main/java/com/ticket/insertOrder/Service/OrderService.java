@@ -36,8 +36,7 @@ public class OrderService {
         //查询缓存，看是否有该用户的订单
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);
-        if (!orderJson.equals("") && orderJson != null) {
-
+        if (orderJson != null&&!orderJson.equals("")) {
             //清空该缓存
             redis.deleteKeyValue(key);
         }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
 import com.ticket.insertOrder.bean.Order;
 import com.ticket.insertOrder.bean.Seat_Occupied;
+import com.ticket.insertOrder.daoRead.OrderDaoRead;
 import com.ticket.insertOrder.daoWrite.OrderDao;
 import com.ticket.insertOrder.daoWrite.Seat_occupiedDao;
 import com.ticket.loginandregister.redis.Redis;
@@ -24,15 +25,19 @@ public class OrderService {
     OrderDao orderDao;
 
     @Autowired
+    OrderDaoRead orderDaoRead;
+
+    @Autowired
     IUserInfoService userInfoService;
 
 
     //订单添加接口
-    public Order insertOrder(int ticket_num,int price,int user_id,int platon_id,int[] seat_ids) {
+    public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids) {
         //查询缓存，看是否有该用户的订单
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);
         if (!orderJson.equals("") && orderJson != null) {
+
             //清空该缓存
             redis.deleteKeyValue(key);
         }
@@ -40,7 +45,7 @@ public class OrderService {
         Date date = new Date();
         Order order = new Order();
         //计算总价
-        double totalPrice = price * ticket_num;
+        double totalPrice = total_price;
         //包装order
         order.setUserId(user_id);
         order.setPlatoonId(platon_id);
@@ -65,12 +70,14 @@ public class OrderService {
             //添加到数据库
             seat_occupiedDao.insertSeat_occupiedDao(seat_occupied);
         }
+        //从数据库中获取该订单
+        Order myOrder = orderDaoRead.selectOrderByID(order.getId());
         //将订单保存到缓存中，在该项目中，一个用户同一时间只能有一个未支付订单
         Gson gson = new Gson();
-        redis.saveStringToSet(key,gson.toJson(order),15);
-        //15分钟后清楚缓存中的订单数据
+        redis.saveStringToSet(key,gson.toJson(myOrder),15);
+        //15分钟后清除缓存中的订单数据
         userInfoService.deleteOrder(order.getId());
-        return order;
+        return myOrder;
     }
 
 }

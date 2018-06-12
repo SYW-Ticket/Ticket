@@ -1,6 +1,7 @@
 package com.ticket.UserInfo.userInfoReadDAO;
 
 import com.ticket.UserInfo.bean.Order;
+import com.ticket.UserInfo.bean.UserBean;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ public interface IUserinfoOrder {
     //查询历史订单
     List<Order> selectHistoryListOrder(int userId);
 
+    UserBean selectUserByID(int user_id);
 }

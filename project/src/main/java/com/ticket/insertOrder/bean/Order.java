@@ -1,5 +1,9 @@
 package com.ticket.insertOrder.bean;
 
+import com.ticket.UserInfo.bean.UserBean;
+import com.ticket.film.entity.PlatoonBean;
+import com.ticket.film.entity.Seat;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,20 +24,32 @@ public class Order implements Serializable{
     private int costState;
     private int userId;
     private int platoonId;
-    private Platoon platoon;
-    private List<Seat> seat;
+    private PlatoonBean platoon;
+    private List<Seat> seats;
     private UserBean user;
 
-    public Platoon getPlatoon() {
+    public PlatoonBean getPlatoon() {
         return platoon;
     }
 
-    public List<Seat> getSeat() {
-        return seat;
+    public void setPlatoon(PlatoonBean platoon) {
+        this.platoon = platoon;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public UserBean getUser() {
         return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
     }
 
     public int getId() {

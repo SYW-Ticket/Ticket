@@ -10,6 +10,9 @@
         <result column="cost_state" property="costState" />
         <result column="user_id" property="userId"/>
         <result column="platoon_id" property="platoonId"/>
+        <collection property="platoon" column="platoon_id" select="com.ticket.film.dao.PlatoonDao.selectPlatoonById"/>
+        <collection property="seats" column="id" select="com.ticket.seat.dao.ISeatDao.selectAllSeatByOrderID"/>
+        <collection property="user" column="user_Id" select="com.ticket.UserInfo.bean.UserBeanMapper.selectUserByID"/>
     </resultMap>
 
     <insert id="insertOrder"  parameterType="com.ticket.insertOrder.bean.Order" keyProperty="id" useGeneratedKeys="true">
@@ -17,5 +20,8 @@
         VALUES(#{ticketNum},#{totalPrice},#{orderTime},#{costState},#{userId},#{platoonId})
     </insert>
 
+    <select id="selectOrderByID" resultMap="OrderBeanMapper">
+        SELECT * FROM  f_order WHERE id = #{id}
+    </select>
 
 </mapper>

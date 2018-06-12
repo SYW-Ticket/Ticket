@@ -14,7 +14,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>超时空同居</title>
+    <title>${platoon.film.filmName}</title>
+    <base href="<%=request.getContextPath()%>/"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -4228,8 +4229,19 @@
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
                         <ul>
-                            <li>手机用户7635</li>
-                            <li>退出</li>
+                            <c:choose>
+                                <c:when test="${user==null}">
+                                    <ul>
+                                        <li><a href="login.jsp">快速登陆</a></li>
+                                    </ul>
+                                </c:when>
+                                <c:otherwise>
+                                    <ul>
+                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+                                        <li><a href="users/logout">退出登陆</a></li>
+                                    </ul>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -4818,7 +4830,7 @@
                         </div>
                         <div class="fee">
                             <ul>
-                                <li><label>总计：</label><span>¥0</span></li>
+                                <li><label>总计：</label><span id = "total_price">¥0</span></li>
                             </ul>
                         </div>
                         <div class="mobile">
@@ -4906,7 +4918,8 @@
                 oc.next("input").val(1);
                 totalSelected = totalSelected + 1;
                 $(".displaySelected").append("<span class = 'seat'  id='"+currentSelected+"'>"+currentSelected+"</span>");
-//                $.each($(".displaySelected"))
+
+// $.each($(".displaySelected"))
             }else {
                 if(oc.next("input").val() == 1) {
                     $(oc).css("background-image", "none");

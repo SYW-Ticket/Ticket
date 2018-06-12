@@ -16,6 +16,9 @@
         select id,tel,money,acount,password from user WHERE tel = #{tel}
     </select>
 
+    <select id="selectUserByID" resultMap="UserBeanResulterMapper">
+        SELECT * FROM USER WHERE id = #{user_id}
+    </select>
 
     <update id="updateUserpassword" parameterType="com.ticket.UserInfo.bean.UserBean">
         update user set password=#{password} where tel=#{tel}

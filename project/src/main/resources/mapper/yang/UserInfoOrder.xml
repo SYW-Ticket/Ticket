@@ -22,7 +22,9 @@
         select count(1) from f_order where cost_state=#{costState};
     </select>
 
-
+    <insert id="insertOrder" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO order()
+    </insert>
     <!--删除未支付订单-->
     <delete id="deleteOrderById" parameterType="com.ticket.UserInfo.bean.Order">
         update f_order set cost_state=#{costState} where id=#{id}

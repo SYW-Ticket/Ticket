@@ -4217,7 +4217,7 @@
                                             <ul>
                                                 <%--<li class="active">2018-06-05 (今天)</li>--%>
                                                 <c:forEach items="${dates}" var="date">
-                                                    <li class="" onclick="event2('${date}')">${date}</li>
+                                                    <li class="date" onclick="event2('${date}')">${date}</li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -4226,7 +4226,7 @@
                                         <div class="clearfix item-inner">
                                             <ul>
                                                 <c:forEach items="${areas}" var="area">
-                                                <li class="" onclick="findCinema(${area.id})">${area.area_name}</li>
+                                                <li class="area" onclick="findCinema(${area.id})">${area.area_name}</li>
                                                 </c:forEach>
                                             </ul>
                                         </div>
@@ -4237,14 +4237,12 @@
 
                                             </ul>
                                         </div>
-                                        <div class="mz-pagination"><i class="icon-pre pre"></i>
-                                            <div class="pagination-pages"><span class="current">1</span><span>/10</span></div><i class="icon-next next"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="foretell">
                                 <div class="header">
-                                   <div id="one"><h4>武汉博影时代影城</h4><span>027-83806099</span><span class="address">武汉市硚口区航空路13号</span></div><i class="icon-caret-up"></i>
+                                    <div id="one"></div>
                                 <div class="content clearfix" id="two">
                                     <ul class="title clearfix">
                                         <li class="time">放映时间</li>
@@ -4331,12 +4329,26 @@
     function event2(str) {
         strdate = str;
     }
+
+    function event3(id) {
+
+        var session = "<%=session.getAttribute("user")%>";
+
+        if(session!="null"&&session!="") {
+            window.location.href = "seat/allSeatsByPId/"+id+"";
+        }
+        else {
+            alert("您还未登陆，请登陆");
+            window.location.href = "login.jsp";
+        }
+    }
     
     function findPlatoon(cinema_id) {
         $("#one").html("");
         $("#three").html("");
         $("#two").html("");
         var film_id = $("#filmID").html();
+
         $.get("cinema/findCinemaByid",{"id":cinema_id},function (data) {
             $("#one").html("<h4>"+data.cinema_name+"</h4><span>"+data.cinema_tel+"</span><span class=\"address\">"+data.cinema_adress+"</span>")
         });
@@ -4344,7 +4356,7 @@
         $.get("cinema/findPlatoon",{"film_id":film_id,"cinema_id":cinema_id,"show_start_date":strdate},function (data) {
                  console.log(data);
                 $.each(data,function (index,obj) {
-                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ format(obj.show_start_time,"HH:mm")+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\">选座购票</button></li></ul>")
+                    $("#two").append("<ul id=\"three\" class=\"item clearfix\"><li class=\"time\">"+ format(obj.show_start_time,"HH:mm")+"</li><li>"+obj.film.language+"/"+obj.film.threeDLV+"</li><li>"+obj.hallBean.hall_name+"</li><li class=\"price\">￥"+obj.film_price+"</li><li class=\"buy\"><button type=\"button\" class=\"\" onclick='event3("+obj.id+")'>选座购票</button></li></ul>")
                 });
         });
 

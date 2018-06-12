@@ -25,7 +25,7 @@ public class PLatoonService {
     public List<PlatoonBean> getPlatoon(int film_id,int cinema_id,String str) throws ParseException {
         Gson gson = new Gson();
         //查询缓存
-        String key = "platoon_"+film_id+"_"+cinema_id;
+        String key = "platoon"+film_id+"_"+cinema_id+str;
         String strPlatoon = redis.getValueByKey(key);
         //缓存不为空
         if(strPlatoon != null && !strPlatoon.equals("")){

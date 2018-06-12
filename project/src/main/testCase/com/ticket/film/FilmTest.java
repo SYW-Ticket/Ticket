@@ -6,6 +6,8 @@ import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.entity.FilmDetail;
 import com.ticket.film.entity.PlatoonBean;
 import com.ticket.film.service.FilmService;
+import com.ticket.insertOrder.bean.Order;
+import com.ticket.insertOrder.daoRead.OrderDaoRead;
 import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +41,9 @@ public class FilmTest {
     @Resource
     private PlatoonDao platoonDao;
 
+    @Resource
+    private OrderDaoRead orderDaoRead;
+
     @Test
     public void filmsLoading(){
         List<FilmDetail> filmDetails= filmDao.filmsLoading();
@@ -71,5 +76,11 @@ public class FilmTest {
         map.put("show_start_date",date);
         List<PlatoonBean> platoonBeans = platoonDao.selectAllPlatoonByFilm_id(map);
         System.out.println(platoonBeans);
+    }
+
+    @Test
+    public void film03(){
+       Order order = orderDaoRead.selectOrderByID(1);
+        System.out.println(order);
     }
 }

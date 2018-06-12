@@ -2,6 +2,7 @@ package com.ticket.UserInfo.userInfoReadDAO.impl;
 
 
 import com.ticket.UserInfo.bean.Order;
+import com.ticket.UserInfo.bean.UserBean;
 import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -139,5 +140,10 @@ public class UserInfoOrder extends SqlSessionDaoSupport implements IUserinfoOrde
     public List<Order> selectHistoryListOrder(int userId) {
         List<Order> historyOrderList = getSqlSession().selectList("com.ticket.UserInfo.bean.OrderMapper.selecthistory",userId);
         return historyOrderList;
+    }
+
+    @Override
+    public UserBean selectUserByID(int user_id) {
+        return getSqlSession().selectOne("com.ticket.UserInfo.bean.UserBeanMapper.selectUserByID",user_id);
     }
 }

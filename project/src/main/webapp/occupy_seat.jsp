@@ -14,7 +14,8 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>超时空同居</title>
+    <title>${platoon.film.filmName}</title>
+    <base href="<%=request.getContextPath()%>/"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">

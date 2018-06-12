@@ -28,10 +28,6 @@ public class DeleteByTime implements Job {
         int i = userInfoDAO.deleteOrderById(id);
 
 
-        if (i>0){
-
-        }
-
     }
 
 }

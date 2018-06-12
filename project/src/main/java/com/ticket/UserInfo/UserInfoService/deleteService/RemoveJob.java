@@ -2,6 +2,7 @@ package com.ticket.UserInfo.UserInfoService.deleteService;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.quartz.spi.JobFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -42,6 +43,8 @@ public class RemoveJob {
 
 
             scheduler.scheduleJob(jobDetail,cronTrigger);
+
+
             System.out.println(new Date());
             scheduler.start();
 

@@ -11,6 +11,7 @@ import org.springframework.scheduling.quartz.SpringBeanJobFactory;
  * @Time 17:57
  */
 public class MyBeanJobFactory extends SpringBeanJobFactory{
+
     @Autowired
     private AutowireCapableBeanFactory capableBeanFactory;
 

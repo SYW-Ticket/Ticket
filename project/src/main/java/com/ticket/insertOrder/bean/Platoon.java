@@ -1,4 +1,4 @@
-package com.ticket.UserInfo.bean;
+package com.ticket.insertOrder.bean;
 
 import com.ticket.film.entity.FilmDetail;
 import com.ticket.film.entity.HallBean;
@@ -17,7 +17,15 @@ public class Platoon {
     private double filmPrice;
     private FilmDetail film;
     private HallBean hallBean;
+    private Seat seat;
 
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
 
     public FilmDetail getFilm() {
         return film;

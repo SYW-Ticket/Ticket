@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.insertOrder.daoWrite.OrderDao">
+    <resultMap id="OrderBeanMapper" type="com.ticket.insertOrder.bean.Order">
+        <id column="id" property="id" />
+        <result column="ticket_num" property="ticketNum"/>
+        <result column="total_price" property="totalPrice"/>
+        <result column="order_time" property="orderTime" />
+        <result column="cost_state" property="costState" />
+        <result column="user_id" property="userId"/>
+        <result column="platoon_id" property="platoonId"/>
+    </resultMap>
+
+    <insert id="insertOrder"  parameterType="com.ticket.insertOrder.bean.Order" keyProperty="id" useGeneratedKeys="true">
+        insert INTO f_order(ticket_num,total_price,order_time,cost_state,user_id,platoon_id)
+        VALUES(#{ticketNum},#{totalPrice},#{orderTime},#{costState},#{userId},#{platoonId})
+    </insert>
+
+
+</mapper>

@@ -1,6 +1,7 @@
 package com.ticket.insertOrder.Service;
 
 import com.google.gson.Gson;
+import com.ticket.UserInfo.UserInfoService.IUserInfoService;
 import com.ticket.insertOrder.bean.Order;
 import com.ticket.insertOrder.bean.Seat_Occupied;
 import com.ticket.insertOrder.daoWrite.OrderDao;
@@ -22,8 +23,12 @@ public class OrderService {
     @Autowired
     OrderDao orderDao;
 
+    @Autowired
+    IUserInfoService userInfoService;
+
+
     //订单添加接口
-    public void insertOrder(int ticket_num,int price,int user_id,int platon_id,int[] seat_ids) {
+    public Order insertOrder(int ticket_num,int price,int user_id,int platon_id,int[] seat_ids) {
         //查询缓存，看是否有该用户的订单
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);
@@ -62,9 +67,10 @@ public class OrderService {
         }
         //将订单保存到缓存中，在该项目中，一个用户同一时间只能有一个未支付订单
         Gson gson = new Gson();
-        redis.saveString(key,gson.toJson(order));
-
-
+        redis.saveStringToSet(key,gson.toJson(order),15);
+        //15分钟后清楚缓存中的订单数据
+        userInfoService.deleteOrder(order.getId());
+        return order;
     }
 
 }

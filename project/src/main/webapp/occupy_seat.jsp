@@ -4229,19 +4229,8 @@
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
                         <ul>
-                            <c:choose>
-                                <c:when test="${user==null}">
-                                    <ul>
-                                        <li><a href="login.jsp">快速登陆</a></li>
-                                    </ul>
-                                </c:when>
-                                <c:otherwise>
-                                    <ul>
-                                        <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
-                                        <li><a href="users/logout">退出登陆</a></li>
-                                    </ul>
-                                </c:otherwise>
-                            </c:choose>
+                            <li>手机用户7635</li>
+                            <li>退出</li>
                         </ul>
                     </div>
                 </div>
@@ -4774,24 +4763,38 @@
                         </div>
                         <div class="map">
                             <div class="screen">武汉紫星影城 派拉蒙厅</div>
+                            <%--//遍历厅的最大排数,显示索引--%>
                             <c:forEach begin="1" end="${platoon.hallBean.col_max}" var="i">
                                 <div class="axis-y"><span class="coord" style="left: 0px; top: ${(i-1)*32+80}px;">${i}</span></div>
                             </c:forEach>
                             <div class="seats" style="max-width: 650px; width: 384px; height: 284px;">
-                                <div class="axis-middle-y" style="left: 188px; top: 20px; height: 244px;"></div>
+                                <%--//中间线--%>
+                                <div class="axis-middle-y" style="left: ${platoon.hallBean.col_max/2}px; top: 20px; height: 244px;"></div>
+                                <%--遍历所有的座位--%>
                                 <c:forEach var="seat" items="${platoon.hallBean.seats}">
+                                    <%--//判断座位是否存在,进而绘制座位布局--%>
                                     <c:if test="${seat.flag !=0}">
+                                        <%--//隐藏域记录座位排列（name）--%>
                                         <input type="hidden" value="${seat.name}">
+                                        <%--//定义变量判断是否占座的变量i--%>
                                         <c:set var="i" value="${0}"/>
+                                        <%--//遍历所有已被占座的座位id--%>
                                         <c:forEach var="id" items="${seatsOccupiedIds}">
+                                            <%--//如果已被占座--%>
                                             <c:if test="${id == seat.id}">
-                                                <div class="seat normal-seat occupied"  data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;background-image: url('http://119.23.42.247:83/img/occupied.png')"></div>
+                                                <%--//输出带占座背景的div--%>
+                                                <div class="seat normal-seat occupied "  data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;background-image: url('http://119.23.42.247:83/img/occupied.png')"></div>
+                                                <%--<span class = "seat selectedSeat"  id="${seat.name}" style="opacity:0">${seat.name}</span>--%>
+                                                <%--//变量i置为1--%>
                                                 <c:set var="i" value="${1}"/>
+                                                <%--//页面选座标识--%>
                                                 <input type="hidden" value="1">
                                             </c:if>
                                         </c:forEach>
+                                        <%--//根据i值判断是否被占座,没有则输出不带背景的div--%>
                                         <c:if test="${i == 0}" >
                                             <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;" ></div>
+                                            <%--//页面选座标识--%>
                                             <input type="hidden" value="0">
                                         </c:if>
 
@@ -4816,25 +4819,25 @@
                             <p>${platoon.film.filmLength}分钟</p>
                         </div>
                         <div class="pre-order">
+                            <input id="singlePrice" type="hidden" value="${platoon.film_price}">
                             <ul>
                                 <li><label>影城：</label><span>武汉紫星影城</span></li>
                                 <li><label>影厅：</label><span>${platoon.hallBean.hall_name}</span></li>
                                 <li><label>场次：</label><span class="date"><fmt:formatDate value="${platoon.show_start_time}" pattern="yy-MM-dd HH:mm"/> </span></li>
                                 <li><label>座位：</label>
                                     <div class="seats displaySelected">
+                                        <%--动态生成已选座位--%>
                                     </div>
-                                    <!-- react-text: 3352 -->
-                                    <!-- /react-text -->
                                 </li>
                             </ul>
                         </div>
                         <div class="fee">
                             <ul>
-                                <li><label>总计：</label><span id = "total_price">¥0</span></li>
+                                <li><label>总计：￥</label><span id="totalPrice">0</span></li>
                             </ul>
                         </div>
                         <div class="mobile">
-                            <p>请输入您的取票手机号：</p><input type="text" placeholder="请输入手机号码" maxlength="11"><button type="button" class="disabled">确认下单</button></div>
+                            <p>请输入您的取票手机号：</p><input oninput="checkIsSureToOrder()" id="telephone" type="text" placeholder="请输入手机号码" maxlength="11"><button id="orderButton" type="button" class="disabled">确认下单</button></div>
                     </div>
                 </div>
             </div>
@@ -4905,32 +4908,117 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
-//    var MaxSelected = 0;
-//    $(".couldOccupy").click(function () {
-//        $(this).css("background-image","url('http://119.23.42.247:83/img/choosed.png')");
-//    });
-    var totalSelected = 0
+
+    //1.将已选座的座位信息（name）输出在右侧订单框里；2、最多选五个座位
+    //定义选中座位总数的变量
+    var totalSelected = 0;
+    //可选座位的点击事件
     $(".couldOccupy").bind("click", function() {
         var oc = $(this);
+        //当前点击的座位信息（name）
         var currentSelected =oc.prev("input").val();
-            if (oc.next("input").val() == 0 && totalSelected < 4) {
+            //座位标识为0，且总数小于5张
+            if (oc.next("input").val() == 0 && totalSelected < 5) {
+                //点击更换选座背景
                 oc.css("background-image", "url('http://119.23.42.247:83/img/choosed.png')");
+                //座位标识置为1，代表已选
                 oc.next("input").val(1);
+                //总数+1
                 totalSelected = totalSelected + 1;
-                $(".displaySelected").append("<span class = 'seat'  id='"+currentSelected+"'>"+currentSelected+"</span>");
-
-// $.each($(".displaySelected"))
+                //右侧订单框内添加座位信息的span
+                $(".displaySelected").append("<span class = 'seat selectedSeat'  id='"+currentSelected+"'>"+currentSelected+"</span>");
+                //更新总价
+                var totalPrice = $("#singlePrice").val()*totalSelected;
+                $("#totalPrice").text(totalPrice);
+                //调用验证当前已选座位是否连续的方法
+                checkSeat();
+                checkIsSureToOrder();
             }else {
+                //座位标识为1
                 if(oc.next("input").val() == 1) {
+                    //取消选座背景
                     $(oc).css("background-image", "none");
+                    //选座标识置为0
                     oc.next("input").val(0);
+                    //总数-1
                     totalSelected = totalSelected - 1;
+                    //清除右侧订单框内的座位信息
                     $("#"+currentSelected+"").remove();
+                    //更新总价
+                    var totalPrice = $("#singlePrice").val()*totalSelected;
+                    $("#totalPrice").text(totalPrice);
+                    //调用验证当前已选座位是否连续的方法
+                    checkSeat();
+                    checkIsSureToOrder();
                 }else {
-                    alert("最多四张票");
+                    //提醒超过5张票，不进行操作
+                    alert("最多五张票");
                 }
             }
     });
+
+    //判断列是否连续
+    var isEmpty = false;
+    function checkSeat(){
+        isEmpty = false;
+//        得到已选票的排数(row)数组
+        var rowArr = new Array();
+        $(".selectedSeat").each(function () {
+            var seat = $(this).text();
+            var row =  seat.substring(0,1);
+            var bool = true;
+            for(k = 0; k < rowArr.length;k++){
+                if(rowArr[k] == row);
+                bool = false;
+            }
+            if(bool) {
+                rowArr.push(row);
+            }
+        });
+        //对排数进行遍历
+        for(i = 0; i < rowArr.length; i++) {
+            //得到每一排的列数组
+            var colArray = new Array();
+            $(".selectedSeat").each(function () {
+                var row =  $(this).text().slice(0,1);
+                var col =  $(this).text().slice(2,3);
+                if(rowArr[i] == row){
+                    colArray.push(col);
+                }
+
+            });
+            //对列数组进行排序
+            function sortNumber(a,b)
+            {
+                return a - b;
+            }
+            colArray.sort(sortNumber);
+            for(j = 0; j < colArray.length; j++) {
+                if(isEmpty){
+                    break;
+                }
+                if(colArray[j+1] - colArray[j] != 1 && j != (colArray.length-1)){
+                    alert("请不要留空位");
+                    isEmpty = true;
+                    break;
+                }
+            }
+//            if(!isEmpty){
+//                alert("连续");
+//            }
+        }
+    }
+    function checkIsSureToOrder() {
+        var reg = /^1\d{10}$/; //定义正则表达式
+        var tel = $("#telephone").val();
+        var isReg = reg.test(tel);
+        if(isReg && !isEmpty ){
+//            alert("验证通过");
+            $("#orderButton").removeClass("disabled");
+        }else {
+            $("#orderButton").addClass("disabled");
+        }
+    }
 </script>
 </html>
 

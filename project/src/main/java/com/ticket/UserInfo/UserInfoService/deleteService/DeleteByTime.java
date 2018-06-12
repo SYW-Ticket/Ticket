@@ -34,6 +34,7 @@ public class DeleteByTime implements Job {
 
         //删除订单
         int i = userInfoOrder.deleteOrderById(id,costState);
+        System.out.println("订单已在数据库修改成功");
 
     }
 

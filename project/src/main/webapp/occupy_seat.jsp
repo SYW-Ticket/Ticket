@@ -4760,9 +4760,12 @@
 
                             </ul>
                         </div>
+                        <%--//存储user的隐藏域--%>
+                        <input id="user" type="hidden" value="${user.id}">
                         <div class="map">
                             <div class="screen">武汉紫星影城 派拉蒙厅</div>
                             <%--//遍历厅的最大排数,显示索引--%>
+                            <input id="platoonId" type="hidden" value="${platoon.id}">
                             <c:forEach begin="1" end="${platoon.hallBean.col_max}" var="i">
                                 <div class="axis-y"><span class="coord" style="left: 0px; top: ${(i-1)*32+80}px;">${i}</span></div>
                             </c:forEach>
@@ -4792,7 +4795,9 @@
                                         </c:forEach>
                                         <%--//根据i值判断是否被占座,没有则输出不带背景的div--%>
                                         <c:if test="${i == 0}" >
-                                            <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;" ></div>
+                                            <div class="seat normal-seat couldOccupy" data-x="${seat.col}" data-y="${seat.row}" style="left: ${seat.col * 32}px; top: ${(seat.row-1)*32+40}px;" >
+                                                <input type="hidden" value="${seat.id}">
+                                            </div>
                                             <%--//页面选座标识--%>
                                             <input type="hidden" value="0">
                                         </c:if>
@@ -4911,9 +4916,12 @@
     //1.将已选座的座位信息（name）输出在右侧订单框里；2、最多选五个座位
     //定义选中座位总数的变量
     var totalSelected = 0;
+    var totalPrice = 0;
+    var seatIds = new Array();
     //可选座位的点击事件
     $(".couldOccupy").bind("click", function() {
         var oc = $(this);
+        var seatId = $(this).find("input").val();
         //当前点击的座位信息（name）
         var currentSelected =oc.prev("input").val();
             //座位标识为0，且总数小于5张
@@ -4927,8 +4935,10 @@
                 //右侧订单框内添加座位信息的span
                 $(".displaySelected").append("<span class = 'seat selectedSeat'  id='"+currentSelected+"'>"+currentSelected+"</span>");
                 //更新总价
-                var totalPrice = $("#singlePrice").val()*totalSelected;
+                totalPrice = $("#singlePrice").val()*totalSelected;
                 $("#totalPrice").text(totalPrice);
+                //添加座位id到数组
+                seatIds.push(seatId);
                 //调用验证当前已选座位是否连续的方法
                 checkSeat();
                 checkIsSureToOrder();
@@ -4944,8 +4954,12 @@
                     //清除右侧订单框内的座位信息
                     $("#"+currentSelected+"").remove();
                     //更新总价
-                    var totalPrice = $("#singlePrice").val()*totalSelected;
+                    totalPrice = $("#singlePrice").val()*totalSelected;
                     $("#totalPrice").text(totalPrice);
+                    //移除座位id
+                    seatIds =$.grep(seatIds,function(n,i){
+                        return i!= seatId;
+                    });
                     //调用验证当前已选座位是否连续的方法
                     checkSeat();
                     checkIsSureToOrder();
@@ -5018,6 +5032,14 @@
             $("#orderButton").addClass("disabled");
         }
     }
+    $("#orderButton").click(function () {
+        if($("#orderButton").prop("class") != "disabled"){
+            var userId = $("#user").val();
+            var platoonId = $("#platoonId").val();
+            $.post("/",{"ticket_num":totalSelected,"total_price":totalPrice,"user_id":userId,"platon_id":platoonId,"seat_ids":seatIds });
+    }
+    })
+
 </script>
 </html>
 

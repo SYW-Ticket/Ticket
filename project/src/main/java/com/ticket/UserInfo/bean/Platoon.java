@@ -1,8 +1,5 @@
 package com.ticket.UserInfo.bean;
 
-import com.ticket.film.entity.FilmDetail;
-import com.ticket.film.entity.HallBean;
-
 import java.util.Date;
 
 /**
@@ -15,25 +12,11 @@ public class Platoon {
     private Date showStartTime;
     private int hallId;
     private double filmPrice;
-    private FilmDetail film;
-    private HallBean hallBean;
+    private Date showStartDate;
 
+    private Hall hall;
 
-    public FilmDetail getFilm() {
-        return film;
-    }
-
-    public void setFilm(FilmDetail film) {
-        this.film = film;
-    }
-
-    public HallBean getHallBean() {
-        return hallBean;
-    }
-
-    public void setHallBean(HallBean hallBean) {
-        this.hallBean = hallBean;
-    }
+    private Film film;
 
     public int getId() {
         return id;
@@ -73,5 +56,29 @@ public class Platoon {
 
     public void setFilmPrice(double filmPrice) {
         this.filmPrice = filmPrice;
+    }
+
+    public Date getShowStartDate() {
+        return showStartDate;
+    }
+
+    public void setShowStartDate(Date showStartDate) {
+        this.showStartDate = showStartDate;
+    }
+
+    public Hall getHall() {
+        return hall;
+    }
+
+    public void setHall(Hall hall) {
+        this.hall = hall;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 }

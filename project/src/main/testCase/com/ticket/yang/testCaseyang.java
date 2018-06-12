@@ -6,7 +6,6 @@ import com.ticket.UserInfo.UserInfoService.deleteService.RemoveJob;
 import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
-import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.Scheduler;
@@ -16,11 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+
 /**
  * Created by Shinelon on 2018/6/6.
  */
@@ -61,22 +57,18 @@ public class testCaseyang {
 
 
 
-    //测试订单的逻辑
-    @Test
-    public void testCase4(){
-        try {
-            userinfoOrder.selectOrder("13554244942",0);
-        } catch (OutOfTimeYang outOfTimeYang) {
-            outOfTimeYang.printStackTrace();
-        }
-
-    }
 
     //测试删除成功
     @Test
     public void  testCase5(){
-        int i = userInfoDAO.deleteOrderById(2);
+        int i = userInfoDAO.deleteOrderById(1,2);
         System.out.println(i);
+    }
+
+    @Test
+    public void  testCase52(){
+        userInfoService.deleteOrder(1);
+
     }
 
 
@@ -89,11 +81,8 @@ public class testCaseyang {
 
     @Test
     public void  testCase7(){
-        Date date=new Date();
-        DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time=format.format(date);
 
-        List<Order> orders = userinfoOrder.selectHistoryListOrder(time);
+        List<Order> orders = userinfoOrder.selectHistoryListOrder(1);
 
     }
 
@@ -176,16 +165,20 @@ public class testCaseyang {
 
 
     @Test
-    public void testCase11(){
+    public void testCase11() throws InterruptedException {
         removeJob.testremoveJob(5);
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       Thread.sleep(50000);
+
     }
 
+    /**
+     * 查询历史订单
+     */
+    @Test
+    public void testCase12(){
+        List<Order> orders = userInfoService.HistoryorderList(1);
 
+    }
 
 
 

@@ -49,9 +49,15 @@ public class SystemConfig {
          */
         public  static final int CODEPASSWORD_FALSE=2;
         public static  final  String MSGPASSWORD_FALSE="新旧密码相同";
+    }
+
+
+    public final static class Order{
+
+        public  static final int ORDERCODE_SUCCESS=1;
+        public static  final  String MSGORDER_SUCCESS="";
 
 
     }
-
 
 }

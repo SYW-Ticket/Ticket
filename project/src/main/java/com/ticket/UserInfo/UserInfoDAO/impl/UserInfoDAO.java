@@ -1,6 +1,7 @@
 package com.ticket.UserInfo.UserInfoDAO.impl;
 
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
+import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.bean.UserBean;
 import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.util.Message.MessageTool;
@@ -103,10 +104,12 @@ public class UserInfoDAO extends SqlSessionDaoSupport implements IUserInfoDAO {
      * @return
      */
     @Override
-    public int deleteOrderById(int id) {
+    public int deleteOrderById(int id,int costState) {
 
-
-        int flag = getSqlSession().delete("com.ticket.UserInfo.bean.OrderMapper.deleteOrderById",id);
+        Order order = new Order();
+        order.setCostState(costState);
+        order.setId(id);
+        int flag = getSqlSession().delete("com.ticket.UserInfo.bean.OrderMapper.deleteOrderById",order);
 
         return flag;
     }

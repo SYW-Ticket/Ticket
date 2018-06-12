@@ -48,10 +48,9 @@
         <property name="group" value="film_trigger_group"/>
         <!-- 指定Tirgger绑定的Job -->
         <property name="jobDetail" ref="filmHotJob"/>
-         <!--指定Cron 的表达式 ，当前是每隔1s运行一次 -->
-        <!--<property name="cronExpression" value="0 3/5 * * * ? " />-->
+        <!-- 指定Cron 的表达式 ，当前是每隔1s运行一次 -->
+        <property name="cronExpression" value="0 3/5 * * * ? " />
 
-        <property name="cronExpression" value="0/3 * * * * ? "/>
     </bean>
 
 
@@ -63,14 +62,11 @@
 
     <!-- 3.定义调度器，并将Trigger注册到调度器中 -->
     <bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-        <!--<property name="triggers">-->
-            <!--<list>-->
-                <!--&lt;!&ndash; <ref bean="simpleTrigger"/> &ndash;&gt;-->
-                <!--<ref bean="filmHotTrigger"/>-->
-            <!--</list>-->
-        <!--</property>-->
-        <property name="applicationContextSchedulerContextKey">
-            <value>applicationContext</value>
+        <property name="triggers">
+            <list>
+                <!-- <ref bean="simpleTrigger"/> -->
+                <ref bean="filmHotTrigger"/>
+            </list>
         </property>
         <!--引入自定义jobFactory,使自定义Job类可以注入bean，解决Job定时任务里不能注入Service和Redis操作类的问题 by wangpeng-->
         <property name="jobFactory" ref="myBeanJobFactory"></property>
@@ -78,5 +74,5 @@
     </bean>
 <!--自定义jobFactory-->
     <bean id="myBeanJobFactory" class="com.ticket.film.service.ScheduleJobService.MyBeanJobFactory"></bean>
-
+    <bean id="myBeanJobFactory2" class="com.ticket.UserInfo.UserInfoService.deleteService.MyBeanJobFactory"/>
 </beans>

@@ -50,4 +50,8 @@ public class PLatoonService {
             return platoons;
         }
     }
+
+    public PlatoonBean findPlatoonById(int PId){
+        return platoonDao.selectPlatoonById(PId);
+    }
 }

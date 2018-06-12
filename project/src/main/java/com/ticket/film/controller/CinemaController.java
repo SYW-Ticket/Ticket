@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.List;
 
@@ -25,21 +26,22 @@ public class CinemaController {
 
     @ResponseBody
     @RequestMapping("/findCinema")
-    public Object findCinema(String areaid){
-        List<CinemaBean> cinemas= cinemaService.findCinema(Integer.parseInt(areaid));
+    public Object findCinema(@RequestParam("areaid") String areaId){
+        List<CinemaBean> cinemas= cinemaService.findCinema(Integer.parseInt(areaId));
         return cinemas;
     }
 
     @ResponseBody
-    @RequestMapping("/findCinemaByid")
-    public Object findCinemaByid(String id){
+    @RequestMapping("/findCinemaById")
+    public Object findCinemaById(String id){
         CinemaBean cinema= cinemaService.findCinemaByid(Integer.parseInt(id));
         return cinema;
     }
 
     @ResponseBody
     @RequestMapping("/findPlatoon")
-    public Object findPlatoon(@RequestParam("film_id") String film_id,@RequestParam("cinema_id") String cinema_id,@RequestParam("show_start_date") String show_start_date) throws ParseException {
+    public Object findPlatoon(@RequestParam("film_id") String film_id, @RequestParam("cinema_id") String cinema_id, @RequestParam("show_start_date") String show_start_date, HttpSession session) throws ParseException {
+
         List<PlatoonBean> platoons = pLatoonService.getPlatoon(Integer.parseInt(film_id),Integer.parseInt(cinema_id),show_start_date);
         return platoons;
     }

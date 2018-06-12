@@ -1,18 +1,14 @@
 package com.ticket.UserInfo.userInfoReadDAO.impl;
 
 
-import com.google.gson.Gson;
 import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
-import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,11 +25,34 @@ public class UserInfoOrder extends SqlSessionDaoSupport implements IUserinfoOrde
     private IRedis red;
 
 
-    /**
+
+/*
+    */
+/**
      *   此方法是未支付订单表查询
      * @param costState
      */
-    @Override
+   /* @Override
+    public Order selectOrder(int userId ,int costState) throws OutOfTimeYang, OrderNotExit {
+
+        String s = Integer.toString(userId);
+
+        String valueByKey = red.getValueByKey(s);
+
+        Gson gson = new Gson();
+
+        if (null != valueByKey && !valueByKey.isEmpty()) {
+            //缓存中取出数据  转会order对象
+            Order order = gson.fromJson(valueByKey, Order.class);
+            return order;
+        } else {
+            throw new OrderNotExit("订单在缓存中不存在，请确认");
+        }
+
+    }
+*/
+
+    /*@Override
     public Order selectOrder(String tel,int costState) throws OutOfTimeYang {
 
         Gson gson = new Gson();
@@ -91,33 +110,34 @@ public class UserInfoOrder extends SqlSessionDaoSupport implements IUserinfoOrde
                 return  null;
             }
         }
-    }
+    }*/
 
 
-    /**
-     *      查询未支付订单的数量  0,查询已支付的订单数量1
-     *
-     * @return
-     */
+
+/**
+ *      查询未支付订单的数量  0,查询已支付的订单数量1
+ *
+ * @return
+ */
     @Override
     public int checkOrderNum(int costState) {
-        int number = getSqlSession().selectOne("com.ticket.UserInfo.bean.OrderMapper.selectNumberofUnpay",costState);
+        int number = getSqlSession().selectOne("com.ticket.UserInfo.bean.OrderMapper.selectNumberofUnpay", costState);
 
         return number;
     }
 
 
-    /**
-     *          根据排片时间和现在的时间比较
-     * @param nowtime
-     *
-     * @return
-     */
+
+
+/**
+ *  查询历史订单  根据支付状态不为0则为历史订单
+ * @param
+ *
+ * @return
+ */
     @Override
-    public List<Order> selectHistoryListOrder(String nowtime) {
-        List<Order> historyOrderList = getSqlSession().selectList("com.ticket.UserInfo.bean.OrderMapper.selectHistoryOrder", nowtime);
+    public List<Order> selectHistoryListOrder(int userId) {
+        List<Order> historyOrderList = getSqlSession().selectList("com.ticket.UserInfo.bean.OrderMapper.selecthistory",userId);
         return historyOrderList;
     }
-
-
 }

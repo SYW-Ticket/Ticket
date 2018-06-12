@@ -1,9 +1,7 @@
 package com.ticket.film.service.ScheduleJobService;
 
-import com.ticket.film.dao.impl.FilmDao;
 import com.ticket.film.writedao.impl.FilmWriteDao;
 import com.ticket.loginandregister.redis.Redisimpl.Redisimpl;
-import org.apache.log4j.Logger;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -24,6 +22,7 @@ public class FilmHotJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         //获取redis里所有的filmIdForHot_'id'的key，正则表达式："filmIdForHot_*"
+
         Set<String> keys = redisImpl.selectKeysLike("filmIdForHot_*");
         //遍历keys
         if(keys != null) {

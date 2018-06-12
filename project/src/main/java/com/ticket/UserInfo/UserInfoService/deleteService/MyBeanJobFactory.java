@@ -3,14 +3,16 @@ package com.ticket.UserInfo.UserInfoService.deleteService;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.scheduling.quartz.SpringBeanJobFactory;
+import org.springframework.scheduling.quartz.AdaptableJobFactory;
+import org.springframework.stereotype.Component;
 
 /**
- * @Author wangpeng
+ * @Author wagpeng
  * @Date 2018/6/8
  * @Time 17:57
  */
-public class MyBeanJobFactory extends SpringBeanJobFactory{
+@Component
+public class MyBeanJobFactory extends AdaptableJobFactory {
     @Autowired
     private AutowireCapableBeanFactory capableBeanFactory;
 

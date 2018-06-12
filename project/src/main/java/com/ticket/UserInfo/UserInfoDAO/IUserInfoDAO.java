@@ -23,7 +23,7 @@ public interface IUserInfoDAO {
      //order的方法**********************************************************************************************************
 
      //删除订单
-     int deleteOrderById(int id);
+     int deleteOrderById(int id,int costState);
 
 
 

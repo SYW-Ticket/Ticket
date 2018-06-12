@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.UserInfo.bean.SeatMapper">
+    <resultMap id="SeatResultMapper" type="com.ticket.UserInfo.bean.Seat">
+        <id property="id" column="id"/>
+        <result property="hallId" column="hall_id"/>
+        <result property="flag" column="flag"/>
+        <result property="row" column="row"/>
+        <result property="col" column="col"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    
+    <select id="QuerySeatByOrderId" resultMap="SeatResultMapper">
+                select s.id,hall_id,flag,row,col,name from seat s
+                join seat_occupied so
+                join f_order f
+                on f.id=so.order_id
+                and so.seat_id=s.id
+                and f.id=#{id}
+    </select>
+
+
+    <select id="selectAllSeatByHallId" resultMap="SeatResultMapper">
+            SELECT id,hall_id,flag,row,col,name
+            FROM seat
+            WHERE hall_id = #{hallId}
+    </select>
+
+</mapper>

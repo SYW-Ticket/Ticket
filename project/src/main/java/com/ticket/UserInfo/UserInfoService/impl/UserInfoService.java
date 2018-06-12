@@ -1,17 +1,19 @@
 package com.ticket.UserInfo.UserInfoService.impl;
 
+import com.google.gson.Gson;
 import com.ticket.UserInfo.UserInfoDAO.IUserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.UserInfoService.deleteService.RemoveJob;
 import com.ticket.UserInfo.bean.Order;
 import com.ticket.UserInfo.bean.UserBean;
+import com.ticket.UserInfo.redis.IRedis;
 import com.ticket.UserInfo.userInfoReadDAO.IUserinfoOrder;
 import com.ticket.UserInfo.util.MyselfException.EqualsException;
-import com.ticket.UserInfo.util.MyselfException.OutOfTimeYang;
 import com.ticket.UserInfo.util.MyselfException.YangException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Shinelon on 2018/6/6.
@@ -23,7 +25,10 @@ public class UserInfoService implements IUserInfoService {
     private IUserInfoDAO userInfoDAO;
     @Autowired
     private IUserinfoOrder userinfoOrder;
-
+    @Autowired
+    private IRedis red;
+    @Autowired
+    private RemoveJob removeJob;
     /**
      *    发送短信验证码功能
      * @param pwd   短信内容
@@ -70,27 +75,51 @@ public class UserInfoService implements IUserInfoService {
     }
 
     /**
-     *      查询未支付订单   超时删除  新增删除
-     * @param costState
+     *     在redis 中查找订单  存在则未支付 使用userId查找
+     *
      */
     @Override
-    public void findUnPayOrder(String tel,int costState){
+    public Order findUnPayOrder(int userId){
 
-        try {
 
-            Order order = userinfoOrder.selectOrder(tel, costState);
+        String s = Integer.toString(userId);
 
-            //获取当前系统时间戳
-            long nowtime = System.currentTimeMillis();
-            //获取对象创建时间
-            Date orderTime = order.getOrderTime();
-            //将对象创建时间转化为时间戳 加15分钟
-            long time = orderTime.getTime()+900000;
-            Long staytime=time-nowtime;
-        } catch (OutOfTimeYang outOfTimeYang) {
-            outOfTimeYang.printStackTrace();
-        }
+        String valueByKey = red.getValueByKey(s);
 
+        Gson gson = new Gson();
+        int flag2=1;
+        if (null != valueByKey && !valueByKey.isEmpty()) {
+            //缓存中取出数据  转会order对象
+            Order order = gson.fromJson(valueByKey, Order.class);
+
+            return order;
+        } else {
+        return  null;
+    }
+
+    }
+
+    /**
+     *
+     *  删除历史订单  修改支付状态为3
+     * @param id
+     */
+    @Override
+    public void deleteOrder(int id) {
+
+        removeJob.testremoveJob(id);
+    }
+
+
+    /**
+     *   查询历史订单
+     * @return
+     */
+    @Override
+    public List<Order> HistoryorderList(int userId) {
+        List<Order> orders = userinfoOrder.selectHistoryListOrder(userId);
+
+        return orders;
     }
 
 

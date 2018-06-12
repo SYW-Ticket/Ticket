@@ -13,6 +13,7 @@ import java.util.Date;
 @Service
 public class RemoveJob {
 
+
     /**
      *    定时任务  用于删除
      * @param
@@ -22,12 +23,12 @@ public class RemoveJob {
         StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory();
         try {
             Scheduler scheduler = stdSchedulerFactory.getScheduler();
-
+           /* scheduler.setJobFactory(new MyBeanJobFactory());*/
             JobBuilder jobBuilder = JobBuilder.newJob().ofType(DeleteByTime.class).withIdentity("jobBuilder");
             JobDetail jobDetail = jobBuilder.build();
             jobDetail.getJobDataMap().put("id",id);
             long nowtime = System.currentTimeMillis();
-            long nows =nowtime+5000;
+            long nows =nowtime+900000;
 
 
            /* String res;
@@ -43,7 +44,11 @@ public class RemoveJob {
 
             scheduler.scheduleJob(jobDetail,cronTrigger);
             System.out.println(new Date());
-            scheduler.start();
+
+
+           /* MyBeanJobFactory myBeanJobFactory = new MyBeanJobFactory();
+            scheduler.setJobFactory(myBeanJobFactory);
+*/            scheduler.start();
 
 //            System.out.println(Thread.currentThread().getName());
 //            Thread.sleep(5000);

@@ -5,58 +5,17 @@
 
     <resultMap id="orderResultMapper" type="com.ticket.UserInfo.bean.Order">
         <id column="id" property="id" javaType="java.lang.Integer"/>
-        <result column="cinema_id" property="cinemaId" javaType="java.lang.Integer"/>
-        <result column="seat_id" property="seatId" javaType="java.lang.Integer"/>
-        <result column="film_id" property="filmId" javaType="java.lang.Integer"/>
         <result column="ticket_num" property="ticketNum" javaType="java.lang.Integer"/>
-        <result column="price" property="price" javaType="java.lang.Double"/>
         <result column="total_price" property="totalPrice" javaType="java.lang.Double"/>
         <result column="order_time" property="orderTime" javaType="java.util.Date"/>
         <result column="cost_state" property="costState" javaType="java.lang.Integer"/>
         <result column="user_id" property="userId" javaType="java.lang.Integer"/>
         <result column="platoon_id" property="platoonId" javaType="java.lang.Integer"/>
 
-
-       <result column="film_name" property="filmName" javaType="java.lang.String"/>
-        <result column="cinema_name" property="cinemaName" javaType="java.lang.String"/>
-        <!--电影场次-->
-        <result column="show_start_time" property="movieField" javaType="java.lang.String"/>
-        <result column="tel" property="tel" javaType="java.lang.String"/>
-        <result column="film_img" property="filmImg" javaType="java.lang.String"/>
+     <collection property="seatList" column="id" select="com.ticket.UserInfo.bean.SeatMapper.QuerySeatByOrderId"/>
+        <collection property="platoon" column="platoon_id" select="com.ticket.UserInfo.bean.Platoon.selectPlatoonById"/>
     </resultMap>
 
-
-<!--根据支付状态查询订单-->
-    <select id="selectUserOrder" resultMap="orderResultMapper">
-        select * from f_order o
-	join user u
-	join platoon p
-	join film f
-	join seat s
-	join cinema c
-	on o.user_id=u.id
-	and o.platoon_id=p.id
-	and o.film_id=f.id
-	and o.seat_id=s.id
-	and o.cinema_id=c.id
-	and o.cost_state=#{costState};
-    </select>
-
-    <!--查询历史订单-->
-    <select id="selectHistoryOrder" resultMap="orderResultMapper">
-        select * from f_order o
-        join user u
-        join platoon p
-        join film f
-        join seat s
-        join cinema c
-        on o.user_id=u.id
-        and o.platoon_id=p.id
-        and o.film_id=f.id
-        and o.seat_id=s.id
-        and o.cinema_id=c.id
-        and p.show_start_time &lt; #{nowtime};
-    </select>
 
     <!--显示未支付的订单数量-->
     <select id="selectNumberofUnpay" resultType="java.lang.Integer">
@@ -66,6 +25,11 @@
 
     <!--删除未支付订单-->
     <delete id="deleteOrderById" parameterType="com.ticket.UserInfo.bean.Order">
-        delete from f_order where id=#{id}
+        update f_order set cost_state=#{costState} where id=#{id}
     </delete>
+
+    <!--查询用户历史订单-->
+    <select id="selecthistory" resultMap="orderResultMapper">
+        select * from f_order where cost_state &gt; 0 and user_id=#{userId};
+    </select>
 </mapper>

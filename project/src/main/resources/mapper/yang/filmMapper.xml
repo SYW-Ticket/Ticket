@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ticket.UserInfo.bean.Film">
+    <!--电影详情结果集-->
+    <resultMap id="filmDetailResultMap" type="com.ticket.UserInfo.bean.Film">
+        <id property="id" column="id"/>
+        <result property="filmImg" column="film_img"/>
+        <result property="filmName" column="film_name"/>
+        <result property="filmScore" column="film_score"/>
+        <result property="filmHot" column="film_hot"/>
+
+
+        <result property="details" column="details"/>
+        <result property="filmStartDate" column="film_start_date" />
+        <result property="director" column="director"/>
+        <result property="synopsis" column="synopsis"/>
+        <result property="filmEndDate" column="film_end_date"/>
+        <result property="filmLength" column="film_length"/>
+        <result property="language" column="language"/>
+        <result property="LV3D" column="3DLV"/>
+        <result property="trailerAddress" column="trailer_address"/>
+
+    </resultMap>
+
+
+    <sql id="filmDetailsPro">
+        fd.film_id,f.film_name,f.film_img,f.film_score,f.film_hot,
+        fd.details,fd.film_start_date,fd.director,fd.synopsis,
+        fd.trailer_address,fd.film_length,fd.language,fd.3DLV
+    </sql>
+
+    <!--根据platoon 中film_id 查找对应电影-->
+    <select id="findFilmByPlatoonFilmId" resultMap="filmDetailResultMap">
+        SELECT <include refid="filmDetailsPro"></include>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+        and f.id=#{film_id}
+    </select>
+
+
+
+
+
+
+  <!--  <select id="filmDetail" resultMap="filmDetailResultMap">
+        SELECT <include refid="filmDetailsPro"></include>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+        WHERE f.id = #{id}
+    </select>
+    &lt;!&ndash;电影id查找所有类型&ndash;&gt;
+    <select id="selectTypesByFilmId" resultType="java.lang.String">
+        SELECT type_name FROM film_type_chose ft
+        JOIN film f ON ft.film_id = f.id
+        JOIN type t ON ft.type_id = t.id
+        WHERE f.id = #{id}
+    </select>
+    &lt;!&ndash;电影id查找所有演员&ndash;&gt;
+    <select id="selectActorsByFilmId" resultMap="actorResultMap">
+        SELECT a.id,a.actor_name,a.actor_photo,af.main_actor_flag FROM actor_film_details_chose af
+        JOIN actor a ON af.actor_id = a.id
+        JOIN film_details fd ON af.film_details_id  = fd.id
+        WHERE fd.film_id = #{id}
+    </select>
+    &lt;!&ndash;查找所有上映的电影&ndash;&gt;
+    <select id="filmsLoading" resultMap="filmDetailResultMap">
+        SELECT  <include refid="filmDetailsPro"/>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+        WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !=''  ORDER BY f.film_hot DESC
+    </select>
+    &lt;!&ndash;查找所有即将上映的电影&ndash;&gt;
+    <select id="filmsWillLoad" resultMap="filmDetailResultMap">
+        SELECT  <include refid="filmDetailsPro"/>
+        FROM film f
+        JOIN film_details fd
+        on f.id = fd.film_id
+        WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' ORDER BY f.film_hot DESC
+    </select>
+    &lt;!&ndash;根据电影id查找热度film_hot&ndash;&gt;
+    <select id="selectFilmHot" resultType="java.lang.Integer">
+        SELECT film_hot FROM film WHERE id = #{filmId}
+    </select>
+    &lt;!&ndash;根据电影id修改电影热度film_Hot&ndash;&gt;
+    <update id="updateFilmHot">
+        UPDATE film set film_hot = #{hotValue} WHERE id = #{filmId}
+    </update>-->
+    <!--&lt;!&ndash;分页查找上映的电影&ndash;&gt;-->
+    <!--<select id="filmsLoadingByPage" resultMap="filmDetailResultMap">-->
+        <!--SELECT  <include refid="filmDetailsPro"/>-->
+        <!--FROM film f-->
+        <!--JOIN film_details fd-->
+        <!--on f.id = fd.film_id-->
+        <!--WHERE fd.film_start_date &lt; #{now} and fd.film_start_date !='' limit #{start},5-->
+    <!--</select>-->
+    <!--&lt;!&ndash;分页查找即将上映的电影&ndash;&gt;-->
+    <!--<select id="filmsWillLoadByPage" resultMap="filmDetailResultMap">-->
+        <!--SELECT  <include refid="filmDetailsPro"/>-->
+        <!--FROM film f-->
+        <!--JOIN film_details fd-->
+        <!--on f.id = fd.film_id-->
+        <!--WHERE fd.film_start_date &gt; #{now} and fd.film_start_date !='' limit #{start},5-->
+    <!--</select>-->
+    <!--&lt;!&ndash;查找正在上映的电影总数&ndash;&gt;-->
+    <!--<select id="selectLoadingCounts" resultType="java.lang.Integer">-->
+        <!--SELECT count(*) FROM film_details WHERE film_start_date &lt; #{now}-->
+    <!--</select>-->
+    <!--&lt;!&ndash;查找即将上映的电影总数&ndash;&gt;-->
+    <!--<select id="selectWillLoadCounts" resultType="java.lang.Integer">-->
+        <!--SELECT count(*) FROM film_details WHERE film_start_date &gt; #{now}-->
+    <!--</select>-->
+</mapper>

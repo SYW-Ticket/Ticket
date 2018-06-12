@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.UserInfo.bean.Platoon">
+    <resultMap id="platoonBaseResult" type="com.ticket.UserInfo.bean.Platoon">
+        <id property="id" column="id"/>
+        <result property="filmeId" column="film_id"/>
+        <result property="showStartTime" column="show_start_time"/>
+        <result property="hallId" column="hall_id"/>
+        <result property="filmPrice" column="film_price"/>
+        <result property="showStartDate" column="show_start_date"/>
+
+
+        <association property="film" column="film_id" select="com.ticket.UserInfo.bean.Film.findFilmByPlatoonFilmId"/>
+
+       <association property="hall" column="hall_id" select="com.ticket.UserInfo.bean.HallMapper.selectHallWithID"/>
+    </resultMap>
+
+    <select id="selectAllPlatoonByFilm_id" resultMap="platoonBaseResult" parameterType="HashMap">
+          SELECT p.*,h.* FROM platoon p JOIN hall h ON p.hall_id = h.id WHERE p.film_id = #{film_id} and h.cinema_id = #{cinema_id} AND p.show_start_date=#{show_start_date}
+    </select>
+
+
+    <select id="selectPlatoonById" resultMap="platoonBaseResult">
+        SELECT * FROM  platoon WHERE id = #{platoon_id}
+    </select>
+
+</mapper>

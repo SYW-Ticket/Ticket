@@ -19,6 +19,11 @@
         WHERE fo.platoon_id = #{platoonId}
     </select>
 
+    <select id="selectAllSeatOccupiesByPlatoonId" resultType="java.lang.Integer">
+        SELECT so.seat_id FROM f_order fo JOIN seat_occupied so ON fo.id = so.order_id
+        WHERE fo.platoon_id = #{platoonId}
+    </select>
+
     <select id="selectAllSeatByOrderID" resultMap="seatResultMap">
         SELECT * FROM seat s JOIN seat_occupied ON s.id = seat_id
         WHERE order_id = #{order_id}

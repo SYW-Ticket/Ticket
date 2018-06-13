@@ -3,6 +3,7 @@ package com.ticket.seat;
 import com.ticket.film.dao.ISeatDao;
 import com.ticket.film.dao.impl.IHallDao;
 import com.ticket.film.entity.HallBean;
+import com.ticket.film.service.SeatService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,6 +24,8 @@ public class TestSeat {
     private ISeatDao seatDao;
     @Resource
     private IHallDao hallDao;
+    @Resource
+    private SeatService seatService;
     @Test
     public void testAllSeats(){
 //        List<Seat> seats = seatDao.selectAllSeatByHallId(1);
@@ -38,5 +41,10 @@ public class TestSeat {
         for (Integer id : ids) {
             System.out.println(id);
         }
+    }
+    @Test
+    public void selectAllSeatOccupiesBySeatId(){
+        int[]seatIds = {3,21,22,23,31};
+        System.out.println(seatService.seatsIsBeOccupied(seatIds));
     }
 }

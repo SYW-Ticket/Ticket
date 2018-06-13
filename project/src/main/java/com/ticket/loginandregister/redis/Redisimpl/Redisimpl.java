@@ -78,4 +78,8 @@ public class Redisimpl implements Redis {
     public void deleteKeys(Set<String> keys) {
         redisTemplate.delete(keys);
     }
+
+    public void saveStringToSet(String key,String value,int staytime){
+        redisTemplate.opsForValue().set(key,value,staytime,TimeUnit.MINUTES);
+    }
 }

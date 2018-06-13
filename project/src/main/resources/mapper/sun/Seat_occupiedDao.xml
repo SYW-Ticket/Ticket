@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ticket.insertOrder.daoWrite.Seat_occupiedDao">
+    <resultMap id="Seat_occupiedMapper" type="com.ticket.insertOrder.bean.Seat_Occupied">
+        <id column="id" property="id" />
+        <result column="seat_occupied" property="seat_occupied"/>
+        <result column="seat_id" property="seat_id"/>
+        <result column="order_id" property="order_id" />
+    </resultMap>
+
+    <insert id="insertSeat_occupied"  parameterType="com.ticket.insertOrder.bean.Seat_Occupied" keyProperty="id" useGeneratedKeys="true">
+        insert INTO seat_occupied(seat_occupied,seat_id,order_id)
+        VALUES(#{seat_occupied},#{seat_id},#{order_id})
+    </insert>
+    <update id="update_occupiedByOrderID">
+        update seat_occupied set seat_occupied=0 where order_id=#{order_id}
+    </update>
+
+
+</mapper>

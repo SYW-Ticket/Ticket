@@ -70,7 +70,7 @@
         </property>
         <!--引入自定义jobFactory,使自定义Job类可以注入bean，解决Job定时任务里不能注入Service和Redis操作类的问题 by wangpeng-->
         <property name="jobFactory" ref="myBeanJobFactory"></property>
-        <!-- <property name="autoStartup" value="true" /> -->
+         <property name="autoStartup" value="true" />
     </bean>
 <!--自定义jobFactory-->
     <bean id="myBeanJobFactory" class="com.ticket.film.service.ScheduleJobService.MyBeanJobFactory"></bean>

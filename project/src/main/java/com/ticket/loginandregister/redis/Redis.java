@@ -2,6 +2,7 @@ package com.ticket.loginandregister.redis;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public interface Redis {
     //获得字符串Redis缓存
@@ -24,4 +25,6 @@ public interface Redis {
     void deleteKeys(Set<String> keys);
 
     void saveStringToSet(String key,String value);
+
+    public void saveStringToSet(String key,String value,int staytime);
 }

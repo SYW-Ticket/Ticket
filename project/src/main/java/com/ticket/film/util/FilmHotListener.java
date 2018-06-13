@@ -11,7 +11,7 @@ import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
-public class FilmHotListener implements MessageListener {
+    public class FilmHotListener implements MessageListener {
     @Resource
     private FilmService filmService;
     @Resource

@@ -20,6 +20,11 @@
         <constructor-arg value="hot"/>
     </bean>
 
+    <!--手机接收订单队列-->
+    <bean id="sendMsg" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="sendMsg"/>
+    </bean>
+
     <!--用来接受和发送消息的工具-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
@@ -33,6 +38,12 @@
         <property name="sessionTransacted" value="true"/>
         <property name="defaultDestination" ref="filmHot"/>
     </bean>
+    <!--发送短信队列操作工具-->
+    <bean id="jmsTemplateSendMsg" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="sessionTransacted" value="true"/>
+        <property name="defaultDestination" ref="sendMsg"/>
+    </bean>
 
     <!--配置消息监听器-->
     <bean id="messageListener" class="com.ticket.loginandregister.util.Listener"/>
@@ -40,6 +51,11 @@
     <!--热点数据修改消息监听器-->
     <bean id="messageListenerHot" class="com.ticket.film.util.FilmHotListener"/>
 
+    <bean id="messageListenerSendMsg" class="com.ticket.insertOrder.util.OrderSendMsgListener"/>
+
+
+
+    <!--发送短信队列消息监听器-->
 
     <!--消息监听器容器，所有的消息监听器都放在容器中-->
     <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
@@ -51,8 +67,13 @@
 
     <bean id="jmsContainer2" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="destination" ref="filmHot"/>
+        <property name="destination" ref="sendMsg"/>
         <property name="messageListener" ref="messageListenerHot"/>
     </bean>
 
+    <bean id="jmsContainer3" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="filmHot"/>
+        <property name="messageListener" ref="messageListenerSendMsg"/>
+    </bean>
 </beans>

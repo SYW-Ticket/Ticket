@@ -73,7 +73,7 @@ public class OrderService {
         Order myOrder = orderDaoRead.selectOrderByID(order.getId());
         //将订单保存到缓存中，在该项目中，一个用户同一时间只能有一个未支付订单
         Gson gson = new Gson();
-        redis.saveStringToSet(key,gson.toJson(myOrder),15);
+        redis.saveStringToSet(key,gson.toJson(myOrder),30);
         //15分钟后清除缓存中的订单数据
         userInfoService.deleteOrder(order.getId());
         return myOrder;

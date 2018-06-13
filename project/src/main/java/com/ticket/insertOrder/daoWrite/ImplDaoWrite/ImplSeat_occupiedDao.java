@@ -21,4 +21,9 @@ public class ImplSeat_occupiedDao extends SqlSessionDaoSupport implements Seat_o
         SqlSession sqlSession = getSqlSession();
         sqlSession.insert("com.ticket.insertOrder.daoWrite.Seat_occupiedDao.insertSeat_occupied",seat_occupied);
     }
+
+    @Override
+    public void update_occupiedByOrderID(int order_id) {
+        getSqlSession().update("com.ticket.insertOrder.daoWrite.Seat_occupiedDao.update_occupiedByOrderID",order_id);
+    }
 }

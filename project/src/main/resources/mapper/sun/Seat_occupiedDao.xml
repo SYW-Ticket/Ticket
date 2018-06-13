@@ -13,7 +13,9 @@
         insert INTO seat_occupied(seat_occupied,seat_id,order_id)
         VALUES(#{seat_occupied},#{seat_id},#{order_id})
     </insert>
-
+    <update id="update_occupiedByOrderID">
+        update seat_occupied set seat_occupied=0 where order_id=#{order_id}
+    </update>
 
 
 </mapper>

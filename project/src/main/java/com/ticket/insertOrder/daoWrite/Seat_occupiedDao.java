@@ -4,4 +4,5 @@ import com.ticket.insertOrder.bean.Seat_Occupied;
 
 public interface Seat_occupiedDao {
     public void insertSeat_occupiedDao(Seat_Occupied seat_occupied);
+    public void update_occupiedByOrderID(int order_id);
 }

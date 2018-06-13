@@ -82,7 +82,7 @@ public class UserInfoService implements IUserInfoService {
     public Order findUnPayOrder(int userId){
 
 
-        String s = Integer.toString(userId);
+        String s = "order_"+Integer.toString(userId);
 
         String valueByKey = red.getValueByKey(s);
 

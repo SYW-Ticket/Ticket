@@ -1,0 +1,247 @@
+.nav {
+	width: 120px;
+	background: #E5E5E5;
+	color: #333;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.nav-head {
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #888;
+}
+
+.nav-head img {
+	width: 100px;
+	border-radius: 100%;
+}
+
+.nav-head p {
+	height: 26px;
+	line-height: 26px;
+}
+
+.nav-list,
+.nav-list ul,
+.nav-list ul li {
+	width: 100%;
+}
+
+.nav-list {
+	padding: 10px 0;
+}
+
+.nav-list ul li a {
+	display: block;
+	color: #333;
+	text-align: center;
+	padding: 5px 0;
+}
+
+.main {
+	width: 1000px;
+	height: 407px;
+}
+
+.bigTitle {
+	height: 47px;
+	border-bottom: 1px solid #666;
+}
+
+.mainContent {
+	height: 360px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.part {
+	display: none;
+}
+
+.orderList {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.myCard,
+.myCash {
+	width: 100%;
+	height: 100%;
+}
+
+.cardList {
+	width: 100%;
+	display: flex;
+	height: 28px;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 30px;
+}
+
+.cardList li {
+	padding: 0 40px;
+	height: 100%;
+	cursor: pointer;
+}
+
+.cur {
+	border-bottom: 2px solid #FF6640;
+}
+
+.cardDi {
+	display: none;
+}
+
+.car {
+	display: none;
+}
+
+.cardPanel {
+	display: block;
+}
+
+.orderPanel {
+	padding: 30px;
+	border: 4px solid #ddd;
+	border-radius: 8px;
+	margin-top: 20px;
+	display: none;
+}
+
+.orderWarp {
+	display: flex;
+	justify-content: space-between;
+}
+
+.film-pic {
+	height: 150px;
+}
+
+.filmDetail {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.o-tab {
+	width: 800px;
+	padding: 0;
+}
+
+.o-tit,
+.o-det {
+	width: 100%;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.o-det {
+	padding: 20px 0;
+}
+
+.btns {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.sysj {
+	display: flex;
+	align-items: baseline;
+	margin-right: 20px;
+}
+
+.sysj h3 {
+	font-size: 24px;
+}
+
+.zf {
+	border-radius: 19px;
+	padding: 0 15px;
+}
+
+.phone {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.no-order {
+	color: #E5E5E5;
+	text-align: center;
+	margin-top: 10%;
+}
+
+.t-tit {
+	height: 36px;
+	line-height: 36px;
+	background: #ddd;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.tit {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.tit img {
+	height: 60px;
+	margin-right: 10px;
+}
+
+.addTit {
+	padding-top: 20px;
+	cursor: pointer;
+}
+
+.addTit img {
+	width: 20px;
+	height: 20px;
+}
+
+.panel {
+	padding: 30px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.cashCode {
+	width: 300px;
+	height: 36px;
+	border: 1px solid #666;
+	border-radius: 4px;
+	text-indent: 10px;
+}
+
+.sendCode {
+	display: inline-block;
+	cursor: pointer;
+}
+
+a.act,
+.red {
+	color: #FF6640 !important;
+}
+
+.cyan {
+	color: cyan;
+}
+
+.grey {
+	color: #888;
+}

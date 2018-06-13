@@ -5,11 +5,17 @@ import com.ticket.loginandregister.daoRead.IUserDAORead;
 import com.ticket.loginandregister.daoWrite.IUserDAOWrite;
 import com.ticket.loginandregister.redis.Redis;
 import com.ticket.loginandregister.util.SendMessageUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+import sun.security.krb5.Realm;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -45,47 +51,52 @@ public class UserService {
         });
     }
 
-    public UserBean login(String tel,String token){
+    public void login(String tel, String token) throws IncorrectCredentialsException {
 
-        String code = redis.getValueByKey("token");
-        final String TOKEN = token;
-        UserBean userBean = read.selectUserByTel(tel);
-        if(userBean!=null && code.equals(token)){
-            final String TEL = tel;
-            //发送登陆消息给日志处理器，书写成日志保存在本地
-            jmsTemplate.send(new MessageCreator() {
-                @Override
-                public Message createMessage(Session session) throws JMSException {
-                    return session.createTextMessage("老用户登陆成功，登陆手机号为："+TEL+"  "+"用户输入的验证码为："+TOKEN);
-                }
-            });
-            return userBean;
-        }
-        else if(userBean==null && code.equals(token)){
-            //如果数据库中没有，就添加到数据库中
-            UserBean user = new UserBean();
-            user.setTel(tel);
-            write.insertUserWithTel(user);
-            final String TEL = tel;
-            //发送登陆消息给日志处理器，书写成日志保存在本地
-            jmsTemplate.send(new MessageCreator() {
-                @Override
-                public Message createMessage(Session session) throws JMSException {
-                    return session.createTextMessage("新用户登陆成功，登陆手机号为"+TEL+"  "+"用户输入的验证码为："+TOKEN);
-                }
-            });
-            return user;
-        }
-        //发送登陆消息给日志处理器，书写成日志保存在本地
-        final String TEL = tel;
-        jmsTemplate.send(new MessageCreator() {
-            @Override
-            public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage("用户登陆失败，验证码输入错误，尝试登陆手机号为"+TEL+"  "+"用户输入的验证码为："+TOKEN);
-            }
-        });
-        //如果验证码输入错误，就返回空
-        return null;
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(tel,token);
+        subject.login(usernamePasswordToken);
+
+
+//        String code = redis.getValueByKey("token");
+//        final String TOKEN = token;
+//        UserBean userBean = read.selectUserByTel(tel);
+//        if(userBean!=null && code.equals(token)){
+//            final String TEL = tel;
+//            //发送登陆消息给日志处理器，书写成日志保存在本地
+//            jmsTemplate.send(new MessageCreator() {
+//                @Override
+//                public Message createMessage(Session session) throws JMSException {
+//                    return session.createTextMessage("老用户登陆成功，登陆手机号为："+TEL+"  "+"用户输入的验证码为："+TOKEN);
+//                }
+//            });
+//            return userBean;
+//        }
+//        else if(userBean==null && code.equals(token)){
+//            //如果数据库中没有，就添加到数据库中
+//            UserBean user = new UserBean();
+//            user.setTel(tel);
+//            write.insertUserWithTel(user);
+//            final String TEL = tel;
+//            //发送登陆消息给日志处理器，书写成日志保存在本地
+//            jmsTemplate.send(new MessageCreator() {
+//                @Override
+//                public Message createMessage(Session session) throws JMSException {
+//                    return session.createTextMessage("新用户登陆成功，登陆手机号为"+TEL+"  "+"用户输入的验证码为："+TOKEN);
+//                }
+//            });
+//            return user;
+//        }
+//        //发送登陆消息给日志处理器，书写成日志保存在本地
+//        final String TEL = tel;
+//        jmsTemplate.send(new MessageCreator() {
+//            @Override
+//            public Message createMessage(Session session) throws JMSException {
+//                return session.createTextMessage("用户登陆失败，验证码输入错误，尝试登陆手机号为"+TEL+"  "+"用户输入的验证码为："+TOKEN);
+//            }
+//        });
+//        //如果验证码输入错误，就返回空
+//        return null;
     }
 
 

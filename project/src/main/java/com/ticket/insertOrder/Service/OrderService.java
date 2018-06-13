@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.ticket.UserInfo.UserInfoDAO.impl.UserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
 import com.ticket.UserInfo.userInfoReadDAO.impl.UserInfoOrder;
+import com.ticket.film.service.SeatService;
 import com.ticket.insertOrder.bean.Order;
 import com.ticket.insertOrder.bean.Seat_Occupied;
 import com.ticket.insertOrder.daoRead.OrderDaoRead;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -48,11 +50,19 @@ public class OrderService {
     @Autowired
     SeatService seatService;
     //订单添加接口
-    public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids) {
+    @Transactional
+    public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids){
+
         //查询选座表，判断当前用户的选座是否还存在
         if(seatService.seatsIsBeOccupied(seat_ids)){
             return null;
         }
+
+//        String s = null;
+//        if(!s.equals("")){
+//            System.out.println("异常异常异常");
+//        }
+
         //查询缓存，看是否有该用户的订单
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);

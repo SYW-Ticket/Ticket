@@ -20,6 +20,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -43,8 +44,15 @@ public class OrderService {
 
     @Autowired
     JmsTemplate jmsTemplateSendMsg;
+
+    @Autowired
+    SeatService seatService;
     //订单添加接口
     public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids) {
+        //查询选座表，判断当前用户的选座是否还存在
+        if(seatService.seatsIsBeOccupied(seat_ids)){
+            return null;
+        }
         //查询缓存，看是否有该用户的订单
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);

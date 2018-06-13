@@ -16,7 +16,16 @@
 
     <select id="selectAllSeatOccupiesByPlatoonId" resultType="java.lang.Integer">
         SELECT so.seat_id FROM f_order fo JOIN seat_occupied so ON fo.id = so.order_id
-        WHERE fo.platoon_id = #{platoonId}
+        WHERE fo.platoon_id = #{platoonId} and so.seat_occupied = 1
+    </select>
+
+    <select id="selectAllSeatOccupiesBySeatId" resultType="java.lang.Integer">
+        SELECT seat_id FROM seat_occupied  WHERE seat_id in
+        <foreach item="seatId" index="index" collection="array"
+                 open="(" separator="," close=")">
+            #{seatId}
+        </foreach>
+        AND seat_occupied = 1
     </select>
 
     <select id="selectAllSeatByOrderID" resultMap="seatResultMap">

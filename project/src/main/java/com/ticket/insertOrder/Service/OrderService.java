@@ -1,13 +1,16 @@
 package com.ticket.insertOrder.Service;
 
 import com.google.gson.Gson;
+import com.ticket.UserInfo.UserInfoDAO.impl.UserInfoDAO;
 import com.ticket.UserInfo.UserInfoService.IUserInfoService;
+import com.ticket.UserInfo.userInfoReadDAO.impl.UserInfoOrder;
 import com.ticket.insertOrder.bean.Order;
 import com.ticket.insertOrder.bean.Seat_Occupied;
 import com.ticket.insertOrder.daoRead.OrderDaoRead;
 import com.ticket.insertOrder.daoWrite.OrderDao;
 import com.ticket.insertOrder.daoWrite.Seat_occupiedDao;
 import com.ticket.loginandregister.redis.Redis;
+import net.sf.json.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -33,6 +36,9 @@ public class OrderService {
     OrderDaoRead orderDaoRead;
 
     @Autowired
+    UserInfoDAO userInfoOrder;
+
+    @Autowired
     IUserInfoService userInfoService;
 
     @Autowired
@@ -43,6 +49,9 @@ public class OrderService {
         String key = "order_" + user_id;
         String orderJson = redis.getValueByKey(key);
         if (orderJson != null&&!orderJson.equals("")) {
+            Gson gson = new Gson();
+            Order order = gson.fromJson(key,Order.class);
+            userInfoOrder.deleteOrderById(order.getId(),2);
             //清空该缓存
             redis.deleteKeyValue(key);
         }

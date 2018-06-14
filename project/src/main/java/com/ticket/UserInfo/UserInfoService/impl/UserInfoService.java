@@ -64,7 +64,7 @@ public class UserInfoService implements IUserInfoService {
 
         String password = userBean.getPassword();
 
-        if (password.equals(newpassword)){
+        if (userBean.getPassword()!=null&&newpassword.equals(userBean.getPassword())){
             throw new EqualsException("新旧密码相同");
         }else{
             //如果密码不等  则调用修改方法

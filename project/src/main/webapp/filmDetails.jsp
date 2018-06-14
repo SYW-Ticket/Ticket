@@ -4333,6 +4333,7 @@
 
     function event3(id) {
             window.location.href = "seat/allSeatsByPId/"+id+"";
+
     }
     
     function findPlatoon(cinema_id) {

@@ -177,13 +177,13 @@
                 <div class="part count">
                     <div class="tit">
                         <img src="img/phone.png" alt="" />
-                        <p>已绑定手机号<span class="red">${user.tel}</span></p>
+                        <p>已绑定手机号<span class="red" id="tel">${user.tel}</span></p>
                     </div>
                     <div class="form">
                         <div class="form-group">
                             <div class="form-control code">
                                 <input type="text" class="control-input" id="identifyCode" placeholder="请输入验证码" />
-                                <span class="red sendCode" onclick="sendCode()">发送验证码</span>
+                                <span class="red sendCode" onclick="sendCode(${user.tel})">发送验证码</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
                         <div class="btns">
-                            <button class="btn" onclick="sure()">确认</button>
+                            <button class="btn" onclick="sure(${user.tel})">确认</button>
                         </div>
                     </div>
                 </div>

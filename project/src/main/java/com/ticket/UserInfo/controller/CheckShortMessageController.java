@@ -67,7 +67,7 @@ public class CheckShortMessageController {
         System.out.println("发送信息");
         //获取短信验证码 的内容（随机数）
         String pwd = ShortMessageUtil.bytes2hex();
-
+        System.out.println(pwd);
         //将短信验证码信息放入redis中
         redis.saveString(tel,pwd);
 

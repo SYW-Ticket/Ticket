@@ -65,8 +65,8 @@ $(".nav-list ul li").click(function() {
 })
 
 //发送验证码
-function sendCode() {
-	$.post("UserInfo/sendMessage",{"tel": 13554244942}).then(function(data){
+function sendCode(date) {
+	$.post("UserInfo/sendMessage",{"tel": date}).then(function(data){
 		console.log(data)
 	});
 
@@ -75,9 +75,10 @@ function sendCode() {
 //验证 验证码 
 $("#identifyCode").blur(function(){
 	var identifyCode = $("#identifyCode").val();
+	var tel = $("#tel").val();
 	var content = {
 		ShortMessage: identifyCode,
-		tel: '13554244942'
+		tel: tel
 	};
 	$.post("UserInfo/CheckShortmessage",content).then(function(data){
 		console.log(data)
@@ -85,7 +86,7 @@ $("#identifyCode").blur(function(){
 })
 
 //确认提交
-function sure() {
+function sure(teltoken) {
 	var identifyCode = $("#identifyCode").val();
 	var newPws = $("#newPws").val();
 	var rePws = $("#rePws").val();
@@ -94,11 +95,12 @@ function sure() {
 			var os=newPws;
 			var content = {
 				/*之后此处需要修改为 user.tel*/
-				tel: 123456789,
+				tel: teltoken,
 				pws: newPws
 			};
-			$.post("UserInfo/ModeifyPassword", {"tel": 123456789,pws:os}).then(function(data) {
+			$.post("UserInfo/ModeifyPassword", {"tel": teltoken,pws:os}).then(function(data) {
 				console.log(data)
+				alert(data.msg);
 			})
 		} else {
 			alert("两次密码不一致")

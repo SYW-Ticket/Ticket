@@ -5,6 +5,7 @@ import com.ticket.payMoney.utils.ZxingUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -24,11 +25,11 @@ public class TestServletController {
     Random random = new Random();
 
     @RequestMapping("/test")
-    public void beginTest(HttpServletRequest req, Model model, HttpServletResponse response)throws ServletException, IOException {
+    public void beginTest(@RequestParam("body") String body, HttpServletRequest req, Model model, HttpServletResponse response)throws ServletException, IOException {
         System.out.println("jinrutestControllerfangfa=============");
         req.setCharacterEncoding("UTF-8");
         String price = "1";//默认是1分钱
-        String body = req.getParameter("body");//商品描述，获取用户想买的东西
+//        String body = req.getParameter("body");//商品描述，获取用户想买的东西
 //        if (req.getMethod().equalsIgnoreCase("get")) {
 //            body = new String(body.getBytes("ISO8859-1"), "UTF-8");
 //        }

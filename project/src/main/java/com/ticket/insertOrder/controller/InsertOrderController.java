@@ -29,6 +29,6 @@ public class InsertOrderController {
 //            //异常页面
 //            return "/";
 //        }
-        return "/";
+        return "/makeSure";
     }
 }

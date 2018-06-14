@@ -1,9 +1,11 @@
 package com.ticket.UserInfo.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by Shinelon on 2018/6/8.
  */
-public class Cinema {
+public class Cinema implements Serializable {
 
 
 

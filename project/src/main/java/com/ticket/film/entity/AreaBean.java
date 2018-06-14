@@ -1,6 +1,8 @@
 package com.ticket.film.entity;
 
-public class AreaBean {
+import java.io.Serializable;
+
+public class AreaBean implements Serializable {
 
     private int id;
     private String area_name;

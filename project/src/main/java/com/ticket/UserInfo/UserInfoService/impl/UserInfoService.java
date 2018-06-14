@@ -79,10 +79,10 @@ public class UserInfoService implements IUserInfoService {
      *
      */
     @Override
-    public Order findUnPayOrder(int userId){
+    public com.ticket.insertOrder.bean.Order findUnPayOrder(int userId){
 
 
-        String s = Integer.toString(userId);
+        String s = "order_"+Integer.toString(userId);
 
         String valueByKey = red.getValueByKey(s);
 
@@ -90,7 +90,7 @@ public class UserInfoService implements IUserInfoService {
         int flag2=1;
         if (null != valueByKey && !valueByKey.isEmpty()) {
             //缓存中取出数据  转会order对象
-            Order order = gson.fromJson(valueByKey, Order.class);
+            com.ticket.insertOrder.bean.Order order = gson.fromJson(valueByKey,com.ticket.insertOrder.bean.Order.class);
 
             return order;
         } else {

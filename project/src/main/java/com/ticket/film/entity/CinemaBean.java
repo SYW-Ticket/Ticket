@@ -1,6 +1,8 @@
 package com.ticket.film.entity;
 
-public class CinemaBean {
+import java.io.Serializable;
+
+public class CinemaBean implements Serializable {
     private int id;
     private String cinema_name;
     private String cinema_adress;

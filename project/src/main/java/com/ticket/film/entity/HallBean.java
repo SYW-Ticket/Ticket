@@ -1,9 +1,10 @@
 package com.ticket.film.entity;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class HallBean {
+public class HallBean implements Serializable {
     private int id;
     private String hall_name;
     private int row_max;

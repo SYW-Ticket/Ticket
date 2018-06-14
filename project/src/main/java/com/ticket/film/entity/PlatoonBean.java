@@ -1,10 +1,9 @@
 package com.ticket.film.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
+import java.io.Serializable;
 import java.util.Date;
 
-public class PlatoonBean {
+public class PlatoonBean  implements Serializable {
     private int id;
     private int film_id;
 //    @JsonFormat(pattern = "HH:mm")

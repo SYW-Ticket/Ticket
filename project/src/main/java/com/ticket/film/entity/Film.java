@@ -1,11 +1,13 @@
 package com.ticket.film.entity;
 
+import java.io.Serializable;
+
 /**
  * @Author wangpeng
  * @Date 2018/6/6
  * @Time 14:30
  */
-public class Film {
+public class Film implements Serializable {
     private int id;
     private String filmImg;
     private String filmName;

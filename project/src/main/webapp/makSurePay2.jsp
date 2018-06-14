@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -80,9 +80,9 @@
                         </div>
                         <div class="last-child">
                             <div class="ticket-detail">
-                                <!-- react-text: 1437 -->${orderList2}
-                                <!-- /react-text --><span class="count"><!-- react-text: 1439 -->1<!-- /react-text --><!-- react-text: 1440 --> 张<!-- /react-text --></span></div>
-                            <div class="summation"><span class="pay-tips">${orderList2}：</span><span class="cny">￥${orderList2}</span></div>
+                                <!-- react-text: 1437 -->${orderList2.getPlatoon().getFilm().getFilmName()}/${orderList2.getPlatoon().getFilm().getThreeDLV()}
+                                <!-- /react-text --><span class="count"><!-- react-text: 1439 -->${orderList2.getTicketNum()}<!-- /react-text --><!-- react-text: 1440 --> 张<!-- /react-text --></span></div>
+                            <div class="summation"><span class="pay-tips">等付金额：</span><span class="cny">￥${orderList2.getTotalPrice()}</span></div>
                         </div>
                     </div>
                     <p>选择支付方式</p>

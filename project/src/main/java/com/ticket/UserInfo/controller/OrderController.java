@@ -75,7 +75,7 @@ public class OrderController {
 
         Gson gson = new Gson();
 
-        Order order = gson.fromJson(valueByKey, Order.class);
+        com.ticket.insertOrder.bean.Order order = gson.fromJson(valueByKey, com.ticket.insertOrder.bean.Order.class);
 
         Model orderList2 = model.addAttribute("orderList2", order);
 
@@ -98,9 +98,9 @@ public class OrderController {
 
         String value = redis.getValueByKey(id);
 
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
 
-        Order order2 = gson.fromJson(value, Order.class);
+        Order order2 = gson.fromJson(value, Order.class);*/
 
 
 

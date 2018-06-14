@@ -1,4 +1,4 @@
-<%@page contentType="text/html"%>
+<%@page contentType="text/html" isELIgnored="false" %>
 <%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -101,22 +101,22 @@
 											</tr>
 											<tr>
 												<td>
-													<p>厕所英雄</p>
-													<p>2D / 原版</p>
-													<p>155分钟</p>
+													<p>${order.getPlatoon().getFilm().getFilmName()}</p>
+													<p>${order.getPlatoon().getFilm().getThreeDLV()}</p>
+													<p>${order.getPlatoon().getFilm().getFilmLength()}</p>
 												</td>
 												<td class="schedule">
-													<p>深圳美视国际影城(4K沉浸音)</p>
-													<p>3号厅</p>
-													<p>6月 12日 (星期二) 16:00</p>
+													<p>${order.getPlatoon().getHallBean().getCinemaBean().getCinema_name()}</p>
+													<p>${order.getPlatoon().getHallBean().getHall_name()}</p>
+													<p>${order.getPlatoon().getShow_start_time()}</p>
 												</td>
 												<td>
-													<p>1张票</p>
-													<p><span class="seat">1排1座</span></p>
+													<p>${order.getTicketNum()}</p>
+													<p><span class="seat">${order.getSeats()}</span></p>
 												</td>
-												<td class="price">¥35</td>
-												<td class="mobile">13554244942</td>
-												<td class="total">¥35</td>
+												<td class="price">${order.getPlatoon().getFilm_price()}</td>
+												<td class="mobile">${order.getUser().getTel()}</td>
+												<td class="total">${order.getTotalPrice()}</td>
 											</tr>
 										</tbody>
 									</table>

@@ -14,5 +14,5 @@ public interface ISeatDao {
     List<Seat> selectAllSeatByHallId(int hallId);
     List<Integer> selectAllSeatOccupiesByPlatoonId(int platoonId);
     List<Seat> selectAllSeatByOrderID(int order_id);
-    List<Integer> selectAllSeatOccupiesBySeatId(int[]seatIds);
+    List<Integer> selectAllSeatOccupiesBySeatId(int[]seatIds,int PId);
 }

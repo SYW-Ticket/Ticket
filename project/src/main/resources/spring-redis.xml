@@ -5,6 +5,7 @@
 
     <bean id="redisConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxWaitMillis" value="10000"></property>
+        <property name="maxIdle" value="10000"></property>
     </bean>
 
     <bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
@@ -17,7 +18,7 @@
     <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
         <property name="connectionFactory" ref="jedisConnFactory"></property>
     </bean>
-
-
-
+    <bean id="redisTemplate111" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="jedisConnFactory"></property>
+    </bean>
 </beans>

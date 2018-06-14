@@ -7,7 +7,9 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author wangpeng
@@ -36,7 +38,11 @@ public class SeatDao extends SqlSessionDaoSupport implements ISeatDao {
     }
 
     @Override
-    public List<Integer> selectAllSeatOccupiesBySeatId(int[] seatIds) {
-        return getSqlSession().selectList("com.ticket.seat.dao.ISeatDao.selectAllSeatOccupiesBySeatId",seatIds);
+    //where in（）查询所有排片对应的座位
+    public List<Integer> selectAllSeatOccupiesBySeatId(int[] seatIds,int PId) {
+        Map map = new HashMap();
+        map.put("array",seatIds);
+        map.put("platoonId",PId);
+        return getSqlSession().selectList("com.ticket.seat.dao.ISeatDao.selectAllSeatOccupiesBySeatId",map);
     }
 }

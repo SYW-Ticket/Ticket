@@ -20,12 +20,12 @@
     </select>
 
     <select id="selectAllSeatOccupiesBySeatId" resultType="java.lang.Integer">
-        SELECT seat_id FROM seat_occupied  WHERE seat_id in
+        SELECT so.seat_id FROM seat_occupied so JOIN f_order fo ON fo.id = so.order_id WHERE seat_id in
         <foreach item="seatId" index="index" collection="array"
                  open="(" separator="," close=")">
             #{seatId}
         </foreach>
-        AND seat_occupied = 1
+        AND so.seat_occupied = 1 AND fo.platoon_id = #{platoonId}
     </select>
 
     <select id="selectAllSeatByOrderID" resultMap="seatResultMap">

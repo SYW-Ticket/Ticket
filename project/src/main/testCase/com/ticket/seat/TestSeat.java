@@ -45,6 +45,10 @@ public class TestSeat {
     @Test
     public void selectAllSeatOccupiesBySeatId(){
         int[]seatIds = {3,21,22,23,31};
-        System.out.println(seatService.seatsIsBeOccupied(seatIds));
+//        List<Integer> list = seatDao.selectAllSeatOccupiesBySeatId(seatIds,1);
+//        for (Integer integer : list) {
+//            System.out.println(integer);
+//        }
+        System.out.println(seatService.seatsIsBeOccupied(seatIds,1));
     }
 }

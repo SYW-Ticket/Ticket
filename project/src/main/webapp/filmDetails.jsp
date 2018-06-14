@@ -3626,7 +3626,7 @@
                     <div class="menu">
                         <ul>
                             <li class="">首页</li>
-                            <li class="active">影片</li>
+                            <li class="active"><a href="film/LoadingByPage/1">影片</a></li>
                             <li class="">影院</li>
                         </ul>
                     </div>
@@ -4260,19 +4260,19 @@
             </div>
             <div class="footer">
                 <div class="content inner">
-                    <h2><img src="./影片详情页+在线购票页_files/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
-                    <div class="service"><img src="./影片详情页+在线购票页_files/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
+                    <h2><img src="http://119.23.42.247:83/img/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 67 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
+                    <div class="service"><img src="http://119.23.42.247:83/img/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
                     <div class="follow">
-                        <div class="item"><img src="./影片详情页+在线购票页_files/b9e924f8e417675ce2e125649d7530ce.png">
-                            <div class="tip"><img src="./影片详情页+在线购票页_files/ec5f0f45fc548050c5e613a416294452.png" width="151">
+                        <div class="item"><img src="http://119.23.42.247:83/img/b9e924f8e417675ce2e125649d7530ce.png">
+                            <div class="tip"><img src="http://119.23.42.247:83/img/ec5f0f45fc548050c5e613a416294452.png" width="151">
                                 <p>扫码下载卖座电影APP</p><span class="icon-caret-down"></span></div>
                         </div>
-                        <div class="item"><img src="./影片详情页+在线购票页_files/d4af003a3ca8ad39fb8715440c15b17c.png">
-                            <div class="tip"><img src="./影片详情页+在线购票页_files/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
+                        <div class="item"><img src="http://119.23.42.247:83/img/d4af003a3ca8ad39fb8715440c15b17c.png">
+                            <div class="tip"><img src="http://119.23.42.247:83/img/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
                                 <p>扫码关注卖座官方微信</p><span class="icon-caret-down"></span></div>
                         </div>
                         <div class="item">
-                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="./影片详情页+在线购票页_files/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
+                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="http://119.23.42.247:83/img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
                         </div>
                     </div>
                 </div>
@@ -4316,7 +4316,7 @@
                             <!-- /react-text -->
                             <!-- react-text: 114 -->maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318
                             <!-- /react-text -->
-                        </p><img src="./影片详情页+在线购票页_files/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
+                        </p><img src="http://119.23.42.247:83/img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
                 </div>
             </div>
         </div>

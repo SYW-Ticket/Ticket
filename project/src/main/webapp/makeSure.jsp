@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" isELIgnored="false" %>
 <%@page pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +6,7 @@
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>确认订单</title>
+		<base href="<%=request.getContextPath()%>/"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp">
@@ -12,8 +14,8 @@
 		<meta name="copyright" content="Copyright (c) 2016 maizuo.">
 		<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<meta content="telephone=no" name="format-detection">
-		<link rel="stylesheet" type="text/css" href="/css/payPage.css"/>
-		<script type="text/javascript" src="/js/jquery-1.10.1.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="http://119.23.42.247:83/css/payPage.css"/>
+		<script type="text/javascript" src="http://119.23.42.247:83/js/jquery-1.10.1.min.js" ></script>
 	</head>
 	
 	<body>
@@ -29,15 +31,26 @@
 							<div class="menu">
 								<ul>
 									<li class="">首页</li>
-									<li class="">影片</li>
+									<a href="film/LoadingByPage/1"><li class="">影片</li></a>
 									<li class="">影院</li>
 								</ul>
 							</div>
 							<div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
 							<div class="sign">
 								<ul>
-									<li>手机用户4942</li>
-									<li>退出</li>
+									<c:choose>
+										<c:when test="${user==null}">
+											<ul>
+												<li><a href="login.jsp">快速登陆</a></li>
+											</ul>
+										</c:when>
+										<c:otherwise>
+											<ul>
+												<li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+												<li><a href="users/logout">退出登陆</a></li>
+											</ul>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</div>
 						</div>
@@ -87,7 +100,7 @@
 			</span>
 						</p>
 							<div class="ticket-detail">
-								<div class="poster"><img class="seat" src="./img/6735bd2213bf4978ddcf70a85f07668f.jpg"></div>
+								<div class="poster"><img class="seat" src="http://119.23.42.247:83/img/${order.platoon.film.filmImg}"></div>
 								<div class="info" style="float: right;">
 									<table class="seat-detail">
 										<tbody>
@@ -112,7 +125,13 @@
 												</td>
 												<td>
 													<p>${order.getTicketNum()}</p>
-													<p><span class="seat">${order.getSeats()}</span></p>
+													<p>
+														<c:forEach var="seat" items="${order.seats}">
+														<span class="seat">
+															${seat.name}
+														</span>
+														</c:forEach>
+													</p>
 												</td>
 												<td class="price">${order.getPlatoon().getFilm_price()}</td>
 												<td class="mobile">${order.getUser().getTel()}</td>
@@ -146,7 +165,7 @@
 											<td class="value">
 												<!-- react-text: 2577 -->¥
 												<!-- /react-text -->
-												<!-- react-text: 2578 -->35
+												<!-- react-text: 2578 -->${order.totalPrice}
 												<!-- /react-text -->
 											</td>
 										</tr>
@@ -164,7 +183,7 @@
 											<td class="value pay">
 												<!-- react-text: 2587 -->¥
 												<!-- /react-text -->
-												<!-- react-text: 2588 -->35
+												<!-- react-text: 2588 -->${order.totalPrice}
 												<!-- /react-text -->
 											</td>
 										</tr>
@@ -177,19 +196,19 @@
 </div>
 					<div class="footer">
 						<div class="content inner">
-							<h2><img src="./img/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 96 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
-							<div class="service"><img src="./img/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
+							<h2><img src="http://119.23.42.247:83/img/97d132d70ddef38021064aae67963766.png" alt="卖座"><!-- react-text: 96 -->电影订座&nbsp;&nbsp;就上卖座<!-- /react-text --></h2>
+							<div class="service"><img src="http://119.23.42.247:83/img/cceb956981ce7ae563401d65b3e6421f.png" alt="卖座客服"><span>电话：</span><span class="moblie">400-1808-400</span><span>周日-周四：9:00-22:00&nbsp;&nbsp;周五-周六：9:00-22:30</span></div>
 							<div class="follow">
-								<div class="item"><img src="./img/b9e924f8e417675ce2e125649d7530ce.png">
-									<div class="tip"><img src="./img/ec5f0f45fc548050c5e613a416294452.png" width="151">
+								<div class="item"><img src="http://119.23.42.247:83/img/b9e924f8e417675ce2e125649d7530ce.png">
+									<div class="tip"><img src="http://119.23.42.247:83/img/ec5f0f45fc548050c5e613a416294452.png" width="151">
 										<p>扫码下载卖座电影APP</p><span class="icon-caret-down"></span></div>
 								</div>
-								<div class="item"><img src="./img/d4af003a3ca8ad39fb8715440c15b17c.png">
-									<div class="tip"><img src="./img/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
+								<div class="item"><img src="http://119.23.42.247:83/img/d4af003a3ca8ad39fb8715440c15b17c.png">
+									<div class="tip"><img src="http://119.23.42.247:83/img/500b205c9fbf141e4b3c2824d4e8d7fe.png" width="151">
 										<p>扫码关注卖座官方微信</p><span class="icon-caret-down"></span></div>
 								</div>
 								<div class="item">
-									<a href="http://www.weibo.com/maizuo" target="_blank"><img src="./img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
+									<a href="http://www.weibo.com/maizuo" target="_blank"><img src="http://119.23.42.247:83/img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
 								</div>
 							</div>
 						</div>
@@ -233,7 +252,7 @@
 									<!-- /react-text -->
 									<!-- react-text: 143 -->maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318
 									<!-- /react-text -->
-								</p><img src="img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
+								</p><img src="http://119.23.42.247:83/img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
 						</div>
 					</div>
 				</div>
@@ -246,7 +265,7 @@
 		function test(date){
 			var UserId=date;
 			console.log()
-			window.location.href="Order/allSeatsByPId/"+UserId;
+			window.location.href="Order/allSeatsByPId/"+UserId+"";
 		}
 		</script>
 	</body>

@@ -3629,7 +3629,7 @@
                     <div class="menu">
                         <ul>
                             <li class="">首页</li>
-                            <li class="">影片</li>
+                            <a href="film/LoadingByPage/1"><li class="">影片</li></a>
                             <li class="">影院</li>
                         </ul>
                     </div>

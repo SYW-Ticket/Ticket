@@ -35,18 +35,25 @@ import java.util.List;
 public class OrderService {
     @Autowired
     Redis redis;
+
     @Autowired
     Seat_occupiedDao seat_occupiedDao;
+
     @Autowired
     OrderDao orderDao;
+
     @Autowired
     OrderDaoRead orderDaoRead;
+
     @Autowired
     UserInfoDAO userInfoOrder;
+
     @Autowired
     IUserInfoService userInfoService;
+
     @Autowired
     JmsTemplate jmsTemplateSendMsg;
+
     @Autowired
     SeatService seatService;
     @Autowired

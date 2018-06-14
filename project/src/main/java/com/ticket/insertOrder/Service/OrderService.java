@@ -19,6 +19,7 @@ import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.DefaultTransactionAttribute;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.jms.JMSException;
@@ -57,7 +58,6 @@ public class OrderService {
     DataSourceTransactionManager transactionManager;
 
 
-    @Transactional(propagation= Propagation.NOT_SUPPORTED)
     public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids){
         //查询选座表，判断当前用户的选座是否还存在
 
@@ -96,6 +96,7 @@ public class OrderService {
         order.setOrderTime(date);
         //添加订单到数据库
         orderDao.insertOrder(order);
+
         //包装订单座位中间表
         for (int seat_id : seat_ids
                 ) {

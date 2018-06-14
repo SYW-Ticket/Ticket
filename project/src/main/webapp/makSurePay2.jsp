@@ -11,8 +11,8 @@
     <meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <meta content="telephone=no" name="format-detection">
 
-    <link rel="stylesheet" type="text/css" href="/css/payPage2.css"/>
-    <script type="text/javascript" src="/js/jquery-1.10.1.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="http://119.23.42.247:83/css/payPage2.css"/>
+    <script type="text/javascript" src="http://119.23.42.247:83/js/jquery-1.10.1.min.js" ></script>
     <base href="<%=request.getContextPath()%>/"/>
 </head>
 
@@ -92,7 +92,7 @@
                             <ul>
                                 <li>
                                     <!--<div class="checkbox"></div>-->
-                                    <div class="payment"><img src="/img/c97797cca23f6fae15710b43ee3bcb46.png" alt="微信二维码"></div>
+                                    <div class="payment"><img src="http://119.23.42.247:83/img/c97797cca23f6fae15710b43ee3bcb46.png" alt="微信二维码"></div>
                                 </li>
                             </ul>
                         </div>
@@ -124,7 +124,7 @@
                                 <p>扫码关注卖座官方微信</p><span class="icon-caret-down"></span></div>
                         </div>
                         <div class="item">
-                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="/img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
+                            <a href="http://www.weibo.com/maizuo" target="_blank"><img src="http://119.23.42.247:83/img/ce402ffd0ccd2499f976e53db87ecf90.png"></a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                             <!-- /react-text -->
                             <!-- react-text: 124 -->maizuo. All Rights Reserved 卖座网 版权所有 增值业务经营许可证:粤B2-200502318
                             <!-- /react-text -->
-                        </p><img src="/img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
+                        </p><img src="http://119.23.42.247:83/img/1c40acb236a22bea60e5889ad57cdd7c.png"></div>
                 </div>
             </div>
         </div>

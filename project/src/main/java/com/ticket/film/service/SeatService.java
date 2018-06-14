@@ -23,11 +23,9 @@ public class SeatService {
         return seatDao.selectAllSeatOccupiesByPlatoonId(PId);
     }
     //筛选用户选中的座位，返回是否有被占座
-    public Boolean seatsIsBeOccupied(int[]seatIds){
-        Integer[] is = ArrayUtils.toObject(seatIds);
-        List<Integer> seatsChoosed = Arrays.asList(is);
-        List<Integer> seatsOccupied = seatDao.selectAllSeatOccupiesBySeatId(seatIds);
-        for (int seatId : seatsChoosed) {
+    public Boolean seatsIsBeOccupied(int[]seatIds,int platoonId){
+        List<Integer> seatsOccupied = seatDao.selectAllSeatOccupiesBySeatId(seatIds,platoonId);
+        for (int seatId : seatIds) {
             if(seatsOccupied.contains(seatId)){
                 return true;
             }

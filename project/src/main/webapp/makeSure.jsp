@@ -12,8 +12,8 @@
 		<meta name="copyright" content="Copyright (c) 2016 maizuo.">
 		<meta content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 		<meta content="telephone=no" name="format-detection">
-		<link rel="stylesheet" type="text/css" href="css/payPage.css"/>
-		<script type="text/javascript" src="js/jquery-1.10.1.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="/css/payPage.css"/>
+		<script type="text/javascript" src="/js/jquery-1.10.1.min.js" ></script>
 	</head>
 	
 	<body>
@@ -173,7 +173,7 @@
 							</div>
 							<div class="security-code hide"><span>为保障您的账户安全，使用卖座卡/余额，需输入安全密码</span><input type="password" class="security-ipt" maxlength="6" placeholder="请输入安全密码">
 						
-							<span class="fogetten">忘记密码</span></div><button id="makeSure" class="confirm-btn" onclick="test(${user.Id})">确认</button></div>
+							<span class="fogetten">忘记密码</span></div><button id="makeSure" class="confirm-btn" onclick="test(${user.id})">确认</button></div>
 </div>
 					<div class="footer">
 						<div class="content inner">

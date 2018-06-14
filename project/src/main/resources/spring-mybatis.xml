@@ -60,6 +60,7 @@
         <property name="dataSource">
             <ref bean="dataSourceWrite"/>
         </property>
+
     </bean>
 
     <tx:annotation-driven/>

@@ -39,6 +39,7 @@ public class DeleteByTime implements Job {
 
         //删除订单
         int i = userInfoOrder.deleteOrderById(id,costState);
+
         if(red.getValueByKey("order"+id)==null){
             seat_occupiedDao.update_occupiedByOrderID(i);
         }

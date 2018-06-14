@@ -22,7 +22,6 @@ public class FilmHotJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         //获取redis里所有的filmIdForHot_'id'的key，正则表达式："filmIdForHot_*"
-
         Set<String> keys = redisImpl.selectKeysLike("filmIdForHot_*");
         //遍历keys
         if(keys != null) {

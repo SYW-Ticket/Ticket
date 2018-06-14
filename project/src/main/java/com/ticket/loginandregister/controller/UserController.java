@@ -3,6 +3,9 @@ package com.ticket.loginandregister.controller;
 import com.ticket.loginandregister.bean.JsonBean;
 import com.ticket.loginandregister.bean.UserBean;
 import com.ticket.loginandregister.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.security.auth.Subject;
+
 @Controller
 @RequestMapping(value = "/users")
-@SessionAttributes("user")
 public class UserController {
 
 @Autowired
@@ -35,23 +39,18 @@ public Object sendMsg(String tel){
 @RequestMapping("/login")
     public Object login(String tel, String token, Model model){
             JsonBean jsonBean = new JsonBean();
-            UserBean userBean = userService.login(tel,token);
-            if(userBean!=null){
-            //  String log = "登陆成功,登陆者为："+tel;
-            model.addAttribute("user",userBean);
-            String s = new String("登陆成功");
-            jsonBean.setCode(1);
-            jsonBean.setMessage(s);
-            return jsonBean;
-    }
-    else {
-//        String log = "登陆失败,登陆者为："+tel;
 
-        String s = new String("验证码输入错误");
-        jsonBean.setCode(2);
-        jsonBean.setMessage(s);
-        return jsonBean;
-    }
+    try {
+                userService.login(tel,token);
+                jsonBean.setMessage("登陆成功");
+                jsonBean.setCode(1);
+                return jsonBean;
+          }
+          catch (IncorrectCredentialsException e){
+              jsonBean.setMessage("登陆失败,验证码错误");
+              jsonBean.setCode(2);
+              return jsonBean;
+          }
 }
     @RequestMapping("/logout")
     public String login(SessionStatus sessionStatus){

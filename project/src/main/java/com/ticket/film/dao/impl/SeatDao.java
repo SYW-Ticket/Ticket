@@ -34,4 +34,9 @@ public class SeatDao extends SqlSessionDaoSupport implements ISeatDao {
     public List<Seat> selectAllSeatByOrderID(int order_id) {
         return getSqlSession().selectList("com.ticket.seat.dao.ISeatDao.selectAllSeatByOrderID",order_id);
     }
+
+    @Override
+    public List<Integer> selectAllSeatOccupiesBySeatId(int[] seatIds) {
+        return getSqlSession().selectList("com.ticket.seat.dao.ISeatDao.selectAllSeatOccupiesBySeatId",seatIds);
+    }
 }

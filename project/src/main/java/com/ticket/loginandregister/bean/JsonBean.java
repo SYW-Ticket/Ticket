@@ -1,6 +1,8 @@
 package com.ticket.loginandregister.bean;
 
-public class JsonBean {
+import java.io.Serializable;
+
+public class JsonBean implements Serializable {
 
     int code;
     String message;

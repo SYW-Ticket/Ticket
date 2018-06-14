@@ -1,8 +1,6 @@
 package com.ticket.film.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +8,7 @@ import java.util.List;
  * @Date 2018/6/7
  * @Time 11:05
  */
-public class PageBean {
+public class PageBean implements Serializable {
     private int currentPage;
     private int countPage;
     private List<FilmDetail> filmDetails;

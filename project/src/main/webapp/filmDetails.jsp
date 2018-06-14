@@ -4332,16 +4332,8 @@
     }
 
     function event3(id) {
-
-        var session = "<%=session.getAttribute("user")%>";
-
-        if(session!="null"&&session!="") {
             window.location.href = "seat/allSeatsByPId/"+id+"";
-        }
-        else {
-            alert("您还未登陆，请登陆");
-            window.location.href = "login.jsp";
-        }
+
     }
     
     function findPlatoon(cinema_id) {

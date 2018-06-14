@@ -1,6 +1,8 @@
 package com.ticket.insertOrder.bean;
 
-public class Seat_Occupied {
+import java.io.Serializable;
+
+public class Seat_Occupied implements Serializable{
     private int id;
     private int seat_occupied;
     private int seat_id;

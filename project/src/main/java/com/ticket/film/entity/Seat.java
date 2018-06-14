@@ -1,11 +1,13 @@
 package com.ticket.film.entity;
 
+import java.io.Serializable;
+
 /**
  * @Author wangpeng
  * @Date 2018/6/11
  * @Time 11:44
  */
-public class Seat {
+public class Seat implements Serializable {
     private int id;
     private int flag;
     private int row;

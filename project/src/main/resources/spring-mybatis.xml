@@ -51,6 +51,7 @@
     <bean id="sqlSessionFactoryWrite" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSourceWrite"/>
         <property name="mapperLocations" value="classpath:mapper/*/*.xml"/>
+
     </bean>
 
 
@@ -59,7 +60,11 @@
         <property name="dataSource">
             <ref bean="dataSourceWrite"/>
         </property>
+
     </bean>
+
     <tx:annotation-driven/>
-    <!--<aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+
+
 </beans>

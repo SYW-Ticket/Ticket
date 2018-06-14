@@ -29,7 +29,7 @@
                     <a href="javascript:;">首页</a>
                 </li>
                 <li>
-                    <a href="javascript:;">影片</a>
+                    <a href="film/LoadingByPage/1">影片</a>
                 </li>
                 <li>
                     <a href="javascript:;">影院</a>
@@ -84,7 +84,7 @@
                 <div class="part orderList">
                     <div class="orderPanel">
                         <div class="orderWarp">
-                            <img src="img/film.jpg" class="film-pic"/>
+                            <img src="http://119.23.42.247:83/img/film.jpg" class="film-pic"/>
                             <div class="filmDetail">
                                 <div class="tabList o-tab">
                                     <div class="o-tit">

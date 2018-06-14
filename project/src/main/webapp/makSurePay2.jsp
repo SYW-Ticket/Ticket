@@ -29,16 +29,25 @@
                     <div class="menu">
                         <ul>
                             <li class="">首页</li>
-                            <li class="">影片</li>
+                            <li class="active"><a href="film/LoadingByPage/1">影片</a></li>
                             <li class="">影院</li>
                         </ul>
                     </div>
                     <div class="app"><span><!-- react-text: 18 -->APP下载<!-- /react-text --><i class="icon-caret-down"></i></span></div>
                     <div class="sign">
-                        <ul>
-                            <li>手机用户4942</li>
-                            <li>退出</li>
-                        </ul>
+                        <c:choose>
+                            <c:when test="${user==null}">
+                                <ul>
+                                    <li><a href="login.jsp">快速登陆</a></li>
+                                </ul>
+                            </c:when>
+                            <c:otherwise>
+                                <ul>
+                                    <li><a href="ChangePassword.jsp">欢迎用户${user.tel}</a></li>
+                                    <li><a href="users/logout">退出登陆</a></li>
+                                </ul>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="city-view-wrap inner">

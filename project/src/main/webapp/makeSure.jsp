@@ -6,6 +6,7 @@
     <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>确认订单</title>
+		<base href="<%=request.getContextPath()%>/"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="Cache-Control" content="no-siteapp">
@@ -30,7 +31,7 @@
 							<div class="menu">
 								<ul>
 									<li class="">首页</li>
-									<li class="">影片</li>
+									<a href="film/LoadingByPage/1"><li class="">影片</li></a>
 									<li class="">影院</li>
 								</ul>
 							</div>

@@ -98,13 +98,13 @@ public class OrderController {
 
         String value = redis.getValueByKey(id);
 
-        /*Gson gson = new Gson();
+        Gson gson = new Gson();
 
-        Order order2 = gson.fromJson(value, Order.class);*/
+        Order order2 = gson.fromJson(value, Order.class);
 
 
 
-        Model orderList2 = model.addAttribute("orderList3", value);
+        Model orderList2 = model.addAttribute("orderList3", order2);
 
         return "/payment";
     }

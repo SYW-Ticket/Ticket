@@ -61,7 +61,7 @@ public class OrderService {
     public Order insertOrder(int ticket_num,double total_price,int user_id,int platon_id,int[] seat_ids){
         //查询选座表，判断当前用户的选座是否还存在
 
-        if(seatService.seatsIsBeOccupied(seat_ids)){
+        if(seatService.seatsIsBeOccupied(seat_ids,platon_id)){
             return null;
         }
 
@@ -75,7 +75,7 @@ public class OrderService {
         String orderJson = redis.getValueByKey(key);
         if (orderJson != null&&!orderJson.equals("")) {
             Gson gson = new Gson();
-            Order order = gson.fromJson(key,Order.class);
+            Order order = gson.fromJson(orderJson,Order.class);
             userInfoOrder.deleteOrderById(order.getId(),2);
             //清空该缓存
             redis.deleteKeyValue(key);

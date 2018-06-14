@@ -124,7 +124,7 @@
 							</div>
 							<p>选择优惠抵扣方式</p>
 							<div class="mobile-ipt hide">
-								<p class="mobile-tips">购买成功后，取票验证码将发送到此手机号</p><input type="tel" placeholder="输入手机号" maxlength="11" value="13554244942"></div>
+								<p class="mobile-tips">购买成功后，取票验证码将发送到此手机号</p><input type="tel" placeholder="输入手机号" maxlength="11" value=${user.tel}></div>
 							<div class="redeem">
 								<div class="">
 									<p class="redeem-nav"><span class="active">我有卖座卡</span><span class="">我有现金券</span></p>
@@ -136,7 +136,7 @@
 									</div>
 								</div>
 								<div class="coin">
-									<div class="checkbox disabled"></div><span><!-- react-text: 2569 -->可使用余额：<!-- /react-text --><i>¥0</i></span></div>
+									<div class="checkbox disabled"></div><span><!-- react-text: 2569 -->可使用余额：<!-- /react-text --><i>${user.money}</i></span></div>
 							</div>
 							<div class="summation">
 								<table>

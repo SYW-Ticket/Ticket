@@ -1,12 +1,13 @@
 package com.ticket.UserInfo.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Shinelon on 2018/6/8.
  */
-public class Film {
+public class Film  implements Serializable {
 
 
     private int id;

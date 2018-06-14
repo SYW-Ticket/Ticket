@@ -173,7 +173,7 @@
 							</div>
 							<div class="security-code hide"><span>为保障您的账户安全，使用卖座卡/余额，需输入安全密码</span><input type="password" class="security-ipt" maxlength="6" placeholder="请输入安全密码">
 						
-							<span class="fogetten">忘记密码</span></div><button id="makeSure" class="confirm-btn" onclick="test(El表达式获取userId)">确认</button></div>
+							<span class="fogetten">忘记密码</span></div><button id="makeSure" class="confirm-btn" onclick="test(${user.Id})">确认</button></div>
 </div>
 					<div class="footer">
 						<div class="content inner">
@@ -244,9 +244,9 @@
 		
 		<script type="text/javascript">
 		function test(date){
-			var ids=date;
+			var UserId=date;
 			console.log()
-			window.location.href="Order/allSeatsByPId/+ids";
+			window.location.href="Order/allSeatsByPId/"+UserId;
 		}
 		</script>
 	</body>

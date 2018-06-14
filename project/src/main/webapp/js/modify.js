@@ -115,7 +115,7 @@ $(".cardList li").click(function() {
 
 //我的订单
 function getMyOrder() {
-	/*$(".o-tab .o-det").remove();*/
+	$(".o-tab .o-det").remove();
 	/*var url = "/js/orderDetail.json";*/
 	var url = "/Order/unpay";
 	/*Ajax.get("/Order/unpay",{"userId": 1}).then(function(data) {*/
@@ -123,11 +123,11 @@ function getMyOrder() {
 		console.log(typeof data);
 		if(data){
 			$(".orderPanel").show();
-			var sp1 = "<span>"+data.platoon.film.filmImg+"</span>";
-			var sp2 = "<span>"+data.platoon.hallId+"</span>";
-			var sp3 = "<span>"+data.platoon.film.filmLength+"</span>";
-			var sp4 = "<span>"+data.id+"</span>";
-			var sp5 = "<span>"+data.userId+"</span>";
+			var sp1 = "<span>"+data.platoon.film.filmName+"</span>";
+			var sp2 = "<span>"+data.platoon.hallBean.hall_name+"</span>";
+			var sp3 = "<span>"+data.platoon.show_start_date+"</span>";
+			var sp4 = "<span>"+data.ticketNum+"</span>";
+			var sp5 = "<span>"+data.user.tel+"</span>";
 			var sp6 = "<span>"+data.totalPrice+"</span>";
 			var orderDetailHtml = "<div class='o-det'>"+sp1+sp2+sp3+sp4+sp5+sp6+"</div>";
 			$(".o-tab").append(orderDetailHtml);
@@ -142,7 +142,24 @@ function currentOrder(){
 
 //历史订单
 function historyOrder(){
-	$.get("",{id:1},function(date){
-		alert(1);
-	});
+	$(".o-tab .o-det").remove();
+	$.get("Order/History",{id:"1"},function(date){
+		$.each(date,function (index,obj) {
+
+			if(obj){
+				$(".orderPanel").show();
+				var sp1 = "<span>"+obj.platoon.film.filmName+"</span>";
+				var sp2 = "<span>"+obj.platoon.hall.hallName+"</span>";
+				var sp3 = "<span>"+obj.platoon.showStartDate+"</span>";
+				var sp4 = "<span>"+obj.ticketNum+"</span>";
+				var sp5 = "<span>"+obj.userId+"</span>";
+				var sp6 = "<span>"+obj.totalPrice+"</span>";
+				var orderDetailHtml = "<div class='o-det'>"+sp1+sp2+sp3+sp4+sp5+sp6+"</div>";
+				$(".o-tab").append(orderDetailHtml);
+			}
+		});
+
+		})
+
+
 }

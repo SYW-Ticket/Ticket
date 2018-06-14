@@ -41,7 +41,7 @@ public class OrderController {
     @ResponseBody
     public Object SelectUnpayOrder(int userId, Model model){
 
-        Order order = userInfoService.findUnPayOrder(userId);
+        com.ticket.insertOrder.bean.Order order = userInfoService.findUnPayOrder(userId);
 
         Model orders = model.addAttribute("orders", order);
 
@@ -53,13 +53,14 @@ public class OrderController {
      * 查询历史订单
      */
     @RequestMapping("/History")
-    public String SelectHistoryOrder(int userId,Model model){
-        List<Order> orderList = userInfoService.HistoryorderList(userId);
+    @ResponseBody
+    public Object SelectHistoryOrder(int id,Model model){
+        List<Order> orderList = userInfoService.HistoryorderList(id);
 
         Model orderList1 = model.addAttribute("orderList", orderList);
 
 
-        return "#############";
+        return orderList;
     }
 
 
@@ -76,20 +77,23 @@ public class OrderController {
 
         Order order = gson.fromJson(valueByKey, Order.class);
 
-
         Model orderList2 = model.addAttribute("orderList2", order);
 
-        return "###############";
+        return "/makSurePay2";
 
     }
 
 
 
     /**
-     *  支付订单2（微信）
+     *  用于跳转
      */
-    @RequestMapping("/allSeatsByPId2/{UserId}")
-    public String SelectOrderPay2(@PathVariable("UserId") int UserId, Model model){
+    @RequestMapping("/allSeatsByPId2")
+    public String SelectOrderPay2(String UserId, Model model){
+        System.out.println("进入支付方法2----======");
+
+        System.out.println("UserId========="+UserId);
+
         String id = "order_"+UserId;
 
         String value = redis.getValueByKey(id);
@@ -99,10 +103,12 @@ public class OrderController {
         Order order2 = gson.fromJson(value, Order.class);
 
 
-        Model orderList2 = model.addAttribute("orderList3", order2);
 
-        return "###############";
+        Model orderList2 = model.addAttribute("orderList3", value);
+
+        return "/payment";
     }
+
 
 
 }

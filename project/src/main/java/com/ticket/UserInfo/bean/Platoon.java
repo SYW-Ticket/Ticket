@@ -1,11 +1,12 @@
 package com.ticket.UserInfo.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Shinelon on 2018/6/8.
  */
-public class Platoon {
+public class Platoon implements Serializable {
 
     private int id;
     private int filmeId;

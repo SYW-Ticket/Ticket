@@ -40,25 +40,25 @@
 
   <!--过滤器代理-->
   <!--为了将过滤器的业务逻辑交给spring容器执行 实现IOC注入 此处先进行初始化然后等待，等待自身属性的初始化，即再spring中的初始化-->
-  <filter>
-    <filter-name>springSessionRepositoryFilter</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-  </filter>
+  <!--<filter>-->
+    <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+  <!--</filter>-->
 
-  <filter>
-    <filter-name>shiroFilter</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-  </filter>
+  <!--<filter>-->
+    <!--<filter-name>shiroFilter</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+  <!--</filter>-->
 
-  <filter-mapping>
-    <filter-name>springSessionRepositoryFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!--<filter-mapping>-->
+    <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
 
-  <filter-mapping>
-    <filter-name>shiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!--<filter-mapping>-->
+    <!--<filter-name>shiroFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
 
 
 

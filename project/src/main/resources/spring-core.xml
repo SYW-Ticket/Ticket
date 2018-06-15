@@ -9,7 +9,7 @@
     <import resource="spring-redis.xml"/>
     <import resource="spring-active.xml"/>
     <import resource="spring-quartz.xml"/>
-    <import resource="spring-shiro.xml"/>
+    <!--<import resource="spring-shiro.xml"/>-->
     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
         <property name="maxInactiveIntervalInSeconds" value="3600"></property>
     </bean>
